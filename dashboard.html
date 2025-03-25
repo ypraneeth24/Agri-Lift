@@ -7,7 +7,8 @@
     <title>AgriLift Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -69,6 +70,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -80,6 +82,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -90,9 +93,11 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
@@ -102,20 +107,34 @@
             0% {
                 background-position: -100% 0;
             }
+
             100% {
                 background-position: 100% 0;
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Navbar Styling */
@@ -184,7 +203,7 @@
         /* Weather Card */
         .weather-card {
             position: fixed;
-            top: 90px;
+            top: 156px;
             right: 20px;
             background: white;
             padding: 12px 18px;
@@ -293,6 +312,30 @@
             box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
             margin-bottom: 15px;
             font-family: 'Poppins', sans-serif;
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .next-button:hover {
+            border-color: var(--primary-green);
+            background-color: rgba(46, 204, 113, 0.1);
+            transform: translateY(-5px);
         }
 
         .upload-btn:hover {
@@ -651,18 +694,20 @@
 
     <!-- Main Content -->
     <main>
-        <section class="dashboard-section upload-section">
-            <h2>Smart Soil Analysis</h2>
-            <p>Upload your soil report for personalized crop recommendations and detailed insights</p>
-            <div id="fileUploadArea" class="upload-area">
-                <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
-                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
-                    <i class="fas fa-upload"></i> Choose File
-                </button>
-                <p>Supported formats: PDF, JPG, JPEG, PNG</p>
-                <div id="errorMessage" class="error-message"></div>
-            </div>
-        </section>
+        <div style="padding-top: 4rem;">
+            <section class="dashboard-section upload-section">
+                <h2>Smart Soil Analysis</h2>
+                <p>Upload your soil report for personalized crop recommendations and detailed insights</p>
+                <div id="fileUploadArea" class="upload-area">
+                    <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-upload"></i> Choose File
+                    </button>
+                    <p>Supported formats: PDF, JPG, JPEG, PNG</p>
+                    <div id="errorMessage" class="error-message"></div>
+                </div>
+            </section>
+        </div>
 
         <div class="dashboard-grid">
             <div class="section-card analysis-section">
@@ -691,6 +736,7 @@
                     <option value="zaid">Zaid (Summer)</option>
                 </select>
                 <div id="cropRecommendations"></div>
+                <button class="next-button" onclick="window.location.href='3d2.html';">Next</button>
             </div>
         </div>
     </main>
@@ -698,7 +744,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -808,12 +854,12 @@
 
         function updateLineChart(data) {
             const ctx = document.getElementById('soilChart').getContext('2d');
-            
+
             // Advanced gradient background
             let gradient = ctx.createLinearGradient(0, 0, 0, 400);
             gradient.addColorStop(0, 'rgba(46, 204, 113, 0.4)');
             gradient.addColorStop(1, 'rgba(46, 204, 113, 0.05)');
-            
+
             if (!realTimeChart) {
                 realTimeChart = new Chart(ctx, {
                     type: 'line',
@@ -958,10 +1004,10 @@
                 });
             } else {
                 pieChart.data.datasets[0].data = [
-                    data.nitrogen, 
-                    data.phosphorus, 
-                    data.potassium, 
-                    data.organicMatter * 20, 
+                    data.nitrogen,
+                    data.phosphorus,
+                    data.potassium,
+                    data.organicMatter * 20,
                     data.moisture
                 ];
                 pieChart.update();
@@ -972,11 +1018,11 @@
             // First, clear the previous canvas if it exists
             const container = document.querySelector('.chart-container:nth-of-type(3)');
             container.innerHTML = '';
-            
+
             // Create a new canvas
             const ctx = document.createElement('canvas');
             container.appendChild(ctx);
-            
+
             const barColors = [
                 'rgba(46, 204, 113, 0.8)',
                 'rgba(52, 152, 219, 0.8)',
@@ -985,7 +1031,7 @@
                 'rgba(231, 76, 60, 0.8)',
                 'rgba(52, 73, 94, 0.8)'
             ];
-            
+
             bar3DChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -1048,7 +1094,7 @@
                             borderWidth: 1,
                             displayColors: false,
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     const key = context.label.toLowerCase();
                                     const value = context.raw.toFixed(2);
                                     return `${key === 'ph' ? 'pH' : key}: ${value} ${key === 'ph' ? '' : 'mg/kg'}`;
@@ -1081,7 +1127,7 @@
             // Create layers with labels
             layers.forEach(layer => {
                 if (layer.height <= 0) return;
-                
+
                 const layerDiv = document.createElement('div');
                 layerDiv.className = 'soil-layer';
                 layerDiv.style.height = `${layer.height}%`;
@@ -1093,7 +1139,7 @@
                 layerDiv.style.display = 'flex';
                 layerDiv.style.alignItems = 'center';
                 layerDiv.style.justifyContent = 'center';
-                
+
                 // Add label for each layer
                 const label = document.createElement('span');
                 label.textContent = layer.name;
@@ -1101,7 +1147,7 @@
                 label.style.fontSize = '0.75rem';
                 label.style.fontWeight = 'bold';
                 label.style.textShadow = '0 1px 2px rgba(0,0,0,0.5)';
-                
+
                 layerDiv.appendChild(label);
                 soilLayers.appendChild(layerDiv);
             });
@@ -1114,7 +1160,7 @@
                 for (let key in realTimeData) {
                     // Make smaller, more realistic changes
                     let change = (Math.random() - 0.5) * 0.8;
-                    
+
                     switch (key) {
                         case 'pH':
                             // pH should stay within realistic bounds (4-9)
@@ -1144,7 +1190,7 @@
                 let paramsHTML = '';
                 for (let [key, value] of Object.entries(realTimeData)) {
                     let status = '';
-                    
+
                     // Add status indicators based on parameter values
                     if (key === 'pH') {
                         if (value < 5.5) status = '<span style="color: #ffcc00">⚠️ Low</span>';
@@ -1163,7 +1209,7 @@
                         else if (value > 70) status = '<span style="color: #ffcc00">⚠️ Wet</span>';
                         else status = '<span style="color: #2ecc71">✓ Good</span>';
                     }
-                    
+
                     paramsHTML += `
                         <div class="parameter-card">
                             <span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>
@@ -1186,7 +1232,7 @@
                 `;
                 return;
             }
-            
+
             const recommendations = getCropRecommendations(season, realTimeData);
 
             let recsHTML = '';
@@ -1195,7 +1241,7 @@
                 const suitabilityScore = crop.suitability;
                 let suitabilityClass = '';
                 let suitabilityText = '';
-                
+
                 if (suitabilityScore > 80) {
                     suitabilityClass = 'excellent';
                     suitabilityText = '🌟 Excellent match';
@@ -1206,7 +1252,7 @@
                     suitabilityClass = 'fair';
                     suitabilityText = '⚠️ Fair match';
                 }
-                
+
                 recsHTML += `
                     <div class="crop-card ${suitabilityClass}">
                         <h4>${crop.name}</h4>
@@ -1232,107 +1278,107 @@
             // Base recommendations
             const recommendations = {
                 kharif: [
-                    { 
-                        name: 'Rice', 
+                    {
+                        name: 'Rice',
                         description: 'Ideal for high moisture soils with good water retention.',
-                        period: 'June - November', 
+                        period: 'June - November',
                         water: 'High',
                         idealSoil: { pH: 6.0, nitrogen: 70, phosphorus: 60, potassium: 50, moisture: 80 }
                     },
-                    { 
-                        name: 'Cotton', 
+                    {
+                        name: 'Cotton',
                         description: 'Suitable for well-drained soils with moderate fertility.',
-                        period: 'May - November', 
+                        period: 'May - November',
                         water: 'Medium',
                         idealSoil: { pH: 6.5, nitrogen: 60, phosphorus: 50, potassium: 60, moisture: 60 }
                     },
-                    { 
-                        name: 'Soybean', 
+                    {
+                        name: 'Soybean',
                         description: 'A nitrogen-fixing crop that improves soil health and provides protein-rich beans.',
-                        period: 'June - October', 
+                        period: 'June - October',
                         water: 'Medium',
                         idealSoil: { pH: 6.8, nitrogen: 50, phosphorus: 60, potassium: 40, moisture: 65 }
                     }
                 ],
                 rabi: [
-                    { 
-                        name: 'Wheat', 
+                    {
+                        name: 'Wheat',
                         description: 'Perfect for moderate pH levels and fertile soils.',
-                        period: 'November - April', 
+                        period: 'November - April',
                         water: 'Medium',
                         idealSoil: { pH: 7.0, nitrogen: 65, phosphorus: 55, potassium: 45, moisture: 60 }
                     },
-                    { 
-                        name: 'Mustard', 
+                    {
+                        name: 'Mustard',
                         description: 'Ideal for nitrogen-rich soils with good drainage.',
-                        period: 'October - March', 
+                        period: 'October - March',
                         water: 'Low',
                         idealSoil: { pH: 6.5, nitrogen: 70, phosphorus: 40, potassium: 40, moisture: 50 }
                     },
-                    { 
-                        name: 'Chickpea', 
+                    {
+                        name: 'Chickpea',
                         description: 'A legume that thrives in well-drained soils with moderate fertility.',
-                        period: 'October - March', 
+                        period: 'October - March',
                         water: 'Low',
                         idealSoil: { pH: 7.2, nitrogen: 45, phosphorus: 50, potassium: 40, moisture: 45 }
                     }
                 ],
                 zaid: [
-                    { 
-                        name: 'Watermelon', 
+                    {
+                        name: 'Watermelon',
                         description: 'Best for sandy loam soils with good drainage.',
-                        period: 'March - June', 
+                        period: 'March - June',
                         water: 'Medium',
                         idealSoil: { pH: 6.0, nitrogen: 50, phosphorus: 60, potassium: 70, moisture: 55 }
                     },
-                    { 
-                        name: 'Cucumber', 
+                    {
+                        name: 'Cucumber',
                         description: 'Suitable for well-fertilized soils rich in organic matter.',
-                        period: 'February - May', 
+                        period: 'February - May',
                         water: 'Medium',
                         idealSoil: { pH: 6.5, nitrogen: 60, phosphorus: 50, potassium: 60, moisture: 60 }
                     },
-                    { 
-                        name: 'Mung Bean', 
+                    {
+                        name: 'Mung Bean',
                         description: 'A short-duration pulse crop that enhances soil fertility.',
-                        period: 'March - June', 
+                        period: 'March - June',
                         water: 'Low',
                         idealSoil: { pH: 7.0, nitrogen: 50, phosphorus: 40, potassium: 50, moisture: 50 }
                     }
                 ]
             };
-            
+
             // Calculate suitability score for each crop based on current soil data
             const cropsWithSuitability = recommendations[season]?.map(crop => {
                 let totalDifference = 0;
                 let factors = 0;
-                
+
                 for (const [key, idealValue] of Object.entries(crop.idealSoil)) {
                     if (soilData[key] !== undefined) {
                         // Calculate difference percentage (0-100%)
                         let maxRange;
-                        switch(key) {
+                        switch (key) {
                             case 'pH': maxRange = 14; break;
                             case 'organicMatter': maxRange = 5; break;
                             default: maxRange = 100;
                         }
-                        
+
                         const difference = Math.abs(soilData[key] - idealValue) / maxRange;
                         totalDifference += difference;
                         factors++;
                     }
                 }
-                
+
                 // Calculate average difference and convert to similarity percentage
                 const avgDifference = totalDifference / factors;
                 const suitabilityScore = Math.round((1 - avgDifference) * 100);
-                
+
                 return {
                     ...crop,
                     suitability: suitabilityScore
                 };
             }) || [];
-            
+
             // Sort by suitability
             return cropsWithSuitability.sort((a, b) => b.suitability - a.suitability);
         }
@@ -1355,11 +1401,11 @@
 
         // Add animation to the navigation buttons
         document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
+            button.addEventListener('mouseenter', function () {
                 this.querySelector('i')?.classList.add('fa-bounce');
             });
-            
-            button.addEventListener('mouseleave', function() {
+
+            button.addEventListener('mouseleave', function () {
                 this.querySelector('i')?.classList.remove('fa-bounce');
             });
         });
@@ -1367,11 +1413,11 @@
         // Animate sections on scroll
         function checkScroll() {
             const elements = document.querySelectorAll('.dashboard-section, .section-card');
-            
+
             elements.forEach(el => {
                 const elementTop = el.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
@@ -1389,7 +1435,7 @@
         // Check elements on load and scroll
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
-        
+
         // Initial check
         checkScroll();
     </script>
