@@ -22,6 +22,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -33,6 +34,7 @@
                 transform: scale(0.95);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1);
                 opacity: 1;
@@ -44,6 +46,7 @@
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -51,9 +54,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -214,7 +220,8 @@
             background-color: #f7f7f7;
         }
 
-        .change-quantity, .remove-item {
+        .change-quantity,
+        .remove-item {
             transition: all 0.2s ease;
         }
 
@@ -346,8 +353,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Product badge */
@@ -417,7 +429,8 @@
                 <a href="services.html" class="nav-link hover:text-emerald-200 transition">Services</a>
                 <button id="cartBtn" class="relative hover:text-emerald-200 transition">
                     <i class="fas fa-shopping-cart text-xl"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 py-0.5 rounded-full">0</span>
+                    <span id="cartCount"
+                        class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 py-0.5 rounded-full">0</span>
                 </button>
             </div>
         </div>
@@ -443,8 +456,10 @@
         <div class="container mx-auto px-4">
             <div class="max-w-2xl">
                 <h1 class="text-4xl font-bold mb-4">Advanced Hybrid Seeds for a Sustainable Future</h1>
-                <p class="text-lg mb-6">Experience the future of agriculture with our scientifically enhanced Seeds that are nutritious, sustainable, and perfect for any setting.</p>
-                <button class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition shadow-lg">
+                <p class="text-lg mb-6">Experience the future of agriculture with our scientifically enhanced Seeds that
+                    are nutritious, sustainable, and perfect for any setting.</p>
+                <button
+                    class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition shadow-lg">
                     Explore Collection
                 </button>
             </div>
@@ -474,8 +489,8 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="product-badge badge-anim">Best Seller</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/mangoes.jpg" alt="Lab-Grown Lettuce"
-                        class="w-full h-56 object-cover">
+                    <img src="https://images.unsplash.com/photo-1519096845289-95806ee03a1a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Lab-Grown Lettuce" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Mango</h3>
@@ -487,7 +502,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Mango is a sweet, juicy tropical fruit with a vibrant flavor and rich aroma.
+                    <p class="text-gray-600 text-sm mb-4">Mango is a sweet, juicy tropical fruit with a vibrant flavor
+                        and rich aroma.
 
 
 
@@ -509,8 +525,7 @@
             <!-- Product Card: Spices -->
             <div class="product-card bg-white overflow-hidden relative" data-category="Spices">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/cumin.jpeg" alt="Lab-Grown Orchid"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/cumin.jpeg" alt="Lab-Grown Orchid" class="w-full h-56 object-cover">
                 </div>
                 ''
 
@@ -525,7 +540,8 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(5.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Cumin seeds are used for adding a warm, earthy flavor to dishes and aiding digestion.</p>
+                    <p class="text-gray-600 text-sm mb-4">Cumin seeds are used for adding a warm, earthy flavor to
+                        dishes and aiding digestion.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹599</span>
                         <button
@@ -540,8 +556,7 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="product-badge badge-anim">New</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/Strawberry.jpg" alt="Lab-Grown Strawberry"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/Strawberry.jpg" alt="Lab-Grown Strawberry" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Strawberries</h3>
@@ -553,7 +568,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Strawberries are sweet, juicy berries rich in antioxidants, vitamin C, and fiber
+                    <p class="text-gray-600 text-sm mb-4">Strawberries are sweet, juicy berries rich in antioxidants,
+                        vitamin C, and fiber
                         properties.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹499</span>
@@ -568,8 +584,7 @@
             <!-- Product Card: Herbal -->
             <div class="product-card bg-white overflow-hidden relative" data-category="Herbal">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/Tulasi.jpg" alt="Lab-Grown Aloe Vera"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/Tulasi.jpg" alt="Lab-Grown Aloe Vera" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Tulasi</h3>
@@ -581,7 +596,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Tulasi (Holy Basil) is a medicinal herb known for its aromatic leaves and health benefits, including immunity boosting and stress relief.</p>
+                    <p class="text-gray-600 text-sm mb-4">Tulasi (Holy Basil) is a medicinal herb known for its aromatic
+                        leaves and health benefits, including immunity boosting and stress relief.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹1200</span>
                         <button
@@ -595,8 +611,7 @@
             <!-- Product Card: fruits -->
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/watermellon.avif" alt="Lab-Grown Tomato"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/watermellon.avif" alt="Lab-Grown Tomato" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Watermelon</h3>
@@ -608,7 +623,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Watermelon is a refreshing, hydrating fruit with a sweet, juicy flesh, rich in vitamins and antioxidants.</p>
+                    <p class="text-gray-600 text-sm mb-4">Watermelon is a refreshing, hydrating fruit with a sweet,
+                        juicy flesh, rich in vitamins and antioxidants.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹399</span>
                         <button
@@ -622,8 +638,7 @@
             <!-- Product Card: Spices -->
             <div class="product-card bg-white overflow-hidden relative" data-category="Spices">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/BlackPepper.webp" alt="Lab-Grown Succulent"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/BlackPepper.webp" alt="Lab-Grown Succulent" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Black Pepper</h3>
@@ -635,7 +650,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Black pepper is a pungent spice used for seasoning and has medicinal benefits like aiding digestion and improving metabolism..</p>
+                    <p class="text-gray-600 text-sm mb-4">Black pepper is a pungent spice used for seasoning and has
+                        medicinal benefits like aiding digestion and improving metabolism..</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹650</span>
                         <button
@@ -662,7 +678,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Kiwi is a tangy, nutrient-rich fruit packed with vitamin C, fiber, and antioxidants.</p>
+                    <p class="text-gray-600 text-sm mb-4">Kiwi is a tangy, nutrient-rich fruit packed with vitamin C,
+                        fiber, and antioxidants.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹849</span>
                         <button
@@ -677,8 +694,7 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="Herbal">
                 <div class="product-badge badge-anim">Popular</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/FLAX SEEDS.jpg" alt="Lab-Grown Echinacea"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/FLAX SEEDS.jpg" alt="Lab-Grown Echinacea" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Flaxseeds</h3>
@@ -690,7 +706,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Flaxseeds are nutrient-dense seeds rich in omega-3 fatty acids, fiber, and antioxidants, promoting heart and digestive health.</p>
+                    <p class="text-gray-600 text-sm mb-4">Flaxseeds are nutrient-dense seeds rich in omega-3 fatty
+                        acids, fiber, and antioxidants, promoting heart and digestive health.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹1099</span>
                         <button
@@ -704,8 +721,7 @@
             <!-- Product Card: Herbs -->
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/pomegranate.jpeg" alt="Lab-Grown Basil"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/pomegranate.jpeg" alt="Lab-Grown Basil" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Pomegranate</h3>
@@ -717,7 +733,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Pomegranate is a nutrient-rich fruit with juicy, sweet-tart seeds packed with antioxidants, vitamins, and health benefits.
+                    <p class="text-gray-600 text-sm mb-4">Pomegranate is a nutrient-rich fruit with juicy, sweet-tart
+                        seeds packed with antioxidants, vitamins, and health benefits.
                         enthusiasts.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹299</span>
@@ -733,8 +750,7 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="Spices">
                 <div class="product-badge badge-anim">Limited</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/cloves_2.jpg" alt="Lab-Grown Bonsai"
-                        class="w-full h-56 object-cover">
+                    <img src="AgriLift/cloves_2.jpg" alt="Lab-Grown Bonsai" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Cloves(Laung)</h3>
@@ -746,7 +762,8 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(5.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Cloves (Laung) are aromatic spice buds with a warm, intense flavor, known for their medicinal properties and digestive benefits.</p>
+                    <p class="text-gray-600 text-sm mb-4">Cloves (Laung) are aromatic spice buds with a warm, intense
+                        flavor, known for their medicinal properties and digestive benefits.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹2999</span>
                         <button
@@ -770,21 +787,24 @@
                         <i class="fas fa-seedling text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Sustainable Cultivation</h3>
-                    <p class="text-gray-600">Our Advanced Hybrid Seeds reduce water usage by 90% compared to traditional farming methods.</p>
+                    <p class="text-gray-600">Our Advanced Hybrid Seeds reduce water usage by 90% compared to traditional
+                        farming methods.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all">
                     <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-flask text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Enhanced Nutrition</h3>
-                    <p class="text-gray-600">Scientifically enhanced to provide more vitamins, minerals, and antioxidants than conventional plants.</p>
+                    <p class="text-gray-600">Scientifically enhanced to provide more vitamins, minerals, and
+                        antioxidants than conventional plants.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all">
                     <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-truck text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Farm to Table Fresh</h3>
-                    <p class="text-gray-600">Our plants are grown locally, reducing carbon footprint and ensuring maximum freshness.</p>
+                    <p class="text-gray-600">Our plants are grown locally, reducing carbon footprint and ensuring
+                        maximum freshness.</p>
                 </div>
             </div>
         </div>
@@ -827,11 +847,11 @@
 
     <script>
         // Wait for the page to load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Hide loading overlay
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('loadingOverlay').style.opacity = '0';
-                setTimeout(function() {
+                setTimeout(function () {
                     document.getElementById('loadingOverlay').style.display = 'none';
                 }, 500);
             }, 800);
@@ -870,13 +890,13 @@
                 const productCard = button.closest('.product-card');
                 const productName = productCard.querySelector('h3').textContent;
                 const price = parseFloat(productCard.querySelector('span').textContent.slice(1));
-                
+
                 // Add a small click animation
                 button.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     button.style.transform = 'scale(1)';
                 }, 200);
-                
+
                 addItemToCart(productName, price);
             });
         });
@@ -938,7 +958,7 @@
                     setTimeout(() => {
                         button.style.transform = 'scale(1)';
                     }, 100);
-                    
+
                     if (change === -1 && cart[index].quantity > 1) {
                         cart[index].quantity -= 1;
                     } else if (change === 1) {
@@ -954,12 +974,12 @@
             if (event.target.classList.contains('remove-item') || event.target.parentElement.classList.contains('remove-item')) {
                 const button = event.target.classList.contains('remove-item') ? event.target : event.target.parentElement;
                 const index = parseInt(button.getAttribute('data-index'));
-                
+
                 if (cart[index]) {
                     const cartItem = button.closest('.cart-item');
                     cartItem.style.transform = 'translateX(100%)';
                     cartItem.style.opacity = '0';
-                    
+
                     setTimeout(() => {
                         cart.splice(index, 1); // Remove the item from the array
                         updateCart();
@@ -972,7 +992,7 @@
         document.getElementById('cartBtn').addEventListener('click', () => {
             document.body.classList.add('cart-active');
             cartOverlay.classList.remove('hidden');
-            
+
             // Prevent scrolling when cart is open
             document.body.style.overflow = 'hidden';
         });
@@ -980,7 +1000,7 @@
         function closeCart() {
             document.body.classList.remove('cart-active');
             cartOverlay.classList.add('hidden');
-            
+
             // Re-enable scrolling
             document.body.style.overflow = '';
         }
@@ -991,7 +1011,7 @@
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
@@ -1007,13 +1027,13 @@
         function filterProducts(category) {
             const allProducts = document.querySelectorAll('.product-card');
             let delay = 0;
-            
+
             allProducts.forEach(product => {
                 if (category === 'all' || product.getAttribute('data-category') === category) {
                     // First hide it
                     product.style.opacity = '0';
                     product.style.transform = 'scale(0.95) translateY(10px)';
-                    
+
                     // Then show it with a delay for staggered animation
                     setTimeout(() => {
                         product.style.display = 'block';
@@ -1022,7 +1042,7 @@
                             product.style.transform = 'scale(1) translateY(0)';
                         }, 50);
                     }, delay);
-                    
+
                     delay += 50; // Stagger the animations
                 } else {
                     product.style.opacity = '0';
@@ -1039,13 +1059,13 @@
             button.addEventListener('click', function () {
                 const category = this.getAttribute('data-category');
                 filterProducts(category);
-                
+
                 // Reset the active class from all buttons and set it on the clicked one
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('bg-emerald-600', 'text-white', 'active');
                     btn.classList.add('bg-gray-200');
                 });
-                
+
                 this.classList.remove('bg-gray-200');
                 this.classList.add('bg-emerald-600', 'text-white', 'active');
             });
@@ -1053,7 +1073,7 @@
 
         // Scroll to top functionality
         const scrollTopBtn = document.getElementById('scrollTop');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopBtn.classList.add('visible');
@@ -1061,7 +1081,7 @@
                 scrollTopBtn.classList.remove('visible');
             }
         });
-        
+
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1073,28 +1093,28 @@
         const searchInput = document.getElementById('searchInput');
         const suggestionsContainer = document.getElementById('suggestions');
         const suggestionList = suggestionsContainer.querySelector('ul');
-        
+
         function updateSearchHistoryDisplay() {
             // This function is referenced but not implemented in the original code
             // Adding a basic implementation
             const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
             // We could display search history somewhere if needed
         }
-        
+
         function addToSearchHistory(term) {
             if (!term.trim()) return;
-            
+
             const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-            
+
             // Check if term already exists
             if (!searchHistory.includes(term)) {
                 // Add to start of array and keep only last 10 searches
                 searchHistory.unshift(term);
-                
+
                 if (searchHistory.length > 10) {
                     searchHistory.pop();
                 }
-                
+
                 localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
             }
         }
@@ -1102,25 +1122,25 @@
         // Function to generate suggestions
         function generateSuggestions(searchTerm) {
             if (!searchTerm.trim()) return [];
-            
+
             let suggestions = [];
-            
+
             // Suggest from history
             const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
-            suggestions = suggestions.concat(history.filter(term => 
+            suggestions = suggestions.concat(history.filter(term =>
                 term.toLowerCase().includes(searchTerm.toLowerCase())
             ));
-            
+
             // Suggest based on product names
             const products = [];
             document.querySelectorAll('.product-card h3').forEach(el => {
                 products.push(el.textContent);
             });
-            
-            suggestions = suggestions.concat(products.filter(product => 
+
+            suggestions = suggestions.concat(products.filter(product =>
                 product.toLowerCase().includes(searchTerm.toLowerCase())
             ));
-            
+
             // Remove duplicates and limit to 5
             return [...new Set(suggestions)].slice(0, 5);
         }
@@ -1128,10 +1148,10 @@
         // Function to show/hide and populate suggestions
         function updateSuggestions(searchTerm) {
             const suggestions = generateSuggestions(searchTerm);
-            
+
             if (suggestions.length > 0 && searchTerm.trim()) {
                 suggestionsContainer.classList.remove('hidden');
-                suggestionList.innerHTML = suggestions.map(term => 
+                suggestionList.innerHTML = suggestions.map(term =>
                     `<li class="px-4 py-2 cursor-pointer hover:bg-emerald-100 transition">${term}</li>`
                 ).join('');
             } else {
@@ -1142,18 +1162,18 @@
         // Perform search
         function performSearch() {
             const searchTerm = searchInput.value.toLowerCase().trim();
-            
+
             if (searchTerm) {
                 addToSearchHistory(searchTerm);
             }
-            
+
             updateSuggestions(searchTerm);
-            
+
             // Search all products
             document.querySelectorAll('.product-card').forEach(product => {
                 const productName = product.querySelector('h3').textContent.toLowerCase();
                 const productDesc = product.querySelector('p').textContent.toLowerCase();
-                
+
                 if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
                     product.style.display = 'block';
                     setTimeout(() => {
@@ -1175,7 +1195,7 @@
                     }, 50);
                 }
             });
-            
+
             // If no search term, reset category filters
             if (!searchTerm) {
                 const activeFilter = document.querySelector('.filter-btn.active');
@@ -1209,9 +1229,9 @@
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             updateCart();
-            filterProducts('all');  
+            filterProducts('all');
             updateSearchHistoryDisplay();
-            
+
             // Add animation delay to each product card
             document.querySelectorAll('.product-card').forEach((card, index) => {
                 card.style.animationDelay = (index * 0.1) + 's';
