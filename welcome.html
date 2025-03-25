@@ -7,7 +7,8 @@
     <title>AgriLift - Agricultural Financing</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -71,6 +72,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -82,6 +84,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -92,18 +95,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header & Navigation Styling */
@@ -142,7 +155,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             width: 165px;
             height: auto;
@@ -280,7 +293,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
         }
 
         .hero-slide.active {
@@ -488,7 +501,7 @@
             gap: 8px;
             min-width: 180px;
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -500,20 +513,20 @@
             transition: all 0.4s ease;
             z-index: -1;
         }
-        
+
         .btn:hover::before {
             left: 100%;
             transition: 0.7s;
         }
-        
+
         .btn i {
             transition: transform 0.3s ease;
         }
-        
+
         .btn:hover i {
             transform: translateX(3px);
         }
-        
+
         .btn:active {
             transform: scale(0.98);
         }
@@ -691,8 +704,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Notification */
@@ -705,7 +723,7 @@
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -721,18 +739,18 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            
+
             .translator-card-container {
                 top: 270px;
             }
@@ -743,38 +761,39 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            
+
             .logo img {
                 width: 140px;
             }
 
-            .weather-card, .translator-card-container {
+            .weather-card,
+            .translator-card-container {
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
             }
-            
+
             .weather-card {
                 top: 170px;
             }
-            
+
             .translator-card-container {
                 top: 240px;
                 width: 200px;
@@ -811,7 +830,7 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-            
+
             .logo img {
                 width: 120px;
                 margin-right: 10px;
@@ -824,7 +843,7 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
@@ -847,30 +866,15 @@
                 <img src="AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='dashboard.html';">
-                    <i class="fas fa-home"></i> <span class="nav-text" data-key="home">Home</span>
-                </button>
-                <button class="nav-button" onclick="window.location.href='loan.html';">
-                    <i class="fas fa-money-bill-wave"></i> <span class="nav-text" data-key="loans">Loans</span>
-                </button>
+
+
                 <button class="nav-button" onclick="window.location.href='contact.html';">
                     <i class="fas fa-envelope"></i> <span class="nav-text" data-key="contact">Contact</span>
                 </button>
-                <button class="nav-button" onclick="window.location.href='seed.html';">
-                    <i class="fas fa-seedling"></i> <span class="nav-text" data-key="Market">Market</span>
+                <button class="nav-button" onclick="window.location.href='services.html';">
+                    <i class="fas fa-envelope"></i> <span class="nav-text" data-key="Services">Services</span>
                 </button>
-                <button class="nav-button" onclick="window.location.href='worker.html';">
-                    <i class="fas fa-users"></i> <span class="nav-text" data-key="labour">Labour</span>
-                </button>
-                <button class="nav-button" onclick="window.location.href='machinary.html';">
-                    <i class="fas fa-tractor"></i> <span class="nav-text" data-key="machinery">Machinery</span>
-                </button>
-                <button class="nav-button" onclick="window.location.href='export.html';">
-                    <i class="fas fa-shipping-fast"></i> <span class="nav-text" data-key="export">Export</span>
-                </button>
-                <button class="nav-button" onclick="window.location.href='mounitoring.html';">
-                    <i class="fas fa-chart-line"></i> <span class="nav-text" data-key="monitoring">Monitoring</span>
-                </button>
+
             </nav>
         </div>
     </header>
@@ -897,7 +901,8 @@
         <div class="hero-slide active" style="background-image: url('AgriLift/welcome1.jpg');">
             <div class="hero-content">
                 <h1 data-key="hero-title">Empowering Farmers, Transforming Agriculture</h1>
-                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from land testing to market selling</p>
+                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from
+                    land testing to market selling</p>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn-link">
                         <button class="btn btn-farmer">
@@ -917,7 +922,8 @@
         <div class="hero-slide" style="background-image: url('AgriLift/welcome2.jpg');">
             <div class="hero-content">
                 <h1 data-key="hero-title">Empowering Farmers, Transforming Agriculture</h1>
-                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from land testing to market selling</p>
+                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from
+                    land testing to market selling</p>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn-link">
                         <button class="btn btn-farmer">
@@ -937,7 +943,8 @@
         <div class="hero-slide" style="background-image: url('AgriLift/welcome\ 4.jpg');">
             <div class="hero-content">
                 <h1 data-key="hero-title">Empowering Farmers, Transforming Agriculture</h1>
-                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from land testing to market selling</p>
+                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from
+                    land testing to market selling</p>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn-link">
                         <button class="btn btn-farmer">
@@ -957,7 +964,8 @@
         <div class="hero-slide" style="background-image: url('AgriLift/welcome3.jpg');">
             <div class="hero-content">
                 <h1 data-key="hero-title">Empowering Farmers, Transforming Agriculture</h1>
-                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from land testing to market selling</p>
+                <p data-key="hero-description">Comprehensive platform offering end-to-end agricultural solutions, from
+                    land testing to market selling</p>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn-link">
                         <button class="btn btn-farmer">
@@ -987,7 +995,8 @@
     <section id="features" class="features">
         <div class="section-title">
             <h2 data-key="solutions-title">Our Comprehensive Solutions</h2>
-            <p data-key="solutions-description">Innovative agricultural technologies designed to increase efficiency and sustainability</p>
+            <p data-key="solutions-description">Innovative agricultural technologies designed to increase efficiency and
+                sustainability</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
@@ -1308,18 +1317,18 @@
         }
 
         // Handle loading overlay
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const loadingOverlay = document.getElementById('loadingOverlay');
-            setTimeout(function() {
+            setTimeout(function () {
                 loadingOverlay.style.opacity = '0';
-                setTimeout(function() {
+                setTimeout(function () {
                     loadingOverlay.style.visibility = 'hidden';
                 }, 500);
             }, 1500);
         });
 
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1330,11 +1339,11 @@
 
         // Add animation to nav buttons
         document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
+            button.addEventListener('mouseenter', function () {
                 this.querySelector('i')?.classList.add('fa-bounce');
             });
-            
-            button.addEventListener('mouseleave', function() {
+
+            button.addEventListener('mouseleave', function () {
                 this.querySelector('i')?.classList.remove('fa-bounce');
             });
         });
@@ -1345,7 +1354,7 @@
             featureCards.forEach((card, index) => {
                 const cardTop = card.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                
+
                 if (cardTop < windowHeight * 0.85) {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
@@ -1371,15 +1380,15 @@
         function goToSlide(slideIndex) {
             heroSlides[currentSlide].classList.remove('active');
             heroDots[currentSlide].classList.remove('active');
-            
+
             currentSlide = slideIndex;
-            
+
             heroSlides[currentSlide].classList.add('active');
             heroDots[currentSlide].classList.add('active');
         }
 
         heroDots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
+            dot.addEventListener('click', function () {
                 clearInterval(slideInterval);
                 goToSlide(index);
                 startSlideInterval();
@@ -1399,7 +1408,7 @@
         }
 
         // Listen for language change messages from iframe
-        window.addEventListener('message', function(event) {
+        window.addEventListener('message', function (event) {
             if (event.data.type === 'languageChange') {
                 const newLang = event.data.language;
                 updateTranslations(newLang);
@@ -1407,18 +1416,19 @@
         });
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateTranslations('en'); // Set default language
             animateFeatureCards();
             startSlideInterval();
             updateWeather();
-            
-            window.addEventListener('scroll', function() {
+
+            window.addEventListener('scroll', function () {
                 animateFeatureCards();
             });
-            
+
             setInterval(updateWeather, 5000);
         });
     </script>
 </body>
+
 </html>
