@@ -7,8 +7,7 @@
     <title>AgriLift - Agriculture Export</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -72,7 +71,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -84,7 +82,6 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -95,28 +92,18 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
-
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
-
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
         /* Header & Navigation Styling */
@@ -762,13 +749,13 @@
                 height: auto;
                 padding: 15px 0;
             }
-
+            
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-
+            
             .nav-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
@@ -784,24 +771,24 @@
                 height: auto;
                 padding: 15px 0;
             }
-
+            
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-
+            
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-
+            
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-
+            
             .logo img {
                 width: 140px;
             }
@@ -824,7 +811,7 @@
             .product-grid {
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             }
-
+            
             .modal-content {
                 width: 95%;
                 margin: 15% auto;
@@ -837,12 +824,12 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-
+            
             .logo img {
                 width: 120px;
                 margin-right: 10px;
             }
-
+            
             .cart-sidebar {
                 width: 100%;
             }
@@ -854,13 +841,13 @@
             .dashboard-section {
                 padding: 20px;
             }
-
+            
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
             }
-
+            
             .modal-content {
                 width: 95%;
                 margin: 25% auto;
@@ -989,17 +976,16 @@
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h2 style="text-align: center; margin-bottom: 20px; color: var(--secondary-green);">Export Details</h2>
-
+            
             <form id="exportForm">
                 <div class="form-group">
                     <label class="form-label">Country</label>
                     <div style="position: relative;">
-                        <input type="text" id="country" class="form-input" placeholder="Enter destination country"
-                            required>
+                        <input type="text" id="country" class="form-input" placeholder="Enter destination country" required>
                         <div id="countrySuggestions" class="suggestions"></div>
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <label class="form-label">State/Province</label>
                     <div style="position: relative;">
@@ -1007,13 +993,12 @@
                         <div id="stateSuggestions" class="suggestions"></div>
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <label class="form-label">Postal/Zip Code</label>
-                    <input type="text" id="postalCode" class="form-input" placeholder="Enter postal or zip code"
-                        required>
+                    <input type="text" id="postalCode" class="form-input" placeholder="Enter postal or zip code" required>
                 </div>
-
+                
                 <div class="form-group">
                     <label class="form-label">Port of Entry</label>
                     <div style="position: relative;">
@@ -1021,12 +1006,12 @@
                         <div id="portSuggestions" class="suggestions"></div>
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <label class="form-label">Export License Number (if available)</label>
                     <input type="text" id="licenseNumber" class="form-input" placeholder="Enter license number">
                 </div>
-
+                
                 <button type="submit" class="submit-btn">Generate Export Documents</button>
             </form>
         </div>
@@ -1049,7 +1034,7 @@
                 category: "fruits",
                 price: 2500,
                 description: "Known as the 'King of Mangoes', sweet and fragrant fruit with minimal fiber.",
-                image: "AgriLift/export/Alphonso-Mango.jpg"
+                image: "https://media.istockphoto.com/id/1571937695/photo/alphonso-mangoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=GlVoYonjKC4OqYBpiKbuZfdAR0OlzXnlJxpE2lFZpYk="
             },
             {
                 id: 3,
@@ -1065,7 +1050,7 @@
                 category: "vegetables",
                 price: 600,
                 description: "Sweet, medium-pungent onions excellent for salads and cooking.",
-                image: "AgriLift/export/onion.jpeg"
+                image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8UmVkJTIwT25pb25zfGVufDB8fDB8fHww"
             },
             {
                 id: 5,
@@ -1073,7 +1058,7 @@
                 category: "spices",
                 price: 15000,
                 description: "Premium quality saffron with strong aroma and coloring power.",
-                image: "AgriLift/export/saffron.jpeg"
+                image: "https://media.istockphoto.com/id/614622544/photo/saffron.webp?a=1&b=1&s=612x612&w=0&k=20&c=y2cHcGHYaYOB21WP5CJMJYyvv2vy9rt8Sh9wiObI-Ag="
             },
             {
                 id: 6,
@@ -1081,7 +1066,7 @@
                 category: "grains",
                 price: 900,
                 description: "High-protein wheat, perfect for bread and pasta making.",
-                image: "AgriLift/export/wheat.jpeg"
+                image: "https://images.unsplash.com/photo-1501430654243-c934cec2e1c0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8V2hlYXR8ZW58MHx8MHx8fDA%3D"
             },
             {
                 id: 7,
@@ -1089,7 +1074,7 @@
                 category: "spices",
                 price: 3000,
                 description: "Intensely aromatic pods, essential for sweet and savory dishes.",
-                image: "AgriLift/export/cardamom.jpeg"
+                image: "https://media.istockphoto.com/id/1018844952/photo/wooden-table-of-colorful-spices.webp?a=1&b=1&s=612x612&w=0&k=20&c=3bxo-feMBMZz9sDX6oC7XuQz4nO3HKTe2dNiAx48ELQ="
             },
             {
                 id: 8,
@@ -1097,7 +1082,7 @@
                 category: "vegetables",
                 price: 750,
                 description: "Juicy, flavorful tomatoes grown without chemical pesticides.",
-                image: "AgriLift/export/tomato.jpeg"
+                image: "https://media.istockphoto.com/id/807319554/photo/fresh-tomato-on-black-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=-lKtreocLqewo53MKLQifo2iq15-EmYyYQTYyBHHS_U="
             },
             {
                 id: 9,
@@ -1105,7 +1090,7 @@
                 category: "fruits",
                 price: 1800,
                 description: "Crisp, sweet apples with a beautiful red hue from the valleys of Kashmir.",
-                image: "AgriLift/export/apples.jpeg"
+                image: "https://plus.unsplash.com/premium_photo-1667049292983-d2524dd0ef08?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXBwbGVzfGVufDB8fDB8fHww"
             },
             {
                 id: 10,
@@ -1113,7 +1098,7 @@
                 category: "spices",
                 price: 1200,
                 description: "Bold, aromatic peppercorns from the Kerala region.",
-                image: "AgriLift/export/blackpepper.jpeg"
+                image: "https://plus.unsplash.com/premium_photo-1668446314011-301c7a98b6a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QmxhY2slMjBQZXBwZXJ8ZW58MHx8MHx8fDA%3D"
             },
             {
                 id: 11,
@@ -1121,7 +1106,7 @@
                 category: "grains",
                 price: 850,
                 description: "Protein-rich lentils, a staple in Indian cuisine.",
-                image: "AgriLift/export/lentils.jpeg"
+                image: "https://media.istockphoto.com/id/480322632/photo/legumes.webp?a=1&b=1&s=612x612&w=0&k=20&c=1lD3u4zmfBOkPrqe-8j6R5kKkpAf-OuvfjyBuwCFmcs="
             },
             {
                 id: 12,
@@ -1129,7 +1114,7 @@
                 category: "fruits",
                 price: 3500,
                 description: "Large, creamy cashews processed with minimal oil for better taste.",
-                image: "AgriLift/export/cashew.jpeg"
+                image: "https://media.istockphoto.com/id/182673285/photo/cashew-nuts.webp?a=1&b=1&s=612x612&w=0&k=20&c=zJz0QO_Y2OWqFQtxEhjWrgm7VCqzpkPW_R2lTHq2wD8="
             }
         ];
 
@@ -1155,7 +1140,7 @@
             card.className = 'product-card';
             card.dataset.category = product.category;
             card.style.setProperty('--delay', index);
-
+            
             card.innerHTML = `
                 <img src="${product.image}" class="product-image" alt="${product.name}">
                 <div class="product-details">
@@ -1176,16 +1161,16 @@
         function displayProducts(category) {
             productGrid.innerHTML = '';
             let filteredProducts = productData;
-
+            
             if (category !== 'all') {
                 filteredProducts = productData.filter(product => product.category === category);
             }
-
+            
             filteredProducts.forEach((product, index) => {
                 const card = createProductCard(product, index);
                 productGrid.appendChild(card);
             });
-
+            
             // Add event listeners to Add to Cart buttons
             document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                 button.addEventListener('click', addToCart);
@@ -1196,9 +1181,9 @@
         function addToCart(e) {
             const productId = parseInt(e.currentTarget.dataset.id);
             const product = productData.find(p => p.id === productId);
-
+            
             const existingItem = cart.find(item => item.id === productId);
-
+            
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -1210,7 +1195,7 @@
                     quantity: 1
                 });
             }
-
+            
             updateCart();
             showToast();
         }
@@ -1246,25 +1231,25 @@
                     cartItems.appendChild(cartItem);
                 });
             }
-
+            
             // Calculate totals
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             const exportFee = subtotal * 0.05;
             const total = subtotal + exportFee;
-
-            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            exportFeeElement.textContent = `₹${exportFee.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            totalElement.textContent = `₹${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
+            
+            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            exportFeeElement.textContent = `₹${exportFee.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            totalElement.textContent = `₹${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
             // Add event listeners to cart buttons
             document.querySelectorAll('.qty-decrease').forEach(button => {
                 button.addEventListener('click', decreaseQuantity);
             });
-
+            
             document.querySelectorAll('.qty-increase').forEach(button => {
                 button.addEventListener('click', increaseQuantity);
             });
-
+            
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', removeItem);
             });
@@ -1305,13 +1290,13 @@
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.toLowerCase();
             productGrid.innerHTML = '';
-
-            const filteredProducts = productData.filter(product =>
+            
+            const filteredProducts = productData.filter(product => 
                 product.name.toLowerCase().includes(searchTerm) ||
                 product.description.toLowerCase().includes(searchTerm) ||
                 product.category.toLowerCase().includes(searchTerm)
             );
-
+            
             if (filteredProducts.length === 0) {
                 productGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
@@ -1324,7 +1309,7 @@
                     const card = createProductCard(product, index);
                     productGrid.appendChild(card);
                 });
-
+                
                 // Re-add event listeners
                 document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                     button.addEventListener('click', addToCart);
@@ -1336,11 +1321,11 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.dataset.category;
-
+                
                 // Update active state
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-
+                
                 displayProducts(category);
             });
         });
@@ -1365,7 +1350,7 @@
             document.getElementById('exportModal').style.display = 'none';
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == document.getElementById('exportModal')) {
                 document.getElementById('exportModal').style.display = 'none';
             }
@@ -1389,10 +1374,10 @@
         function setupAutocomplete(inputId, suggestionsId, dataSource) {
             const input = document.getElementById(inputId);
             const suggestionsContainer = document.getElementById(suggestionsId);
-
-            input.addEventListener('input', function () {
+            
+            input.addEventListener('input', function() {
                 const inputText = this.value.toLowerCase();
-
+                
                 // Determine the correct data source
                 let suggestions = dataSource;
                 if (inputId === 'state' && document.getElementById('country').value) {
@@ -1402,15 +1387,15 @@
                     const selectedCountry = document.getElementById('country').value;
                     suggestions = ports[selectedCountry] || [];
                 }
-
+                
                 // Filter suggestions
-                const matchingSuggestions = suggestions.filter(item =>
+                const matchingSuggestions = suggestions.filter(item => 
                     item.toLowerCase().includes(inputText)
                 );
-
+                
                 // Display suggestions
                 if (inputText && matchingSuggestions.length > 0) {
-                    suggestionsContainer.innerHTML = matchingSuggestions.map(item =>
+                    suggestionsContainer.innerHTML = matchingSuggestions.map(item => 
                         `<div class="suggestion-item">${item}</div>`
                     ).join('');
                     suggestionsContainer.style.display = 'block';
@@ -1418,13 +1403,13 @@
                     suggestionsContainer.style.display = 'none';
                 }
             });
-
+            
             // Handle clicking on a suggestion
-            suggestionsContainer.addEventListener('click', function (e) {
+            suggestionsContainer.addEventListener('click', function(e) {
                 if (e.target.classList.contains('suggestion-item')) {
                     input.value = e.target.textContent;
                     suggestionsContainer.style.display = 'none';
-
+                    
                     // If country is selected, update states and ports
                     if (inputId === 'country') {
                         document.getElementById('state').value = '';
@@ -1432,9 +1417,9 @@
                     }
                 }
             });
-
+            
             // Close suggestions when clicking outside
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (e.target !== input && e.target !== suggestionsContainer) {
                     suggestionsContainer.style.display = 'none';
                 }
@@ -1442,9 +1427,9 @@
         }
 
         // Export Form Submission
-        document.getElementById('exportForm').addEventListener('submit', function (e) {
+        document.getElementById('exportForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             const formData = {
                 country: document.getElementById('country').value,
                 state: document.getElementById('state').value,
@@ -1452,7 +1437,7 @@
                 port: document.getElementById('port').value,
                 licenseNumber: document.getElementById('licenseNumber').value || 'Not provided'
             };
-
+            
             // Generate a export document as text (in a real app, this would create a PDF or similar)
             let exportDocument = `
 EXPORT CONFIRMATION DOCUMENT
@@ -1482,7 +1467,7 @@ Please retain for your records.
 Document Generated: ${new Date().toLocaleString()}
 Reference: EXP-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}
 `;
-
+            
             // Create a download link for the text document
             const blob = new Blob([exportDocument], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
@@ -1493,15 +1478,15 @@ Reference: EXP-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-
+            
             // Close modal and reset form
             document.getElementById('exportModal').style.display = 'none';
             this.reset();
-
+            
             // Optional: Clear cart after successful export
             cart = [];
             updateCart();
-
+            
             // Show success message
             toast.innerHTML = '<i class="fas fa-check-circle"></i> Export documents generated!';
             showToast();
@@ -1512,11 +1497,11 @@ Reference: EXP-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
             const temperatures = [22, 23, 24, 25, 26, 27, 28, 29, 30];
             const conditions = ['☀️ Sunny', '🌧️ Rainy', '⛅ Cloudy', '🌤️ Partly Cloudy'];
             const humidities = [35, 40, 45, 50, 55, 60, 65];
-
+            
             const temp = temperatures[Math.floor(Math.random() * temperatures.length)];
             const condition = conditions[Math.floor(Math.random() * conditions.length)];
             const humidity = humidities[Math.floor(Math.random() * humidities.length)];
-
+            
             document.querySelector('.weather-temp').textContent = `${temp}°C`;
             document.querySelector('.weather-condition').textContent = condition;
             document.querySelector('.weather-humidity').textContent = `💧 ${humidity}%`;
@@ -1527,7 +1512,7 @@ Reference: EXP-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
         updateWeather(); // Initial update
 
         // Header scroll effect
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1537,22 +1522,22 @@ Reference: EXP-${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
         });
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Initialize cart
             updateCart();
-
+            
             // Setup autocomplete
             setupAutocomplete('country', 'countrySuggestions', countries);
             setupAutocomplete('state', 'stateSuggestions', []);
             setupAutocomplete('port', 'portSuggestions', []);
-
+            
             // Add animation to nav buttons
             document.querySelectorAll('.nav-button').forEach(button => {
-                button.addEventListener('mouseenter', function () {
+                button.addEventListener('mouseenter', function() {
                     this.querySelector('i')?.classList.add('fa-bounce');
                 });
-
-                button.addEventListener('mouseleave', function () {
+                
+                button.addEventListener('mouseleave', function() {
                     this.querySelector('i')?.classList.remove('fa-bounce');
                 });
             });
