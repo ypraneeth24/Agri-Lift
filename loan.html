@@ -7,7 +7,8 @@
     <title>AgriLift - Agricultural Financing</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         :root {
@@ -72,6 +73,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -83,6 +85,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -93,18 +96,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header & Navigation Styling - Matching dashboard.html */
@@ -698,13 +711,13 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
@@ -716,24 +729,24 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            
+
             .logo img {
                 width: 140px;
             }
@@ -765,12 +778,12 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-            
+
             .logo img {
                 width: 120px;
                 margin-right: 10px;
             }
-            
+
             .bank-card {
                 flex: 0 0 250px;
                 padding: 15px;
@@ -788,15 +801,15 @@
             .dashboard-section {
                 padding: 20px;
             }
-            
+
             .section-card {
                 padding: 15px;
             }
-            
+
             .section-card h3 {
                 font-size: 1.3rem;
             }
-            
+
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
@@ -814,7 +827,7 @@
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='welcome.html';">
+                <button class="nav-button" onclick="window.location.href='home.html';">
                     <i class="fas fa-home"></i> Home
                 </button>
                 <button class="nav-button" onclick="window.location.href='loan.html';">
@@ -898,7 +911,8 @@
                         </div>
                         <div class="input-group">
                             <label for="interestRate">Interest Rate (%)</label>
-                            <input type="number" step="0.01" id="interestRate" class="calculator-input" placeholder="Enter interest rate">
+                            <input type="number" step="0.01" id="interestRate" class="calculator-input"
+                                placeholder="Enter interest rate">
                         </div>
                     </div>
 
@@ -937,7 +951,8 @@
     <div id="thankYouModal" class="modal-overlay">
         <div class="modal-container">
             <h3 class="modal-title">Thank You!</h3>
-            <p style="margin-bottom: 20px; color: #666;">Our staff will contact you shortly to assist with your loan application.</p>
+            <p style="margin-bottom: 20px; color: #666;">Our staff will contact you shortly to assist with your loan
+                application.</p>
             <button onclick="closeThankYouModal()" class="success-btn">
                 <i class="fas fa-check"></i> OK
             </button>
@@ -1024,11 +1039,11 @@
             const card = document.createElement('div');
             card.className = 'bank-card';
             card.style.opacity = '0';
-            
+
             const typeClass = bank.type === 'gov' ? 'gov-partner' : 'private-partner';
             const typeLabel = bank.type === 'gov' ? 'Government Partner' : 'Private Partner';
             const typeColor = bank.type === 'gov' ? 'text-emerald-600' : 'text-amber-600';
-            
+
             card.innerHTML = `
                 <div class="bank-header">
                     <img src="AgriLift/Loans/${bank.logo}" class="bank-logo" alt="${bank.name}">
@@ -1064,19 +1079,19 @@
         function updateBankCards(country) {
             const container = document.getElementById('bankCards');
             container.innerHTML = '';
-            
+
             if (!countryData[country]) return;
-            
+
             countryData[country].banks.forEach((bank, index) => {
                 const card = createBankCard(bank);
                 container.appendChild(card);
-                
+
                 // Animate cards with delay
                 setTimeout(() => {
                     card.style.opacity = '1';
                 }, index * 100);
             });
-            
+
             // Update loan calculator with default rate from first bank
             if (countryData[country].banks.length > 0) {
                 document.getElementById('interestRate').value = countryData[country].banks[0].interest;
@@ -1109,9 +1124,9 @@
             document.getElementById('monthlyPayment').textContent = `Monthly Payment: ₹${monthly.toFixed(2)}`;
             document.getElementById('totalInterest').textContent = `₹${totalInterest.toFixed(2)}`;
             document.getElementById('totalPayment').textContent = `₹${totalPayment.toFixed(2)}`;
-            
+
             resultsContainer.classList.add('visible');
-            
+
             // Update progress bar based on loan amount (for demo)
             const maxLoan = 1000000; // 10 lakhs
             const percentage = Math.min(100, (amount / maxLoan) * 100);
@@ -1157,7 +1172,7 @@
         }
 
         // Navbar scroll effect - Matching dashboard.html
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1170,7 +1185,7 @@
         document.getElementById('countrySelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 updateBankCards(e.target.value);
-                
+
                 // Pan map to selected country
                 const coordinates = countryData[e.target.value].coordinates;
                 map.setView(coordinates, 5);
@@ -1180,40 +1195,40 @@
         // Animation for elements on scroll
         function animateOnScroll() {
             const sections = document.querySelectorAll('.dashboard-section, .section-card');
-            
+
             function checkScroll() {
                 sections.forEach(section => {
                     const sectionTop = section.getBoundingClientRect().top;
                     const windowHeight = window.innerHeight;
-                    
+
                     if (sectionTop < windowHeight * 0.8) {
                         section.style.opacity = '1';
                         section.style.transform = 'translateY(0)';
                     }
                 });
             }
-            
+
             // Set initial state
             sections.forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(20px)';
                 section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             });
-            
+
             window.addEventListener('scroll', checkScroll);
             window.addEventListener('load', checkScroll);
-            
+
             // Initial check
             checkScroll();
         }
 
         // Add animation to nav buttons - Matching dashboard.html
         document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
+            button.addEventListener('mouseenter', function () {
                 this.querySelector('i')?.classList.add('fa-bounce');
             });
-            
-            button.addEventListener('mouseleave', function() {
+
+            button.addEventListener('mouseleave', function () {
                 this.querySelector('i')?.classList.remove('fa-bounce');
             });
         });
@@ -1235,7 +1250,7 @@
         updateWeather(); // Initial update
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateBankCards('india');
             animateOnScroll();
         });
