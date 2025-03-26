@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgriLift - Farmer Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -69,6 +70,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -80,6 +82,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -90,18 +93,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header Styling */
@@ -142,8 +155,8 @@
         }
 
         .logo img {
-            width: 165px;
-            height: auto;
+            width: 147px;
+            height: 103px;
             margin-right: 20px;
             border-radius: 1px;
             transition: transform 0.3s ease;
@@ -358,18 +371,18 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            
+
             .options-container {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
@@ -380,24 +393,24 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            
+
             .logo img {
                 width: 140px;
             }
@@ -419,16 +432,16 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-            
+
             .logo img {
                 width: 120px;
                 margin-right: 10px;
             }
-            
+
             .options-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
@@ -443,11 +456,11 @@
     <header id="header">
         <div class="container header-content">
             <div class="logo">
-                <img src="https://placekitten.com/165/60" alt="AgriLift Logo">
+                <img src="AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='welcome.html';">
-                    <i class="fas fa-home"></i> Home
+                <button class="nav-button" onclick="window.location.href='dashboard.html';">
+                    <i class="#"></i> Dashboard
                 </button>
                 <button class="nav-button" onclick="window.location.href='contact.html';">
                     <i class="fas fa-envelope"></i> Contact
@@ -490,7 +503,8 @@
             <h2>Select Your Farming Type</h2>
             <div class="options-container">
                 <div class="option-card">
-                    <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Farming">
+                    <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Organic Farming">
                     <h3>Organic Farming</h3>
                     <p>Sustainable and eco-friendly farming methods.</p>
                     <button class="get-started">
@@ -514,7 +528,8 @@
                     </button>
                 </div>
                 <div class="option-card">
-                    <img src="https://images.unsplash.com/photo-1598715685267-0f45367d8071?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dairy Farming">
+                    <img src="https://images.unsplash.com/photo-1598715685267-0f45367d8071?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Dairy Farming">
                     <h3>Dairy Farming</h3>
                     <p>Milk and dairy production from cows, goats, and more.</p>
                     <button class="get-started" onclick="window.location.href='dairy.html';">
@@ -541,9 +556,9 @@
     <!-- Embedded JavaScript -->
     <script>
         // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Navbar scroll effect
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const header = document.getElementById('header');
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
@@ -551,31 +566,31 @@
                     header.classList.remove('scrolled');
                 }
             });
-            
+
             // Animate cards on page load
             const cards = document.querySelectorAll('.option-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
-                
+
                 setTimeout(() => {
                     card.style.transition = 'all 0.8s ease-out';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, 300 + (index * 100)); // Staggered animation
             });
-            
+
             // Get Started button effects
             const buttons = document.querySelectorAll('.get-started');
-            
+
             buttons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Visual feedback
                     const originalText = this.innerHTML;
                     this.innerHTML = 'Loading... <i class="fas fa-circle-notch fa-spin"></i>';
                     this.disabled = true;
                     this.style.opacity = '0.8';
-                    
+
                     // For demo purposes, reset after delay
                     setTimeout(() => {
                         this.innerHTML = originalText;
@@ -585,26 +600,26 @@
                     }, 1500);
                 });
             });
-            
+
             // Button hover effects with icon animation
             const navButtons = document.querySelectorAll('.nav-button');
-            
+
             navButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
+                button.addEventListener('mouseenter', function () {
                     const icon = this.querySelector('i');
                     if (icon) {
                         icon.classList.add('fa-bounce');
                     }
                 });
-                
-                button.addEventListener('mouseleave', function() {
+
+                button.addEventListener('mouseleave', function () {
                     const icon = this.querySelector('i');
                     if (icon) {
                         icon.classList.remove('fa-bounce');
                     }
                 });
             });
-            
+
             // Simulate real-time weather updates
             function updateWeather() {
                 const temp = Math.floor(Math.random() * 15 + 20); // 20-35°C
