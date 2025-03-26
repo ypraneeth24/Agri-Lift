@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +22,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -34,6 +34,7 @@
                 transform: scale(0.95);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1);
                 opacity: 1;
@@ -45,6 +46,7 @@
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -52,9 +54,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -215,7 +220,8 @@
             background-color: #f7f7f7;
         }
 
-        .change-quantity, .remove-item {
+        .change-quantity,
+        .remove-item {
             transition: all 0.2s ease;
         }
 
@@ -347,8 +353,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Product badge */
@@ -418,7 +429,8 @@
                 <a href="services.html" class="nav-link hover:text-emerald-200 transition">Services</a>
                 <button id="cartBtn" class="relative hover:text-emerald-200 transition">
                     <i class="fas fa-shopping-cart text-xl"></i>
-                    <span id="cartCount" class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 py-0.5 rounded-full">0</span>
+                    <span id="cartCount"
+                        class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 py-0.5 rounded-full">0</span>
                 </button>
             </div>
         </div>
@@ -444,8 +456,11 @@
         <div class="container mx-auto px-4">
             <div class="max-w-2xl">
                 <h1 class="text-4xl font-bold mb-4">Fertilizers for a Sustainable Future</h1>
-                <p class="text-lg mb-6">Fertilizers for a Sustainable Future focus on enhancing crop yields while minimizing environmental impact. They promote efficient nutrient use, supporting healthy ecosystems and food security.</p>
-                <button class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition shadow-lg">
+                <p class="text-lg mb-6">Fertilizers for a Sustainable Future focus on enhancing crop yields while
+                    minimizing environmental impact. They promote efficient nutrient use, supporting healthy ecosystems
+                    and food security.</p>
+                <button
+                    class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition shadow-lg">
                     Explore Collection
                 </button>
             </div>
@@ -477,7 +492,7 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="vegetables">
                 <div class="product-badge badge-anim">Best Seller</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/urea.jpg" alt="Lab-Grown Lettuce"
+                    <img src="https://5.imimg.com/data5/DE/YF/MY-6312721/urea-pure-500x500.jpeg" alt="Lab-Grown Lettuce"
                         class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
@@ -490,7 +505,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Urea fertilizer is a high-nitrogen (46%) fertilizer widely used to boost plant growth and crop yield.
+                    <p class="text-gray-600 text-sm mb-4">Urea fertilizer is a high-nitrogen (46%) fertilizer widely
+                        used to boost plant growth and crop yield.
                     </p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹400</span>
@@ -505,8 +521,8 @@
             <!-- Product Card: Decorative -->
             <div class="product-card bg-white overflow-hidden relative" data-category="decorative">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/Ssp-Single-Super-Phosphate-Calcuim-Superphosphate-P2o5-12-16-18-Fertilizer.avif" alt="Lab-Grown Orchid"
-                        class="w-full h-56 object-cover">
+                    <img src="https://5.imimg.com/data5/JM/IR/MY-31553202/single-super-phosphate.jpg"
+                        alt="Lab-Grown Orchid" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Single Superphosphate</h3>
@@ -518,7 +534,8 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(5.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Single Superphosphate (SSP) is a phosphorus-based fertilizer (16% P₂O₅) that improves root development and crop yield.</p>
+                    <p class="text-gray-600 text-sm mb-4">Single Superphosphate (SSP) is a phosphorus-based fertilizer
+                        (16% P₂O₅) that improves root development and crop yield.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹599</span>
                         <button
@@ -533,8 +550,8 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="product-badge badge-anim">New</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/Good-Quality-Mop-Fertilizer-Muriate-of-Potash-Red-Granular-Potassium-Chloride.avif"Lab-Grown Strawberry"
-                        class="w-full h-56 object-cover">
+                    <img src="https://image.made-in-china.com/202f0j00NMOVrGndrpfL/Good-Quality-Mop-Fertilizer-Muriate-of-Potash-Red-Granular-Potassium-Chloride.webp"
+                        Lab-Grown Strawberry" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Potassium Chloride</h3>
@@ -546,7 +563,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Potassium Chloride (MOP) is a potassium-rich (60% K₂O) fertilizer improving crop yield.</p>
+                    <p class="text-gray-600 text-sm mb-4">Potassium Chloride (MOP) is a potassium-rich (60% K₂O)
+                        fertilizer improving crop yield.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹499</span>
                         <button
@@ -560,8 +578,8 @@
             <!-- Product Card: Micronutrient -->
             <div class="product-card bg-white overflow-hidden relative" data-category="medicinal">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/eddha-fe-chelate18340768712.webp" alt="Lab-Grown Aloe Vera"
-                        class="w-full h-56 object-cover">
+                    <img src="https://store.veggieconcept.ng/wp-content/uploads/2022/02/Chelated-Fertilizer.jpg"
+                        alt="Lab-Grown Aloe Vera" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Chelated</h3>
@@ -573,7 +591,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Chelated fertilizer enhances nutrient absorption, preventing deficiencies for healthier plant growth.</p>
+                    <p class="text-gray-600 text-sm mb-4">Chelated fertilizer enhances nutrient absorption, preventing
+                        deficiencies for healthier plant growth.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹1200</span>
                         <button
@@ -587,7 +606,7 @@
             <!-- Product Card: Vegetables -->
             <div class="product-card bg-white overflow-hidden relative" data-category="vegetables">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/istockphoto-1268317883-612x612.jpg" alt="Lab-Grown Tomato"
+                    <img src="https://fertilizers.com.sg/wp-content/uploads/Ammonium-Nitrate.jpg" alt="Lab-Grown Tomato"
                         class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
@@ -600,7 +619,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Ammonium nitrate is a nitrogen-rich fertilizer (34% nitrogen) used to promote plant growth but is also highly explosive under certain conditions.</p>
+                    <p class="text-gray-600 text-sm mb-4">Ammonium nitrate is a nitrogen-rich fertilizer (34% nitrogen)
+                        used to promote plant growth but is also highly explosive under certain conditions.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹399</span>
                         <button
@@ -614,8 +634,8 @@
             <!-- Product Card: Decorative -->
             <div class="product-card bg-white overflow-hidden relative" data-category="decorative">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/triple-super-phosphate-method-1-500x500.webp" alt="Lab-Grown Succulent"
-                        class="w-full h-56 object-cover">
+                    <img src="https://egy-a1.com/wp-content/uploads/2022/03/high-grade-a-triple-superphosphate-tsp-fertilizer-1494964073-2994026.jpeg"
+                        alt="Lab-Grown Succulent" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Triple Superphosphate</h3>
@@ -627,7 +647,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Triple Superphosphate (TSP) is a high-phosphorus (46% P₂O₅) fertilizer boosting plant growth.</p>
+                    <p class="text-gray-600 text-sm mb-4">Triple Superphosphate (TSP) is a high-phosphorus (46% P₂O₅)
+                        fertilizer boosting plant growth.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹650</span>
                         <button
@@ -641,8 +662,8 @@
             <!-- Product Card: Potassium  -->
             <div class="product-card bg-white overflow-hidden relative" data-category="fruits">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/137802_shutterstock_1025249899.jpg" alt="Lab-Grown Blueberry"
-                        class="w-full h-56 object-cover">
+                    <img src="https://d2cbg94ubxgsnp.cloudfront.net/Pictures/2000xAny/8/0/2/137802_shutterstock_1025249899.jpg"
+                        alt="Lab-Grown Blueberry" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Potassium Sulfate</h3>
@@ -654,7 +675,8 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Potassium Sulfate (SOP) is a chloride-free fertilizer enhancing yield and quality.</p>
+                    <p class="text-gray-600 text-sm mb-4">Potassium Sulfate (SOP) is a chloride-free fertilizer
+                        enhancing yield and quality.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹849</span>
                         <button
@@ -669,8 +691,8 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="medicinal">
                 <div class="product-badge badge-anim">Popular</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/unnamed.jpg" alt="Lab-Grown Echinacea"
-                        class="w-full h-56 object-cover">
+                    <img src="https://www.artal.net/wp-content/uploads/2020/01/fertilizante-foliar-potasio-potassium-foliar-fertilizer-foliartal-k50-artal.jpg"
+                        alt="Lab-Grown Echinacea" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Foliar</h3>
@@ -682,7 +704,8 @@
                         <i class="far fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Foliar fertilizer is sprayed on leaves for quick nutrient absorption.</p>
+                    <p class="text-gray-600 text-sm mb-4">Foliar fertilizer is sprayed on leaves for quick nutrient
+                        absorption.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹1099</span>
                         <button
@@ -696,8 +719,8 @@
             <!-- Product Card: Herbs -->
             <div class="product-card bg-white overflow-hidden relative" data-category="vegetables">
                 <div class="overflow-hidden">
-                    <img src="AgriLift/anhydrous-ammonia-500x500.webp" alt="Lab-Grown Basil"
-                        class="w-full h-56 object-cover">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/PV/NN/ON/3518054/fertilizer-anhydrous-ammonia.jpg"
+                        alt="Lab-Grown Basil" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Anhydrous Ammonia</h3>
@@ -709,7 +732,9 @@
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(4.5)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Anhydrous ammonia is a highly concentrated nitrogen fertilizer (82% nitrogen) that enhances soil fertility but requires careful handling due to its hazardous nature.</p>
+                    <p class="text-gray-600 text-sm mb-4">Anhydrous ammonia is a highly concentrated nitrogen fertilizer
+                        (82% nitrogen) that enhances soil fertility but requires careful handling due to its hazardous
+                        nature.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹299</span>
                         <button
@@ -724,8 +749,8 @@
             <div class="product-card bg-white overflow-hidden relative" data-category="decorative">
                 <div class="product-badge badge-anim">Limited</div>
                 <div class="overflow-hidden">
-                    <img src="AgriLift/mono-ammonium-phosphate-500x500.webp" alt="Lab-Grown Bonsai"
-                        class="w-full h-56 object-cover">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/UJ/DO/OX/7515349/potassium-nitrate-crystal-500x500.jpg"
+                        alt="Lab-Grown Bonsai" class="w-full h-56 object-cover">
                 </div>
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-2">Monoammonium Phosphate</h3>
@@ -737,7 +762,8 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <span class="ml-1 text-xs text-gray-500">(5.0)</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">Monoammonium Phosphate (MAP) is a phosphorus-rich (48% P₂O₅) fertilizer enhancing root development.</p>
+                    <p class="text-gray-600 text-sm mb-4">Monoammonium Phosphate (MAP) is a phosphorus-rich (48% P₂O₅)
+                        fertilizer enhancing root development.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-emerald-600 font-bold text-xl">₹2999</span>
                         <button
@@ -761,21 +787,24 @@
                         <i class="fas fa-seedling text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Sustainable Cultivation</h3>
-                    <p class="text-gray-600">Our lab-grown plants reduce water usage by 90% compared to traditional farming methods.</p>
+                    <p class="text-gray-600">Our lab-grown plants reduce water usage by 90% compared to traditional
+                        farming methods.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all">
                     <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-flask text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Enhanced Nutrition</h3>
-                    <p class="text-gray-600">Scientifically enhanced to provide more vitamins, minerals, and antioxidants than conventional plants.</p>
+                    <p class="text-gray-600">Scientifically enhanced to provide more vitamins, minerals, and
+                        antioxidants than conventional plants.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all">
                     <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-truck text-emerald-600 text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Farm to Table Fresh</h3>
-                    <p class="text-gray-600">Our plants are grown locally, reducing carbon footprint and ensuring maximum freshness.</p>
+                    <p class="text-gray-600">Our plants are grown locally, reducing carbon footprint and ensuring
+                        maximum freshness.</p>
                 </div>
             </div>
         </div>
@@ -818,11 +847,11 @@
 
     <script>
         // Wait for the page to load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Hide loading overlay
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('loadingOverlay').style.opacity = '0';
-                setTimeout(function() {
+                setTimeout(function () {
                     document.getElementById('loadingOverlay').style.display = 'none';
                 }, 500);
             }, 800);
@@ -861,13 +890,13 @@
                 const productCard = button.closest('.product-card');
                 const productName = productCard.querySelector('h3').textContent;
                 const price = parseFloat(productCard.querySelector('span').textContent.slice(1));
-                
+
                 // Add a small click animation
                 button.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     button.style.transform = 'scale(1)';
                 }, 200);
-                
+
                 addItemToCart(productName, price);
             });
         });
@@ -929,7 +958,7 @@
                     setTimeout(() => {
                         button.style.transform = 'scale(1)';
                     }, 100);
-                    
+
                     if (change === -1 && cart[index].quantity > 1) {
                         cart[index].quantity -= 1;
                     } else if (change === 1) {
@@ -945,12 +974,12 @@
             if (event.target.classList.contains('remove-item') || event.target.parentElement.classList.contains('remove-item')) {
                 const button = event.target.classList.contains('remove-item') ? event.target : event.target.parentElement;
                 const index = parseInt(button.getAttribute('data-index'));
-                
+
                 if (cart[index]) {
                     const cartItem = button.closest('.cart-item');
                     cartItem.style.transform = 'translateX(100%)';
                     cartItem.style.opacity = '0';
-                    
+
                     setTimeout(() => {
                         cart.splice(index, 1); // Remove the item from the array
                         updateCart();
@@ -963,7 +992,7 @@
         document.getElementById('cartBtn').addEventListener('click', () => {
             document.body.classList.add('cart-active');
             cartOverlay.classList.remove('hidden');
-            
+
             // Prevent scrolling when cart is open
             document.body.style.overflow = 'hidden';
         });
@@ -971,7 +1000,7 @@
         function closeCart() {
             document.body.classList.remove('cart-active');
             cartOverlay.classList.add('hidden');
-            
+
             // Re-enable scrolling
             document.body.style.overflow = '';
         }
@@ -982,7 +1011,7 @@
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
@@ -998,13 +1027,13 @@
         function filterProducts(category) {
             const allProducts = document.querySelectorAll('.product-card');
             let delay = 0;
-            
+
             allProducts.forEach(product => {
                 if (category === 'all' || product.getAttribute('data-category') === category) {
                     // First hide it
                     product.style.opacity = '0';
                     product.style.transform = 'scale(0.95) translateY(10px)';
-                    
+
                     // Then show it with a delay for staggered animation
                     setTimeout(() => {
                         product.style.display = 'block';
@@ -1013,7 +1042,7 @@
                             product.style.transform = 'scale(1) translateY(0)';
                         }, 50);
                     }, delay);
-                    
+
                     delay += 50; // Stagger the animations
                 } else {
                     product.style.opacity = '0';
@@ -1030,13 +1059,13 @@
             button.addEventListener('click', function () {
                 const category = this.getAttribute('data-category');
                 filterProducts(category);
-                
+
                 // Reset the active class from all buttons and set it on the clicked one
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('bg-emerald-600', 'text-white', 'active');
                     btn.classList.add('bg-gray-200');
                 });
-                
+
                 this.classList.remove('bg-gray-200');
                 this.classList.add('bg-emerald-600', 'text-white', 'active');
             });
@@ -1044,7 +1073,7 @@
 
         // Scroll to top functionality
         const scrollTopBtn = document.getElementById('scrollTop');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopBtn.classList.add('visible');
@@ -1052,7 +1081,7 @@
                 scrollTopBtn.classList.remove('visible');
             }
         });
-        
+
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1064,28 +1093,28 @@
         const searchInput = document.getElementById('searchInput');
         const suggestionsContainer = document.getElementById('suggestions');
         const suggestionList = suggestionsContainer.querySelector('ul');
-        
+
         function updateSearchHistoryDisplay() {
             // This function is referenced but not implemented in the original code
             // Adding a basic implementation
             const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
             // We could display search history somewhere if needed
         }
-        
+
         function addToSearchHistory(term) {
             if (!term.trim()) return;
-            
+
             const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-            
+
             // Check if term already exists
             if (!searchHistory.includes(term)) {
                 // Add to start of array and keep only last 10 searches
                 searchHistory.unshift(term);
-                
+
                 if (searchHistory.length > 10) {
                     searchHistory.pop();
                 }
-                
+
                 localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
             }
         }
@@ -1093,25 +1122,25 @@
         // Function to generate suggestions
         function generateSuggestions(searchTerm) {
             if (!searchTerm.trim()) return [];
-            
+
             let suggestions = [];
-            
+
             // Suggest from history
             const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
-            suggestions = suggestions.concat(history.filter(term => 
+            suggestions = suggestions.concat(history.filter(term =>
                 term.toLowerCase().includes(searchTerm.toLowerCase())
             ));
-            
+
             // Suggest based on product names
             const products = [];
             document.querySelectorAll('.product-card h3').forEach(el => {
                 products.push(el.textContent);
             });
-            
-            suggestions = suggestions.concat(products.filter(product => 
+
+            suggestions = suggestions.concat(products.filter(product =>
                 product.toLowerCase().includes(searchTerm.toLowerCase())
             ));
-            
+
             // Remove duplicates and limit to 5
             return [...new Set(suggestions)].slice(0, 5);
         }
@@ -1119,10 +1148,10 @@
         // Function to show/hide and populate suggestions
         function updateSuggestions(searchTerm) {
             const suggestions = generateSuggestions(searchTerm);
-            
+
             if (suggestions.length > 0 && searchTerm.trim()) {
                 suggestionsContainer.classList.remove('hidden');
-                suggestionList.innerHTML = suggestions.map(term => 
+                suggestionList.innerHTML = suggestions.map(term =>
                     `<li class="px-4 py-2 cursor-pointer hover:bg-emerald-100 transition">${term}</li>`
                 ).join('');
             } else {
@@ -1133,18 +1162,18 @@
         // Perform search
         function performSearch() {
             const searchTerm = searchInput.value.toLowerCase().trim();
-            
+
             if (searchTerm) {
                 addToSearchHistory(searchTerm);
             }
-            
+
             updateSuggestions(searchTerm);
-            
+
             // Search all products
             document.querySelectorAll('.product-card').forEach(product => {
                 const productName = product.querySelector('h3').textContent.toLowerCase();
                 const productDesc = product.querySelector('p').textContent.toLowerCase();
-                
+
                 if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
                     product.style.display = 'block';
                     setTimeout(() => {
@@ -1166,7 +1195,7 @@
                     }, 50);
                 }
             });
-            
+
             // If no search term, reset category filters
             if (!searchTerm) {
                 const activeFilter = document.querySelector('.filter-btn.active');
@@ -1202,7 +1231,7 @@
             updateCart();
             filterProducts('all');
             updateSearchHistoryDisplay();
-            
+
             // Add animation delay to each product card
             document.querySelectorAll('.product-card').forEach((card, index) => {
                 card.style.animationDelay = (index * 0.1) + 's';
