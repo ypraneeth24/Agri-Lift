@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -163,7 +164,7 @@
     .gap-6 {
       gap: 1.5rem;
     }
-    
+
     .gap-8 {
       gap: 2rem;
     }
@@ -777,7 +778,8 @@
 
     .product-image {
       position: relative;
-      padding-top: 75%; /* 4:3 Aspect Ratio */
+      padding-top: 75%;
+      /* 4:3 Aspect Ratio */
       overflow: hidden;
     }
 
@@ -1153,6 +1155,7 @@
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
@@ -1163,6 +1166,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1182,22 +1186,26 @@
     }
 
     @keyframes cartBounce {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.2);
       }
     }
   </style>
 </head>
+
 <body>
   <div id="app">
     <!-- Header -->
     <header class="header" id="header">
       <div class="container nav-container">
         <a href="#" class="nav-logo" data-page="home">Agri-Lift</a>
-        
+
         <!-- Desktop Navigation -->
         <nav class="nav-links">
           <ul>
@@ -1207,20 +1215,22 @@
             <li><a href="#" class="nav-link" data-page="needs">Needs</a></li>
           </ul>
         </nav>
-        
+
         <!-- Cart and Mobile Menu Buttons -->
         <div class="flex items-center">
           <button class="cart-button" id="cartButton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="8" cy="21" r="1"></circle>
               <circle cx="19" cy="21" r="1"></circle>
               <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
             </svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
-          
+
           <button class="mobile-menu-button ml-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -1228,13 +1238,14 @@
           </button>
         </div>
       </div>
-      
+
       <!-- Mobile Menu -->
       <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
           <span class="nav-logo">Agri-Lift</span>
           <button class="mobile-menu-close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -1248,13 +1259,14 @@
         </ul>
       </div>
     </header>
-    
+
     <!-- Cart -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-panel" id="cartPanel">
       <div class="cart-header">
         <div class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="8" cy="21" r="1"></circle>
             <circle cx="19" cy="21" r="1"></circle>
             <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
@@ -1263,21 +1275,22 @@
           <span class="text-sm text-gray-500" id="cartItemsCount">(0 items)</span>
         </div>
         <button id="closeCart" class="p-2 text-gray-500 hover:text-black transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
-      
+
       <div id="cartContent">
         <!-- Cart Items will be inserted here by JavaScript -->
       </div>
     </div>
-    
+
     <!-- Toast for notifications -->
     <div class="toast" id="toast"></div>
-    
+
     <!-- Main Content Area - Pages will be dynamically loaded here -->
     <main id="pageContent" class="pt-20">
       <!-- Home Page (default) -->
@@ -1285,21 +1298,24 @@
         <!-- Hero Section -->
         <section class="hero-section">
           <div class="hero-bg">
-            <img src="https://plus.unsplash.com/premium_photo-1661962861018-9d8451676b13?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRhaXJ5JTIwd2hpY2glMjBpbmNsdWRlcyUyMG1pbGslMjBjYXR0bGVzJTIwZXRjfGVufDB8fDB8fHww" alt="Farm landscape with cattle">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1661962861018-9d8451676b13?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRhaXJ5JTIwd2hpY2glMjBpbmNsdWRlcyUyMG1pbGslMjBjYXR0bGVzJTIwZXRjfGVufDB8fDB8fHww"
+              alt="Farm landscape with cattle">
             <div class="hero-overlay"></div>
           </div>
-          
+
           <div class="container mx-auto px-6 relative z-10 pt-16">
             <div class="hero-content animate-slide-up">
               <h1 class="hero-title">Premium Cattle and Dairy Products</h1>
               <p class="hero-description">
-                Experience the finest selection of ethically raised cattle and farm-fresh dairy products 
+                Experience the finest selection of ethically raised cattle and farm-fresh dairy products
                 for your agricultural and consumption needs.
               </p>
               <div class="hero-buttons">
                 <a href="#" class="hero-button hero-button-primary" data-page="cattle">
                   Explore Cattle
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </a>
@@ -1310,58 +1326,72 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Featured Categories -->
         <section class="py-20 bg-gray-50">
           <div class="container mx-auto px-6">
             <h2 class="category-title animate-fade-in">Explore Our Categories</h2>
-            
+
             <div class="category-grid">
               <!-- Category 1 -->
               <div class="category-card animate-fade-in">
                 <div class="category-image">
-                  <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Premium Cattle">
+                  <img src="https://tse1.mm.bing.net/th?id=OIP.GqtTkuSluNPZHaTzq8JeZAHaE8&pid=Api&P=0&h=180"
+                    alt="Premium Cattle">
                 </div>
                 <div class="category-details">
                   <h3 class="category-name">Premium Cattle</h3>
-                  <p class="category-description">Explore our selection of high-quality cattle breeds, raised with care and ethical practices.</p>
+                  <p class="category-description">Explore our selection of high-quality cattle breeds, raised with care
+                    and ethical practices.</p>
                   <a href="#" class="category-link" data-page="cattle">
                     Explore
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="ml-1">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </a>
                 </div>
               </div>
-              
+
               <!-- Category 2 -->
               <div class="category-card animate-fade-in">
                 <div class="category-image">
-                  <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Fresh Dairy Products">
+                  <img
+                    src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    alt="Fresh Dairy Products">
                 </div>
                 <div class="category-details">
                   <h3 class="category-name">Fresh Dairy Products</h3>
-                  <p class="category-description">Discover our farm-fresh dairy products, sourced directly from our healthy, pasture-raised cattle.</p>
+                  <p class="category-description">Discover our farm-fresh dairy products, sourced directly from our
+                    healthy, pasture-raised cattle.</p>
                   <a href="#" class="category-link" data-page="dairy">
                     Explore
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="ml-1">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </a>
                 </div>
               </div>
-              
+
               <!-- Category 3 -->
               <div class="category-card animate-fade-in">
                 <div class="category-image">
-                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Farming Essentials">
+                  <img
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    alt="Farming Essentials">
                 </div>
                 <div class="category-details">
                   <h3 class="category-name">Farming Essentials</h3>
-                  <p class="category-description">Find everything you need for successful cattle farming and dairy production.</p>
+                  <p class="category-description">Find everything you need for successful cattle farming and dairy
+                    production.</p>
                   <a href="#" class="category-link" data-page="needs">
                     Explore
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="ml-1">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </a>
@@ -1370,21 +1400,21 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Testimonial Section -->
         <section class="py-20 bg-white">
           <div class="container mx-auto px-6 text-center">
             <div class="max-w-3xl mx-auto">
               <h2 class="text-3xl font-semibold mb-8">What Our Customers Say</h2>
               <blockquote class="text-xl text-gray-600 italic mb-6">
-                "The quality of cattle and dairy products from Agri-Lift has been exceptional. 
+                "The quality of cattle and dairy products from Agri-Lift has been exceptional.
                 Their commitment to ethical farming practices and customer service sets them apart in the industry."
               </blockquote>
               <p class="font-medium">John D. — Dairy Farmer</p>
             </div>
           </div>
         </section>
-        
+
         <!-- Footer -->
         <footer class="footer">
           <div class="container mx-auto px-6">
@@ -1416,16 +1446,16 @@
           </div>
         </footer>
       </div>
-      
+
       <!-- Other Pages -->
       <div id="cattlePage" class="page hidden">
         <!-- Cattle Page content will be loaded dynamically -->
       </div>
-      
+
       <div id="dairyPage" class="page hidden">
         <!-- Dairy Page content will be loaded dynamically -->
       </div>
-      
+
       <div id="needsPage" class="page hidden">
         <!-- Needs Page content will be loaded dynamically -->
       </div>
@@ -1547,7 +1577,7 @@
           id: 'feed-premium',
           name: 'Premium Cattle Feed',
           price: 45.99,
-          image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://tse1.mm.bing.net/th?id=OIP.GqtTkuSluNPZHaTzq8JeZAHaE8&pid=Api&P=0&h=180',
           category: 'needs',
           description: 'High-quality mixed feed formulated for optimal cattle nutrition and health.'
         },
@@ -1651,7 +1681,7 @@
     function showToast(message, duration = 3000) {
       toast.textContent = message;
       toast.classList.add('show');
-      
+
       setTimeout(() => {
         toast.classList.remove('show');
       }, duration);
@@ -1660,7 +1690,7 @@
     // Cart Functions
     function addToCart(product) {
       const existingItem = cart.items.find(item => item.product.id === product.id);
-      
+
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
@@ -1669,7 +1699,7 @@
           quantity: 1
         });
       }
-      
+
       updateCartTotal();
       updateCartCount();
       showToast(`Added ${product.name} to cart`);
@@ -1723,10 +1753,10 @@
       cart.count = cart.items.reduce((count, item) => {
         return count + item.quantity;
       }, 0);
-      
+
       cartCount.textContent = cart.count;
       cartItemsCount.textContent = `(${cart.count} items)`;
-      
+
       if (cart.count > 0) {
         cartCount.style.display = 'flex';
       } else {
@@ -1750,7 +1780,7 @@
             </button>
           </div>
         `;
-        
+
         document.getElementById('continueShopping').addEventListener('click', closeCart);
       } else {
         let cartItemsHTML = `
@@ -1811,9 +1841,9 @@
             </button>
           </div>
         `;
-        
+
         cartContent.innerHTML = cartItemsHTML;
-        
+
         // Add event listeners to cart buttons
         document.querySelectorAll('.remove-item').forEach(button => {
           button.addEventListener('click', (e) => {
@@ -1821,23 +1851,23 @@
             removeFromCart(productId);
           });
         });
-        
+
         document.querySelectorAll('.increase-quantity').forEach(button => {
           button.addEventListener('click', (e) => {
             const productId = e.currentTarget.dataset.id;
             increaseQuantity(productId);
           });
         });
-        
+
         document.querySelectorAll('.decrease-quantity').forEach(button => {
           button.addEventListener('click', (e) => {
             const productId = e.currentTarget.dataset.id;
             decreaseQuantity(productId);
           });
         });
-        
+
         document.getElementById('clearCart').addEventListener('click', clearCart);
-        
+
         document.getElementById('checkoutButton').addEventListener('click', () => {
           showToast('Checkout functionality will be implemented soon!');
         });
@@ -1873,14 +1903,14 @@
     // Load Cattle Page
     function loadCattlePage() {
       const cattlePage = document.getElementById('cattlePage');
-      
+
       cattlePage.innerHTML = `
         <div class="min-h-screen pb-20">
           <!-- Hero Section -->
           <section class="relative h-[40vh] min-h-[300px] overflow-hidden flex items-center">
             <div class="absolute inset-0 z-0">
               <img 
-                src="https://images.unsplash.com/photo-1566126003133-3f5974b4638f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+                src="https://tse4.mm.bing.net/th?id=OIP.a72I3cRZHlnv3cUHFCHB8AHaEK&pid=Api&P=0&h=180"
                 alt="Cattle grazing in field"
                 class="w-full h-full object-cover"
               />
@@ -1921,45 +1951,45 @@
           </section>
         </div>
       `;
-      
+
       const productsGrid = document.getElementById('cattleProductsGrid');
       const filterButtons = cattlePage.querySelectorAll('.filter-button');
       const categoryTitle = cattlePage.querySelector('h2');
-      
+
       // Load all products initially
       renderCattleProducts('all');
-      
+
       // Filter functionality
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
           const filter = button.dataset.filter;
-          
+
           // Update active button
           filterButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-          
+
           // Update title
           categoryTitle.textContent = `${filter.charAt(0).toUpperCase() + filter.slice(1)} Cattle`;
-          
+
           // Filter products
           renderCattleProducts(filter);
         });
       });
-      
+
       function renderCattleProducts(filter) {
         let filteredProducts = products.cattle;
-        
+
         if (filter !== 'all') {
-          filteredProducts = products.cattle.filter(product => 
+          filteredProducts = products.cattle.filter(product =>
             product.name.toLowerCase().includes(filter.toLowerCase())
           );
         }
-        
+
         if (filteredProducts.length === 0) {
           productsGrid.innerHTML = `<p class="text-center py-12 text-gray-500 col-span-3">No products found in this category.</p>`;
         } else {
           productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
-          
+
           // Add event listeners to Add to Cart buttons
           productsGrid.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
@@ -1977,7 +2007,7 @@
     // Load Dairy Page
     function loadDairyPage() {
       const dairyPage = document.getElementById('dairyPage');
-      
+
       dairyPage.innerHTML = `
         <div class="min-h-screen pb-20">
           <!-- Hero Section -->
@@ -2026,46 +2056,46 @@
           </section>
         </div>
       `;
-      
+
       const productsGrid = document.getElementById('dairyProductsGrid');
       const filterButtons = dairyPage.querySelectorAll('.filter-button');
       const categoryTitle = dairyPage.querySelector('h2');
-      
+
       // Load all products initially
       renderDairyProducts('all');
-      
+
       // Filter functionality
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
           const filter = button.dataset.filter;
-          
+
           // Update active button
           filterButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-          
+
           // Update title
           categoryTitle.textContent = `${filter.charAt(0).toUpperCase() + filter.slice(1)} Dairy Products`;
-          
+
           // Filter products
           renderDairyProducts(filter);
         });
       });
-      
+
       function renderDairyProducts(filter) {
         let filteredProducts = products.dairy;
-        
+
         if (filter !== 'all') {
-          filteredProducts = products.dairy.filter(product => 
+          filteredProducts = products.dairy.filter(product =>
             product.name.toLowerCase().includes(filter.toLowerCase()) ||
             product.description.toLowerCase().includes(filter.toLowerCase())
           );
         }
-        
+
         if (filteredProducts.length === 0) {
           productsGrid.innerHTML = `<p class="text-center py-12 text-gray-500 col-span-3">No products found in this category.</p>`;
         } else {
           productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
-          
+
           // Add event listeners to Add to Cart buttons
           productsGrid.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
@@ -2080,12 +2110,12 @@
       }
     }
 
-    
+
 
     // Load Needs Page
     function loadNeedsPage() {
       const needsPage = document.getElementById('needsPage');
-      
+
       needsPage.innerHTML = `
         <div class="min-h-screen pb-20">
           <!-- Hero Section -->
@@ -2133,46 +2163,46 @@
           </section>
         </div>
       `;
-      
+
       const productsGrid = document.getElementById('needsProductsGrid');
       const filterButtons = needsPage.querySelectorAll('.filter-button');
       const categoryTitle = needsPage.querySelector('h2');
-      
+
       // Load all products initially
       renderNeedsProducts('all');
-      
+
       // Filter functionality
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
           const filter = button.dataset.filter;
-          
+
           // Update active button
           filterButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-          
+
           // Update title
           categoryTitle.textContent = `${filter.charAt(0).toUpperCase() + filter.slice(1)} Products`;
-          
+
           // Filter products
           renderNeedsProducts(filter);
         });
       });
-      
+
       function renderNeedsProducts(filter) {
         let filteredProducts = products.needs;
-        
+
         if (filter !== 'all') {
-          filteredProducts = products.needs.filter(product => 
+          filteredProducts = products.needs.filter(product =>
             product.name.toLowerCase().includes(filter.toLowerCase()) ||
             product.description.toLowerCase().includes(filter.toLowerCase())
           );
         }
-        
+
         if (filteredProducts.length === 0) {
           productsGrid.innerHTML = `<p class="text-center py-12 text-gray-500 col-span-3">No products found in this category.</p>`;
         } else {
           productsGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
-          
+
           // Add event listeners to Add to Cart buttons
           productsGrid.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', () => {
@@ -2194,32 +2224,32 @@
         page.classList.add('hidden');
         page.classList.remove('active');
       });
-      
+
       // Show selected page
       const page = document.getElementById(pageId);
       page.classList.remove('hidden');
       page.classList.add('active');
-      
+
       // Update navigation active state
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
       });
-      
+
       document.querySelectorAll(`.nav-link[data-page="${pageId.replace('Page', '')}"]`).forEach(link => {
         link.classList.add('active');
       });
-      
+
       document.querySelectorAll('.mobile-menu-link').forEach(link => {
         link.classList.remove('active');
       });
-      
+
       document.querySelectorAll(`.mobile-menu-link[data-page="${pageId.replace('Page', '')}"]`).forEach(link => {
         link.classList.add('active');
       });
-      
+
       // Close mobile menu if open
       mobileMenu.classList.remove('open');
-      
+
       // Scroll to top
       window.scrollTo(0, 0);
     }
@@ -2248,7 +2278,7 @@
         const productId = addToCartButton.dataset.id;
         const category = addToCartButton.dataset.category;
         const product = products[category]?.find(p => p.id === productId);
-        
+
         if (product) {
           addToCart(product);
         }
@@ -2256,4 +2286,5 @@
     });
   </script>
 </body>
+
 </html>
