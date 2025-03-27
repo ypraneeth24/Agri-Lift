@@ -7,7 +7,8 @@
     <title>AgriLift - Agricultural Machinery</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -71,6 +72,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -82,6 +84,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -92,18 +95,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header & Navigation Styling */
@@ -647,13 +660,13 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
@@ -669,24 +682,24 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            
+
             .logo img {
                 width: 140px;
             }
@@ -716,12 +729,12 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-            
+
             .logo img {
                 width: 120px;
                 margin-right: 10px;
             }
-            
+
             .cart-sidebar {
                 width: 100%;
             }
@@ -733,7 +746,7 @@
             .dashboard-section {
                 padding: 20px;
             }
-            
+
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
@@ -751,7 +764,7 @@
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='welcome.html';">
+                <button class="nav-button" onclick="window.location.href='home .html';">
                     <i class="fas fa-home"></i> Home
                 </button>
                 <button class="nav-button" onclick="window.location.href='loan.html';">
@@ -794,7 +807,8 @@
             <!-- Search Bar -->
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search for agricultural machinery...">
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Search for agricultural machinery...">
             </div>
 
             <!-- Category Filters -->
@@ -981,7 +995,7 @@
             card.className = 'machine-card';
             card.dataset.category = machine.category;
             card.style.setProperty('--delay', index);
-            
+
             card.innerHTML = `
                 <img src="${machine.image}" class="machine-image" alt="${machine.name}">
                 <div class="machine-details">
@@ -1002,16 +1016,16 @@
         function displayMachines(category) {
             machineGrid.innerHTML = '';
             let filteredMachines = machineData;
-            
+
             if (category !== 'all') {
                 filteredMachines = machineData.filter(machine => machine.category === category);
             }
-            
+
             filteredMachines.forEach((machine, index) => {
                 const card = createMachineCard(machine, index);
                 machineGrid.appendChild(card);
             });
-            
+
             // Add event listeners to Add to Cart buttons
             document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                 button.addEventListener('click', addToCart);
@@ -1022,9 +1036,9 @@
         function addToCart(e) {
             const machineId = parseInt(e.currentTarget.dataset.id);
             const machine = machineData.find(m => m.id === machineId);
-            
+
             const existingItem = cart.find(item => item.id === machineId);
-            
+
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -1036,7 +1050,7 @@
                     quantity: 1
                 });
             }
-            
+
             updateCart();
             showToast();
         }
@@ -1073,25 +1087,25 @@
                     cartItems.appendChild(cartItem);
                 });
             }
-            
+
             // Calculate totals
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             const tax = subtotal * 0.18;
             const total = subtotal + tax;
-            
-            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            taxElement.textContent = `₹${tax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            totalElement.textContent = `₹${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            
+
+            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            taxElement.textContent = `₹${tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            totalElement.textContent = `₹${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
             // Add event listeners to cart buttons
             document.querySelectorAll('.qty-decrease').forEach(button => {
                 button.addEventListener('click', decreaseQuantity);
             });
-            
+
             document.querySelectorAll('.qty-increase').forEach(button => {
                 button.addEventListener('click', increaseQuantity);
             });
-            
+
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', removeItem);
             });
@@ -1132,13 +1146,13 @@
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.toLowerCase();
             machineGrid.innerHTML = '';
-            
-            const filteredMachines = machineData.filter(machine => 
+
+            const filteredMachines = machineData.filter(machine =>
                 machine.name.toLowerCase().includes(searchTerm) ||
                 machine.description.toLowerCase().includes(searchTerm) ||
                 machine.category.toLowerCase().includes(searchTerm)
             );
-            
+
             if (filteredMachines.length === 0) {
                 machineGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
@@ -1151,7 +1165,7 @@
                     const card = createMachineCard(machine, index);
                     machineGrid.appendChild(card);
                 });
-                
+
                 // Re-add event listeners
                 document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                     button.addEventListener('click', addToCart);
@@ -1163,11 +1177,11 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.dataset.category;
-                
+
                 // Update active state
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 displayMachines(category);
             });
         });
@@ -1188,11 +1202,11 @@
             const temperatures = [22, 23, 24, 25, 26, 27, 28, 29, 30];
             const conditions = ['☀️ Sunny', '🌧️ Rainy', '⛅ Cloudy', '🌤️ Partly Cloudy'];
             const humidities = [35, 40, 45, 50, 55, 60, 65];
-            
+
             const temp = temperatures[Math.floor(Math.random() * temperatures.length)];
             const condition = conditions[Math.floor(Math.random() * conditions.length)];
             const humidity = humidities[Math.floor(Math.random() * humidities.length)];
-            
+
             document.querySelector('.weather-temp').textContent = `${temp}°C`;
             document.querySelector('.weather-condition').textContent = condition;
             document.querySelector('.weather-humidity').textContent = `💧 ${humidity}%`;
@@ -1203,7 +1217,7 @@
         updateWeather(); // Initial update
 
         // Header scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1217,11 +1231,11 @@
 
         // Add animation to nav buttons
         document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
+            button.addEventListener('mouseenter', function () {
                 this.querySelector('i')?.classList.add('fa-bounce');
             });
-            
-            button.addEventListener('mouseleave', function() {
+
+            button.addEventListener('mouseleave', function () {
                 this.querySelector('i')?.classList.remove('fa-bounce');
             });
         });
