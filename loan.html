@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriLift - Agricultural Financing</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AgriLift - Agricultural Financing</title>
+        <meta name="description" content="AgriLift - Premium agricultural financing platform for farmers worldwide" />
+        <meta name="author" content="Lovable" />
+    
+        <meta property="og:title" content="AgriLift - Agricultural Financing" />
+        <meta property="og:description" content="Premium agricultural financing platform for farmers worldwide" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@lovable_dev" />
+        <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         :root {
@@ -120,7 +128,7 @@
             }
         }
 
-        /* Header & Navigation Styling - Matching dashboard.html */
+        /* Header & Navigation Styling */
         header {
             background: linear-gradient(45deg, #77daa0, var(--secondary-green));
             padding: 0;
@@ -211,7 +219,7 @@
             box-shadow: var(--card-shadow);
             z-index: 999;
             backdrop-filter: blur(5px);
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.5s ease-out, float 3s ease-in-out infinite;
             transition: all 0.3s ease;
         }
 
@@ -250,6 +258,9 @@
             padding: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             max-width: 1400px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: 0.1s;
         }
 
         .dashboard-section:hover {
@@ -435,6 +446,9 @@
             border-radius: 15px;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+            animation-delay: 0.4s;
         }
 
         .section-card:hover {
@@ -523,6 +537,10 @@
             margin-top: 10px;
             font-family: 'Poppins', sans-serif;
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .calculate-btn:hover {
@@ -542,6 +560,7 @@
         .results-container.visible {
             opacity: 1;
             height: auto;
+            animation: fadeIn 0.3s ease forwards;
         }
 
         .monthly-payment {
@@ -705,6 +724,30 @@
             transform: translateY(-3px);
         }
 
+        /* Loading animation for weather and map */
+        .loading-spinner {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-green);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Responsive Styles */
         @media screen and (max-width: 1024px) {
             header {
@@ -820,47 +863,47 @@
 </head>
 
 <body>
-    <!-- Header - Matching dashboard.html -->
+    <!-- Header -->
     <header id="header">
         <div class="container header-content">
             <div class="logo">
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='home.html';">
+                <button class="nav-button">
                     <i class="fas fa-home"></i> Home
                 </button>
-                <button class="nav-button" onclick="window.location.href='loan.html';">
+                <button class="nav-button">
                     <i class="fas fa-money-bill-wave"></i> Loans
                 </button>
-                <button class="nav-button" onclick="window.location.href='contact.html';">
+                <button class="nav-button">
                     <i class="fas fa-envelope"></i> Contact
                 </button>
-                <button class="nav-button" onclick="window.location.href='seed.html';">
+                <button class="nav-button">
                     <i class="fas fa-seedling"></i> Market
                 </button>
-                <button class="nav-button" onclick="window.location.href='worker.html';">
+                <button class="nav-button">
                     <i class="fas fa-users"></i> Labour
                 </button>
-                <button class="nav-button" onclick="window.location.href='machinary.html';">
+                <button class="nav-button">
                     <i class="fas fa-tractor"></i> Machinery
                 </button>
-                <button class="nav-button" onclick="window.location.href='export.html';">
+                <button class="nav-button">
                     <i class="fas fa-shipping-fast"></i> Export
                 </button>
-                <button class="nav-button" onclick="window.location.href='mounitoring.html';">
+                <button class="nav-button">
                     <i class="fas fa-chart-line"></i> Monitoring
                 </button>
             </nav>
         </div>
     </header>
 
-    <!-- Weather Card - Matching dashboard.html -->
+    <!-- Weather Card -->
     <div class="weather-card">
-        <div class="weather-info">
-            <span class="weather-temp">25°C</span>
-            <span class="weather-condition">☀️ Sunny</span>
-            <span class="weather-humidity">💧 45%</span>
+        <div id="weatherInfo" class="weather-info">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
         </div>
     </div>
 
@@ -873,7 +916,7 @@
         </section>
 
         <!-- Country Selection -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" style="animation-delay: 0.2s;">
             <h2>Choose Your Country</h2>
             <select id="countrySelect" class="country-select">
                 <option value="">Select your country...</option>
@@ -886,7 +929,7 @@
         </section>
 
         <!-- Bank Cards Section -->
-        <section class="dashboard-section">
+        <section class="dashboard-section" style="animation-delay: 0.3s;">
             <h2>Available Banking Partners</h2>
             <div id="bankCards" class="bank-cards-container"></div>
         </section>
@@ -900,7 +943,7 @@
                         <label for="loanAmount">Loan Amount (₹)</label>
                         <input type="number" id="loanAmount" class="calculator-input" placeholder="Enter loan amount">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                         </div>
                     </div>
 
@@ -916,7 +959,7 @@
                         </div>
                     </div>
 
-                    <button onclick="calculateLoan()" class="calculate-btn">
+                    <button id="calculateBtn" class="calculate-btn">
                         <i class="fas fa-calculator"></i> Calculate Payments
                     </button>
 
@@ -965,46 +1008,46 @@
         const countryData = {
             india: {
                 banks: [
-                    { name: "State Bank of India", interest: 4.2, type: "gov", logo: "sbi.png" },
-                    { name: "HDFC Bank", interest: 6.5, type: "private", logo: "hdfc.png" },
-                    { name: "NABARD", interest: 3.8, type: "gov", logo: "nabard.png" },
-                    { name: "ICICI Bank", interest: 6.7, type: "private", logo: "icici.png" }
+                    { name: "State Bank of India", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/sbi.png" },
+                    { name: "HDFC Bank", interest: 6.5, type: "private", logo: "/AgriLift/Loans/hdfc.png" },
+                    { name: "NABARD", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/nabard.png" },
+                    { name: "ICICI Bank", interest: 6.7, type: "private", logo: "/AgriLift/Loans/icici.png" }
                 ],
                 coordinates: [20.5937, 78.9629]
             },
             usa: {
                 banks: [
-                    { name: "USDA Farm Service", interest: 3.8, type: "gov", logo: "usda.png" },
-                    { name: "AgriBank USA", interest: 5.9, type: "private", logo: "agribank.png" },
-                    { name: "Farm Credit System", interest: 4.2, type: "gov", logo: "farmcredit.png" },
-                    { name: "Wells Fargo Agri", interest: 6.1, type: "private", logo: "wellsfargo.png" }
+                    { name: "USDA Farm Service", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/usda.png" },
+                    { name: "AgriBank USA", interest: 5.9, type: "private", logo: "/AgriLift/Loans/agribank.png" },
+                    { name: "Farm Credit System", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/farmcredit.png" },
+                    { name: "Wells Fargo Agri", interest: 6.1, type: "private", logo: "/AgriLift/Loans/wellsfargo.png" }
                 ],
                 coordinates: [37.0902, -95.7129]
             },
             brazil: {
                 banks: [
-                    { name: "Banco do Brasil", interest: 5.0, type: "gov", logo: "bancobrasil.png" },
-                    { name: "Santander Brasil", interest: 7.2, type: "private", logo: "santander.png" },
-                    { name: "Caixa Econômica", interest: 4.8, type: "gov", logo: "caixa.png" },
-                    { name: "Itaú Agribusiness", interest: 7.0, type: "private", logo: "itau.png" }
+                    { name: "Banco do Brasil", interest: 5.0, type: "gov", logo: "/AgriLift/Loans/bancobrasil.png" },
+                    { name: "Santander Brasil", interest: 7.2, type: "private", logo: "/AgriLift/Loans/santander.png" },
+                    { name: "Caixa Econômica", interest: 4.8, type: "gov", logo: "/AgriLift/Loans/caixa.png" },
+                    { name: "Itaú Agribusiness", interest: 7.0, type: "private", logo: "/AgriLift/Loans/itau.png" }
                 ],
                 coordinates: [-14.2350, -51.9253]
             },
             nigeria: {
                 banks: [
-                    { name: "Bank of Agriculture", interest: 6.0, type: "gov", logo: "boa.png" },
-                    { name: "Zenith AgriFin", interest: 8.0, type: "private", logo: "zenith.png" },
-                    { name: "FirstBank Nigeria", interest: 6.5, type: "gov", logo: "firstbank.png" },
-                    { name: "GTBank Agribiz", interest: 8.2, type: "private", logo: "gtbank.png" }
+                    { name: "Bank of Agriculture", interest: 6.0, type: "gov", logo: "/AgriLift/Loans/boa.png" },
+                    { name: "Zenith AgriFin", interest: 8.0, type: "private", logo: "/AgriLift/Loans/zenith.png" },
+                    { name: "FirstBank Nigeria", interest: 6.5, type: "gov", logo: "/AgriLift/Loans/firstbank.png" },
+                    { name: "GTBank Agribiz", interest: 8.2, type: "private", logo: "/AgriLift/Loans/gtbank.png" }
                 ],
                 coordinates: [9.0820, 8.6753]
             },
             australia: {
                 banks: [
-                    { name: "NAB Agri Banking", interest: 3.5, type: "gov", logo: "nab.png" },
-                    { name: "Commonwealth Agri", interest: 5.5, type: "private", logo: "commbank.png" },
-                    { name: "ANZ Agribusiness", interest: 3.7, type: "gov", logo: "anz.png" },
-                    { name: "Westpac Rural", interest: 5.8, type: "private", logo: "westpac.png" }
+                    { name: "NAB Agri Banking", interest: 3.5, type: "gov", logo: "/AgriLift/Loans/nab.png" },
+                    { name: "Commonwealth Agri", interest: 5.5, type: "private", logo: "/AgriLift/Loans/commbank.png" },
+                    { name: "ANZ Agribusiness", interest: 3.7, type: "gov", logo: "/AgriLift/Loans/anz.png" },
+                    { name: "Westpac Rural", interest: 5.8, type: "private", logo: "/AgriLift/Loans/westpac.png" }
                 ],
                 coordinates: [-25.2744, 133.7751]
             }
@@ -1017,36 +1060,132 @@
             { name: "Amit Sharma", position: "Agricultural Loan Specialist", contact: "+91 87654 32109" }
         ];
 
-        // Initialize Map
-        const map = L.map('map').setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        // Function to map weather condition codes to icons and descriptions
+        const getWeatherIcon = (code) => {
+            const iconMap = {
+                "01d": { icon: "☀️", description: "Sunny" },
+                "01n": { icon: "🌙", description: "Clear" },
+                "02d": { icon: "⛅", description: "Partly Cloudy" },
+                "02n": { icon: "☁️", description: "Partly Cloudy" },
+                "03d": { icon: "☁️", description: "Cloudy" },
+                "03n": { icon: "☁️", description: "Cloudy" },
+                "04d": { icon: "☁️", description: "Overcast" },
+                "04n": { icon: "☁️", description: "Overcast" },
+                "09d": { icon: "🌧️", description: "Rainy" },
+                "09n": { icon: "🌧️", description: "Rainy" },
+                "10d": { icon: "🌦️", description: "Rain Showers" },
+                "10n": { icon: "🌧️", description: "Rain Showers" },
+                "11d": { icon: "⛈️", description: "Thunderstorm" },
+                "11n": { icon: "⛈️", description: "Thunderstorm" },
+                "13d": { icon: "❄️", description: "Snow" },
+                "13n": { icon: "❄️", description: "Snow" },
+                "50d": { icon: "🌫️", description: "Foggy" },
+                "50n": { icon: "🌫️", description: "Foggy" },
+            };
 
-        // Add Country Markers
-        Object.entries(countryData).forEach(([country, data]) => {
-            const marker = L.marker(data.coordinates)
-                .addTo(map)
-                .bindPopup(`<b>${country.charAt(0).toUpperCase() + country.slice(1)}</b><br>Click to view banks`)
-                .on('click', () => {
-                    document.getElementById('countrySelect').value = country;
-                    updateBankCards(country);
-                });
-        });
+            return iconMap[code] || { icon: "☀️", description: "Clear" };
+        };
+
+        // Fetch Weather Data
+        async function fetchWeather() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                
+                // Get user location first (using geolocation API)
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            
+                            // Use OpenWeatherMap API with user's coordinates
+                            // Note: In a production app, you would store this API key in environment variables
+                            const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                            const response = await fetch(
+                                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+                            );
+                            
+                            if (!response.ok) {
+                                throw new Error("Weather data not available");
+                            }
+                            
+                            const data = await response.json();
+                            
+                            const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                            
+                            weatherContainer.innerHTML = `
+                                <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                                <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                                <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                                <span class="weather-city">${data.name}</span>
+                            `;
+                        },
+                        (error) => {
+                            // Fallback to default location (New Delhi) if geolocation fails
+                            fetchWeatherForDefaultLocation();
+                            console.error("Geolocation error:", error);
+                        }
+                    );
+                } else {
+                    // Fallback if geolocation is not supported
+                    fetchWeatherForDefaultLocation();
+                }
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
+        }
+        
+        // Fetch weather for default location
+        async function fetchWeatherForDefaultLocation() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                
+                // Default to New Delhi
+                const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=New Delhi&units=metric&appid=${API_KEY}`
+                );
+                
+                if (!response.ok) {
+                    throw new Error("Weather data not available");
+                }
+                
+                const data = await response.json();
+                
+                const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                
+                weatherContainer.innerHTML = `
+                    <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                    <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                    <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                    <span class="weather-city">${data.name}</span>
+                `;
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
+        }
 
         // Create Bank Card
-        function createBankCard(bank) {
+        function createBankCard(bank, index) {
             const card = document.createElement('div');
             card.className = 'bank-card';
             card.style.opacity = '0';
+            card.style.animationDelay = `${0.1 * (index + 1)}s`;
 
             const typeClass = bank.type === 'gov' ? 'gov-partner' : 'private-partner';
             const typeLabel = bank.type === 'gov' ? 'Government Partner' : 'Private Partner';
-            const typeColor = bank.type === 'gov' ? 'text-emerald-600' : 'text-amber-600';
+            const typeColor = bank.type === 'gov' ? '#27ae60' : '#f1c40f';
 
             card.innerHTML = `
                 <div class="bank-header">
-                    <img src="AgriLift/Loans/${bank.logo}" class="bank-logo" alt="${bank.name}">
+                    <img src="${bank.logo}" class="bank-logo" alt="${bank.name}" onerror="this.src='/placeholder.svg'">
                     <div>
                         <h3 class="bank-name">${bank.name}</h3>
                         <span class="bank-type ${typeClass}">${typeLabel}</span>
@@ -1055,7 +1194,7 @@
                 <div class="bank-details">
                     <div class="detail-row">
                         <span class="detail-label">Interest Rate</span>
-                        <span class="detail-value rate-value" style="color: ${bank.type === 'gov' ? '#27ae60' : '#f1c40f'}">${bank.interest}%</span>
+                        <span class="detail-value rate-value" style="color: ${typeColor}">${bank.interest}%</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Max Tenure</span>
@@ -1063,15 +1202,21 @@
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Special Feature</span>
-                        <span class="detail-value" style="font-size: 0.9rem; color: ${bank.type === 'gov' ? '#27ae60' : '#f1c40f'}">
-                            ${bank.type === 'gov' ? 'Subsidized Rates' : 'Fast Approval Process'}
+                        <span class="detail-value" style="font-size: 0.9rem; color: ${typeColor}">
+                            ${bank.type === 'gov' ? 'Subsidized Rates' : 'Fast Approval'}
                         </span>
                     </div>
                 </div>
-                <button onclick="openStaffModal()" class="apply-btn">
+                <button class="apply-btn" onclick="openStaffModal()">
                     <i class="fas fa-handshake"></i> Apply Now
                 </button>
             `;
+
+            // Animate card
+            setTimeout(() => {
+                card.style.opacity = '1';
+            }, index * 100);
+
             return card;
         }
 
@@ -1083,19 +1228,38 @@
             if (!countryData[country]) return;
 
             countryData[country].banks.forEach((bank, index) => {
-                const card = createBankCard(bank);
+                const card = createBankCard(bank, index);
                 container.appendChild(card);
-
-                // Animate cards with delay
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                }, index * 100);
             });
 
             // Update loan calculator with default rate from first bank
             if (countryData[country].banks.length > 0) {
                 document.getElementById('interestRate').value = countryData[country].banks[0].interest;
             }
+        }
+
+        // Initialize Map
+        let map;
+        function initMap() {
+            if (map) map.remove();
+            
+            map = L.map('map').setView([20, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add Country Markers
+            Object.entries(countryData).forEach(([country, data]) => {
+                const marker = L.marker(data.coordinates)
+                    .addTo(map)
+                    .bindPopup(`<b>${country.charAt(0).toUpperCase() + country.slice(1)}</b><br>Click to view banks`)
+                    .on('click', () => {
+                        document.getElementById('countrySelect').value = country;
+                        updateBankCards(country);
+                        // Pan map to selected country
+                        map.setView(data.coordinates, 5);
+                    });
+            });
         }
 
         // Loan Calculator
@@ -1117,9 +1281,10 @@
 
             const monthlyRate = rate / 12;
             const payments = term * 12;
-            const monthly = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -payments));
-            const totalInterest = (monthly * payments) - amount;
-            const totalPayment = amount + totalInterest;
+            const x = Math.pow(1 + monthlyRate, payments);
+            const monthly = (amount * x * monthlyRate) / (x - 1);
+            const totalInterest = monthly * payments - amount;
+            const totalPayment = monthly * payments;
 
             document.getElementById('monthlyPayment').textContent = `Monthly Payment: ₹${monthly.toFixed(2)}`;
             document.getElementById('totalInterest').textContent = `₹${totalInterest.toFixed(2)}`;
@@ -1127,10 +1292,10 @@
 
             resultsContainer.classList.add('visible');
 
-            // Update progress bar based on loan amount (for demo)
-            const maxLoan = 1000000; // 10 lakhs
+            // Update progress bar based on loan amount
+            const maxLoan = 1000000; // 10 lakhs for demo
             const percentage = Math.min(100, (amount / maxLoan) * 100);
-            document.querySelector('.progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progressFill').style.width = `${percentage}%`;
         }
 
         // Open Staff Modal
@@ -1171,7 +1336,7 @@
             document.getElementById('thankYouModal').classList.remove('visible');
         }
 
-        // Navbar scroll effect - Matching dashboard.html
+        // Navbar scroll effect
         window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -1183,78 +1348,50 @@
 
         // Event Listeners
         document.getElementById('countrySelect').addEventListener('change', (e) => {
-            if (e.target.value) {
-                updateBankCards(e.target.value);
+            const selectedCountry = e.target.value;
+            if (selectedCountry) {
+                updateBankCards(selectedCountry);
 
                 // Pan map to selected country
-                const coordinates = countryData[e.target.value].coordinates;
+                const coordinates = countryData[selectedCountry].coordinates;
                 map.setView(coordinates, 5);
             }
         });
 
-        // Animation for elements on scroll
-        function animateOnScroll() {
-            const sections = document.querySelectorAll('.dashboard-section, .section-card');
+        // Add calculate button event listener
+        document.getElementById('calculateBtn').addEventListener('click', calculateLoan);
 
-            function checkScroll() {
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-
-                    if (sectionTop < windowHeight * 0.8) {
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Set initial state
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-
-            window.addEventListener('scroll', checkScroll);
-            window.addEventListener('load', checkScroll);
-
-            // Initial check
-            checkScroll();
-        }
-
-        // Add animation to nav buttons - Matching dashboard.html
+        // Add animation to nav buttons
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('mouseenter', function () {
-                this.querySelector('i')?.classList.add('fa-bounce');
+                const icon = this.querySelector('i');
+                if (icon) icon.classList.add('fa-bounce');
             });
 
             button.addEventListener('mouseleave', function () {
-                this.querySelector('i')?.classList.remove('fa-bounce');
+                const icon = this.querySelector('i');
+                if (icon) icon.classList.remove('fa-bounce');
             });
         });
 
-        // Simulate real-time weather updates - Matching dashboard.html
-        function updateWeather() {
-            const temp = Math.floor(Math.random() * 15 + 20); // 20-35°C
-            const conditions = ['☀️ Sunny', '🌧️ Rainy', '⛅ Cloudy', '🌤️ Partly Cloudy'];
-            const condition = conditions[Math.floor(Math.random() * conditions.length)];
-            const humidity = Math.floor(Math.random() * 30 + 40); // 40-70%
-
-            document.querySelector('.weather-temp').textContent = `${temp}°C`;
-            document.querySelector('.weather-condition').textContent = condition;
-            document.querySelector('.weather-humidity').textContent = `💧 ${humidity}%`;
-        }
-
-        // Update weather every 5 seconds
-        setInterval(updateWeather, 5000);
-        updateWeather(); // Initial update
-
-        // Initialize
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function () {
+            // Initialize map
+            initMap();
+            
+            // Fetch weather data
+            fetchWeather();
+            
+            // Update bank cards with default country
             updateBankCards('india');
-            animateOnScroll();
+            
+            // Set interval to refresh weather data every 30 minutes
+            setInterval(fetchWeather, 30 * 60 * 1000);
         });
     </script>
+    
+    <!-- Add GPT Engineer script tag for the Select feature -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 </body>
 
 </html>
