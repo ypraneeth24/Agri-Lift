@@ -79,6 +79,156 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-green-dark);
         }
+        
+        /* Side Navigation Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green-dark));
+            z-index: 1002;
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-toggle {
+            display: flex;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .side-menu-header {
+            padding: 25px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .side-menu-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-menu:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .side-menu-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-item i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover i {
+            transform: translateX(3px);
+        }
+
+        .side-menu-footer {
+            margin-top: auto;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
 
         /* Header */
         header {
@@ -658,6 +808,9 @@
 
     <header id="header">
         <div class="container header-content">
+            <button id="menuToggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="logo">
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
@@ -689,6 +842,49 @@
             </nav>
         </div>
     </header>
+    
+    <!-- Side Navigation Menu -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+    <div id="sideMenu" class="side-menu">
+        <div class="side-menu-header">
+            <h2 class="side-menu-title">AgriLift Menu</h2>
+            <button id="closeMenu" class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="side-menu-content">
+            <button class="nav-item" onclick="window.location.href='home.html';">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-item" onclick="window.location.href='dashboard.html';">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+            <button class="nav-item" onclick="window.location.href='contact.html';">
+                <i class="fas fa-envelope"></i> Contact
+            </button>
+            <button class="nav-item" onclick="window.location.href='loan.html';">
+                <i class="fas fa-money-bill-wave"></i> Loans
+            </button>
+            <button class="nav-item" onclick="window.location.href='seed.html';">
+                <i class="fas fa-seedling"></i> Market
+            </button>
+            <button class="nav-item" onclick="window.location.href='worker.html';">
+                <i class="fas fa-users"></i> Labour
+            </button>
+            <button class="nav-item" onclick="window.location.href='machinary.html';">
+                <i class="fas fa-tractor"></i> Machinery
+            </button>
+            <button class="nav-item" onclick="window.location.href='export.html';">
+                <i class="fas fa-shipping-fast"></i> Export
+            </button>
+            <button class="nav-item" onclick="window.location.href='mounitoring.html';">
+                <i class="fas fa-chart-line"></i> Monitoring
+            </button>
+        </div>
+        <div class="side-menu-footer">
+            © 2023 AgriLift - Empowering Farmers
+        </div>
+    </div>
 
     <div class="weather-card">
         <div class="weather-info">
@@ -965,6 +1161,46 @@
                 const hero = document.querySelector('.hero');
                 if (hero) {
                     hero.style.backgroundPosition = `center ${50 - (scrollPosition * 0.1)}%`;
+                }
+            });
+            
+            // Side menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            function openMenu() {
+                sideMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            }
+            
+            function closeMenuFunc() {
+                sideMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+            
+            menuToggle.addEventListener('click', openMenu);
+            closeMenu.addEventListener('click', closeMenuFunc);
+            menuOverlay.addEventListener('click', closeMenuFunc);
+            
+            // Close side menu when clicking on a nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Add a small delay before redirecting to show the click effect
+                    setTimeout(() => {
+                        closeMenuFunc();
+                    }, 300);
+                });
+            });
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+                    closeMenuFunc();
                 }
             });
         });
