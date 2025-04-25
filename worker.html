@@ -7,7 +7,10 @@
     <title>AgriLift - Agricultural Workers</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" rel="preload" as="script">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary-green: #2ecc71;
@@ -18,14 +21,34 @@
             --accent-blue-dark: #2980b9;
             --accent-blue-light: #5dade2;
             --accent-yellow: #f1c40f;
+            --accent-orange: #e67e22;
+            --accent-purple: #9b59b6;
             --background-light: #f9fcfa;
+            --background-pattern: rgba(46, 204, 113, 0.05);
             --text-dark: #2c3e50;
+            --text-medium: #34495e;
+            --text-light: #7f8c8d;
             --card-background: #ffffff;
+            --card-background-alt: #f8f9fa;
             --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
             --input-border: #dcdfe6;
             --input-focus: #3498db;
             --transition-speed: 0.3s;
             --error-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+            --border-radius-sm: 5px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 15px;
+            --border-radius-xl: 20px;
+            --border-radius-round: 50px;
+            --spacing-xs: 5px;
+            --spacing-sm: 10px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 30px;
         }
 
         * {
@@ -71,6 +94,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -82,6 +106,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -92,18 +117,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header & Navigation Styling */
@@ -155,9 +190,120 @@
             transform: scale(1.05);
         }
 
-        nav {
+        .desktop-nav {
             display: flex;
             gap: 10px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(45deg, #77daa0, var(--secondary-green));
+        }
+
+        .mobile-nav-header .logo img {
+            width: 120px;
+            margin: 0;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-nav-button {
+            background-color: var(--background-light);
+            border: none;
+            color: var(--text-dark);
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .mobile-nav-button:hover {
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+
+        .mobile-nav-button.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .mobile-nav-button i {
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            display: block;
+            opacity: 1;
         }
 
         .nav-button {
@@ -182,6 +328,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        .nav-button.active {
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
         .nav-button i {
             font-size: 0.9rem;
         }
@@ -196,8 +347,18 @@
             overflow: hidden;
         }
 
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zm20.97 0l9.315 9.314-1.414 1.414L34.828 0h2.83zM22.344 0L13.03 9.314l1.414 1.414L25.172 0h-2.83zM32 0l12.142 12.142-1.414 1.414L30 .828 17.272 13.556l-1.414-1.414L28 0h4zM.284 0l28 28-1.414 1.414L0 2.544v2.83L25.456 30l-1.414 1.414L0 7.372v2.828L22.628 30l-1.414 1.414L0 12.2v2.83L19.8 30l-1.414 1.414L0 17.03v2.828L16.97 30l-1.414 1.414L0 21.855v2.83L14.142 30l-1.414 1.414L0 26.683v2.83L11.314 30l-1.414 1.414L0 31.513v2.83L8.485 30 7.07 31.415 0 36.342v2.83L5.657 30 4.243 31.415 0 41.17v2.83L2.828 30 1.414 31.414 0 46v2.828L0 50.828 0 60h60L60 49.414 60 47.414 60 44.586 60 42.586 60 39.757 60 37.757 60 34.93 60 32.93 60 30.1 60 28.1 60 25.272 60 23.272 60 20.444 60 18.444 60 15.615 60 13.615 60 10.787 60 8.787 60 5.96 60 3.96 60 1.13 60 0H32zM0 0h3.757L0 3.757V0zm0 5.96h3.757L0 9.716V5.96zm0 5.657h3.757L0 15.374v-3.757zm0 5.657h3.757L0 21.03v-3.756zm0 5.657h3.757L0 26.687v-3.757zm0 5.657h3.757L0 32.343v-3.757zm0 5.657h3.757L0 38v-3.757zm0 5.657h3.757L0 43.657v-3.757zm0 5.657h3.757L0 49.314v-3.757zm0 5.657h3.757L0 54.97v-3.756zm5.96 5.657h3.756L5.96 60h-3.757v-3.757zm5.656 0h3.757L11.616 60H7.86v-3.757zm5.657 0h3.757L17.272 60h-3.757v-3.757zm5.657 0h3.757L22.93 60h-3.757v-3.757zm5.657 0h3.757L28.586 60H24.83v-3.757zm5.657 0h3.757L34.243 60h-3.757v-3.757zm5.657 0h3.757L39.9 60h-3.757v-3.757zm5.657 0h3.757L45.556 60H41.8v-3.757zm5.657 0h3.757L51.214 60h-3.757v-3.757zm5.656 0h3.757L56.87 60h-3.757v-3.757z" fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+            opacity: 0.8;
+        }
+
         .hero-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -205,18 +366,59 @@
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 15px;
             animation: fadeIn 0.8s ease-out;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 400;
             margin-bottom: 30px;
             opacity: 0.9;
             animation: fadeIn 1s ease-out;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: fadeIn 1.2s ease-out;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: var(--border-radius-md);
+            backdrop-filter: blur(5px);
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
         }
 
         .search-bar {
@@ -293,6 +495,34 @@
             font-size: 1.2rem;
         }
 
+        .loading-spinner {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-green);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Main Content */
         main {
             flex-grow: 1;
@@ -353,72 +583,159 @@
         /* Worker Card */
         .worker-card {
             background: var(--card-background);
-            border-radius: 15px;
+            border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             opacity: 0;
             animation: fadeIn 0.5s ease forwards;
             animation-delay: calc(var(--delay) * 0.1s);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .worker-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .worker-card:hover .worker-avatar {
+            transform: scale(1.05);
+            border-color: var(--accent-yellow);
+        }
+
+        .worker-card:hover .worker-header {
+            background: linear-gradient(to right, rgba(46, 204, 113, 0.05), rgba(46, 204, 113, 0.1));
+        }
+
+        .worker-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-green), var(--accent-blue));
+            transition: height 0.3s ease;
+        }
+
+        .worker-card:hover:before {
+            height: 100%;
+        }
+
+        .worker-card.featured {
+            border: 2px solid var(--accent-yellow);
+            background: linear-gradient(to bottom right, var(--card-background), rgba(241, 196, 15, 0.05));
+        }
+
+        .worker-card.featured:after {
+            content: '⭐ Featured';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-yellow);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .worker-header {
             display: flex;
             align-items: center;
-            padding: 20px;
-            gap: 15px;
+            padding: var(--spacing-lg);
+            gap: var(--spacing-md);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .worker-avatar {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primary-green);
+            border: 4px solid var(--primary-green);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .worker-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin: 0;
             color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+
+        .worker-card:hover .worker-name {
+            color: var(--primary-green-dark);
         }
 
         .worker-title {
             color: var(--primary-green);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .worker-title i {
+            font-size: 0.8rem;
         }
 
         .worker-details {
-            padding: 20px;
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
         }
 
         .worker-info-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: var(--spacing-md);
+            align-items: center;
         }
 
         .worker-wage {
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 0.9rem;
+            padding: 6px 16px;
+            border-radius: var(--border-radius-round);
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 3px 8px rgba(46, 204, 113, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .worker-wage:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        .worker-wage i {
+            font-size: 0.8rem;
         }
 
         .worker-rating {
             display: flex;
             align-items: center;
             gap: 5px;
+            background: rgba(241, 196, 15, 0.1);
+            padding: 5px 10px;
+            border-radius: var(--border-radius-round);
+            transition: all 0.3s ease;
+        }
+
+        .worker-rating:hover {
+            background: rgba(241, 196, 15, 0.2);
         }
 
         .worker-rating i {
@@ -427,27 +744,82 @@
 
         .worker-rating-value {
             font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .worker-rating-count {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-left: 3px;
         }
 
         .worker-stats {
             display: flex;
             justify-content: space-between;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-light);
+            background: var(--card-background-alt);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin-top: var(--spacing-xs);
         }
 
-        .worker-distance, .worker-availability {
+        .worker-distance,
+        .worker-availability,
+        .worker-experience {
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .worker-distance:hover,
+        .worker-availability:hover,
+        .worker-experience:hover {
+            color: var(--text-dark);
+            transform: translateY(-2px);
         }
 
         .available {
-            color: var(--primary-green);
+            color: var(--success-color);
+            font-weight: 500;
         }
 
         .unavailable {
             color: var(--error-color);
+            font-weight: 500;
+        }
+
+        .worker-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: var(--spacing-xs);
+        }
+
+        .skill-tag {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-blue-dark);
+            padding: 4px 10px;
+            border-radius: var(--border-radius-round);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .worker-bio {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+            margin: var(--spacing-sm) 0;
+            position: relative;
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--primary-green-light);
         }
 
         .hire-btn {
@@ -473,6 +845,304 @@
             background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        /* Featured Jobs Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .view-all-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-link:hover {
+            color: var(--primary-green-dark);
+            transform: translateX(3px);
+        }
+
+        .featured-jobs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .featured-job-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .featured-job-header {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-company {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .job-company-name {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 3px 0 0 0;
+        }
+
+        .job-type {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-blue-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .job-type.urgent {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error-color);
+        }
+
+        .job-details {
+            padding: var(--spacing-md);
+            flex-grow: 1;
+        }
+
+        .job-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .job-info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .job-description {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .job-tag {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--primary-green-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .job-footer {
+            padding: var(--spacing-md);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .apply-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .apply-btn:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-2px);
+        }
+
+        .job-posted {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(to right, rgba(46, 204, 113, 0.05), rgba(52, 152, 219, 0.05));
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .testimonial-quote {
+            color: var(--primary-green-light);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-green-light);
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 3px 0;
+        }
+
+        .testimonial-rating {
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            margin-top: var(--spacing-xl);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: var(--spacing-lg);
+        }
+
+        .stats-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .stats-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+
+        .team-members {
+            margin-top: 15px;
+        }
+
+        .team-members ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .team-members li {
+            margin: 5px 0;
+            color: #666;
         }
 
         /* Modal */
@@ -549,7 +1219,9 @@
             color: var(--text-dark);
         }
 
-        .form-select, .form-textarea, .form-input {
+        .form-select,
+        .form-textarea,
+        .form-input {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid var(--input-border);
@@ -559,7 +1231,9 @@
             transition: all 0.3s ease;
         }
 
-        .form-select:focus, .form-textarea:focus, .form-input:focus {
+        .form-select:focus,
+        .form-textarea:focus,
+        .form-input:focus {
             border-color: var(--primary-green);
             box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
             outline: none;
@@ -693,16 +1367,23 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 5px;
+
+            .desktop-nav {
+                display: none;
             }
-            
-            .nav-button {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .header-content {
+                justify-content: space-between;
+            }
+
+            .featured-jobs-container,
+            .testimonials-container,
+            .stats-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
 
             .hero-title {
@@ -715,24 +1396,24 @@
                 height: auto;
                 padding: 15px 0;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            
+
             .nav-button {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
-            
+
             .logo img {
                 width: 140px;
             }
@@ -774,12 +1455,12 @@
                 padding: 5px 8px;
                 font-size: 0.75rem;
             }
-            
+
             .logo img {
                 width: 120px;
                 margin-right: 10px;
             }
-            
+
             .worker-grid {
                 grid-template-columns: 1fr;
             }
@@ -787,7 +1468,7 @@
             .dashboard-section {
                 padding: 20px;
             }
-            
+
             .weather-info {
                 flex-direction: column;
                 align-items: flex-start;
@@ -821,7 +1502,7 @@
             <div class="logo">
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
-            <nav>
+            <nav class="desktop-nav">
                 <button class="nav-button" onclick="window.location.href='welcome.html';">
                     <i class="fas fa-home"></i> Home
                 </button>
@@ -831,7 +1512,7 @@
                 <button class="nav-button" onclick="window.location.href='seed.html';">
                     <i class="fas fa-seedling"></i> Market
                 </button>
-                <button class="nav-button" onclick="window.location.href='worker.html';">
+                <button class="nav-button active" onclick="window.location.href='worker.html';">
                     <i class="fas fa-users"></i> Labour
                 </button>
                 <button class="nav-button" onclick="window.location.href='machinary.html';">
@@ -847,28 +1528,90 @@
                     <i class="fas fa-envelope"></i> Contact
                 </button>
             </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
+                </div>
+                <button class="mobile-menu-close" id="mobileMenuClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-nav-content">
+                <button class="mobile-nav-button" onclick="window.location.href='welcome.html';">
+                    <i class="fas fa-home"></i> Home
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='loan.html';">
+                    <i class="fas fa-money-bill-wave"></i> Loans
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='seed.html';">
+                    <i class="fas fa-seedling"></i> Market
+                </button>
+                <button class="mobile-nav-button active" onclick="window.location.href='worker.html';">
+                    <i class="fas fa-users"></i> Labour
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='machinary.html';">
+                    <i class="fas fa-tractor"></i> Machinery
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='export.html';">
+                    <i class="fas fa-shipping-fast"></i> Export
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='mounitoring.html';">
+                    <i class="fas fa-chart-line"></i> Monitoring
+                </button>
+                <button class="mobile-nav-button" onclick="window.location.href='contact.html';">
+                    <i class="fas fa-envelope"></i> Contact
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Weather Card -->
     <div class="weather-card">
-        <div class="weather-info">
-            <span class="weather-temp">25°C</span>
-            <span class="weather-condition">☀️ Sunny</span>
-            <span class="weather-humidity">💧 45%</span>
+        <div id="weatherInfo" class="weather-info">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
+        <div class="hero-pattern"></div>
         <div class="hero-content">
             <h1 class="hero-title">Connect with Skilled Agricultural Workers</h1>
-            <p class="hero-subtitle">Find daily wage workers, machinery operators, and farming specialists</p>
+            <p class="hero-subtitle">Find daily wage workers, machinery operators, and farming specialists for your
+                agricultural needs</p>
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search workers by skill, location, or experience..." id="heroSearchInput">
+                <input type="text" class="search-input"
+                    placeholder="Search workers by skill, location, or experience..." id="heroSearchInput">
                 <button class="search-button">
                     <i class="fas fa-search"></i> Search
                 </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-value"><span class="counter" data-target="500">0</span>+</div>
+                    <div class="stat-label">Verified Workers</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-value"><span class="counter" data-target="1200">0</span>+</div>
+                    <div class="stat-label">Jobs Completed</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-value"><span class="counter" data-target="95">0</span>%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-value"><span class="counter" data-target="50">0</span>+</div>
+                    <div class="stat-label">Districts Covered</div>
+                </div>
             </div>
         </div>
     </section>
@@ -890,16 +1633,217 @@
 
             <!-- Post a Job Button -->
             <div class="dashboard-section" style="text-align: right;">
-                <button class="hire-btn" id="postJobBtn" style="display: inline-block; width: auto; padding: 10px 20px;">
+                <button class="hire-btn" id="postJobBtn"
+                    style="display: inline-block; width: auto; padding: 10px 20px;">
                     <i class="fas fa-plus"></i> Post a Job Requirement
                 </button>
             </div>
 
             <!-- Worker Grid -->
-            <div class="dashboard-section">
+            <div class="dashboard-section" data-aos="fade-up">
                 <h2>Available Workers</h2>
                 <div class="worker-grid" id="workerGrid">
                     <!-- Worker cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Featured Jobs Section -->
+            <div class="dashboard-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Featured Job Opportunities</h2>
+                    <a href="#" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="featured-jobs-container">
+                    <div class="featured-job-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="featured-job-header">
+                            <div class="job-company">
+                                <img src="https://via.placeholder.com/50" alt="Company Logo" class="company-logo">
+                                <div>
+                                    <h3 class="job-title">Harvesting Team Required</h3>
+                                    <p class="job-company-name">Green Fields Farms</p>
+                                </div>
+                            </div>
+                            <div class="job-type urgent">Urgent</div>
+                        </div>
+                        <div class="job-details">
+                            <div class="job-info">
+                                <div class="job-info-item"><i class="fas fa-map-marker-alt"></i> Amritsar, Punjab</div>
+                                <div class="job-info-item"><i class="fas fa-rupee-sign"></i> ₹900-1200/day</div>
+                                <div class="job-info-item"><i class="fas fa-calendar-alt"></i> 15 days</div>
+                            </div>
+                            <p class="job-description">Looking for experienced wheat harvesting team with own equipment.
+                                Immediate start required for 50-acre farm.</p>
+                            <div class="job-tags">
+                                <span class="job-tag">Wheat</span>
+                                <span class="job-tag">Harvesting</span>
+                                <span class="job-tag">Equipment</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <span class="job-posted">Posted 2 days ago</span>
+                        </div>
+                    </div>
+
+                    <div class="featured-job-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="featured-job-header">
+                            <div class="job-company">
+                                <img src="https://via.placeholder.com/50" alt="Company Logo" class="company-logo">
+                                <div>
+                                    <h3 class="job-title">Irrigation System Installation</h3>
+                                    <p class="job-company-name">Hydro Agri Solutions</p>
+                                </div>
+                            </div>
+                            <div class="job-type">Regular</div>
+                        </div>
+                        <div class="job-details">
+                            <div class="job-info">
+                                <div class="job-info-item"><i class="fas fa-map-marker-alt"></i> Nashik, Maharashtra
+                                </div>
+                                <div class="job-info-item"><i class="fas fa-rupee-sign"></i> ₹1500-1800/day</div>
+                                <div class="job-info-item"><i class="fas fa-calendar-alt"></i> 7 days</div>
+                            </div>
+                            <p class="job-description">Need skilled workers for drip irrigation system installation in
+                                grape vineyard. Experience with modern irrigation systems preferred.</p>
+                            <div class="job-tags">
+                                <span class="job-tag">Irrigation</span>
+                                <span class="job-tag">Drip System</span>
+                                <span class="job-tag">Vineyard</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <span class="job-posted">Posted 5 days ago</span>
+                        </div>
+                    </div>
+
+                    <div class="featured-job-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="featured-job-header">
+                            <div class="job-company">
+                                <img src="https://via.placeholder.com/50" alt="Company Logo" class="company-logo">
+                                <div>
+                                    <h3 class="job-title">Tractor Operator Needed</h3>
+                                    <p class="job-company-name">Modern Agro Farms</p>
+                                </div>
+                            </div>
+                            <div class="job-type">Long-term</div>
+                        </div>
+                        <div class="job-details">
+                            <div class="job-info">
+                                <div class="job-info-item"><i class="fas fa-map-marker-alt"></i> Ludhiana, Punjab</div>
+                                <div class="job-info-item"><i class="fas fa-rupee-sign"></i> ₹1000/day</div>
+                                <div class="job-info-item"><i class="fas fa-calendar-alt"></i> 3 months</div>
+                            </div>
+                            <p class="job-description">Seeking experienced tractor operator for plowing, planting and
+                                general farm work. Must have valid license and 2+ years experience.</p>
+                            <div class="job-tags">
+                                <span class="job-tag">Tractor</span>
+                                <span class="job-tag">Machinery</span>
+                                <span class="job-tag">Long-term</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <span class="job-posted">Posted 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="dashboard-section testimonials-section" data-aos="fade-up">
+                <h2>What Farmers & Workers Say</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">AgriLift has transformed how I find work. I now have consistent
+                            employment throughout the year and earn 30% more than before.</p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60" alt="Testimonial Author"
+                                class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Ramesh Patel</h4>
+                                <p class="testimonial-role">Harvester Operator, Gujarat</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Finding reliable farm workers used to be a major challenge. With
+                            AgriLift, I can quickly hire skilled workers exactly when I need them.</p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60" alt="Testimonial Author"
+                                class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Sunita Devi</h4>
+                                <p class="testimonial-role">Farm Owner, Haryana</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Our irrigation team has doubled our client base since joining
+                            AgriLift. The platform connects us directly with farmers who need our specialized services.
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60" alt="Testimonial Author"
+                                class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Vikram Singh</h4>
+                                <p class="testimonial-role">Irrigation Team Leader, Maharashtra</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Worker Stats Section -->
+            <div class="dashboard-section stats-section" data-aos="fade-up">
+                <h2>Worker Demand Insights</h2>
+                <div class="stats-container">
+                    <div class="stats-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="stats-title">Worker Demand by Category</h3>
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="stats-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="stats-title">Average Daily Wages</h3>
+                        <div class="chart-container">
+                            <canvas id="wageChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="stats-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="stats-title">Seasonal Demand Trends</h3>
+                        <div class="chart-container">
+                            <canvas id="seasonalChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -910,7 +1854,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Post Job Requirement</h3>
-                <button class="close-modal" id="closeModal">&times;</button>
+                <button class="close-modal" id="closeModal">×</button>
             </div>
             <form id="jobForm">
                 <div class="form-group">
@@ -924,13 +1868,15 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Job Details</label>
-                    <textarea class="form-textarea" id="jobDetails" placeholder="Describe the work requirements, skills needed, and duration..."></textarea>
+                    <textarea class="form-textarea" id="jobDetails"
+                        placeholder="Describe the work requirements, skills needed, and duration..."></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Daily Wage Offered</label>
                     <div class="form-input-group">
                         <span class="input-prefix">₹</span>
-                        <input type="number" class="form-input prefix-input" id="wageAmount" placeholder="Enter amount per day">
+                        <input type="number" class="form-input prefix-input" id="wageAmount"
+                            placeholder="Enter amount per day">
                     </div>
                 </div>
                 <div class="form-group">
@@ -950,188 +1896,174 @@
         <i class="fas fa-check-circle"></i> <span id="toastMessage">Job posted successfully!</span>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Worker Data
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+
+            // Start counter animation for hero stats
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+        });
+
+        // Worker Data with Individuals and Teams
         const workerData = [
+            // Individual Worker Example
             {
                 id: 1,
+                type: "individual",
                 name: "Rajesh Kumar",
                 category: "machinery",
                 title: "Tractor & Harvester Operator",
                 wage: 850,
                 rating: 4.8,
+                ratingCount: 128,
                 jobs: 128,
                 distance: 15,
                 availability: true,
+                featured: true,
+                experience: "5+ years",
+                skills: ["Tractor Operation", "Harvesting", "Equipment Maintenance"],
+                bio: "Experienced machinery operator with expertise in modern agricultural equipment and precision farming techniques.",
                 image: "AgriLift/WORKERS/image.jpg"
             },
+            // Team Example
             {
                 id: 2,
-                name: "Anita Devi",
+                type: "team",
+                name: "Harvest Heroes",
                 category: "harvest",
-                title: "Grain Harvesting Specialist",
-                wage: 700,
+                leader: {
+                    name: "Anita Devi",
+                    title: "Team Leader",
+                    image: "AgriLift/WORKERS/W1.JPG"
+                },
+                members: [
+                    { name: "Suresh Patel", title: "Harvester" },
+                    { name: "Lata Singh", title: "Loader" },
+                    { name: "Mohan Verma", title: "Equipment Specialist" }
+                ],
+                wage: 2000,
                 rating: 4.5,
+                ratingCount: 87,
                 jobs: 87,
                 distance: 10,
                 availability: true,
-                image: "AgriLift/WORKERS/W1.JPG"
+                featured: true,
+                experience: "3+ years",
+                skills: ["Wheat Harvesting", "Rice Harvesting", "Team Coordination"],
+                bio: "Efficient harvesting team specializing in wheat and rice crops. We bring our own equipment and can handle large farms quickly."
             },
             {
                 id: 3,
-                name: "Suresh Patel",
-                category: "irrigation",
-                title: "Irrigation System Expert",
-                wage: 900,
-                rating: 4.7,
-                jobs: 156,
-                distance: 20,
-                availability: false,
-                image: "AgriLift/WORKERS/M2.jpg"
-            },
-            {
-                id: 4,
-                name: "Lata Singh",
-                category: "harvest",
-                title: "Vegetable Harvesting Lead",
-                wage: 750,
-                rating: 4.6,
-                jobs: 112,
-                distance: 12,
-                availability: true,
-                image: "AgriLift/WORKERS/w2.jpg"
-            },
-            {
-                id: 5,
+                type: "individual",
                 name: "Vikram Roy",
                 category: "machinery",
                 title: "Modern Farm Equipment Operator",
                 wage: 800,
                 rating: 4.3,
+                ratingCount: 62,
                 jobs: 62,
                 distance: 18,
                 availability: true,
+                featured: false,
+                experience: "4+ years",
+                skills: ["Combine Harvester", "Tractor", "Plowing"],
+                bio: "Skilled in operating modern farm machinery with focus on efficiency and precision. Experienced with GPS-guided equipment.",
                 image: "AgriLift/WORKERS/M3.jpg"
             },
             {
-                id: 6,
-                name: "Preeti Desai",
+                id: 4,
+                type: "team",
+                name: "Irrigation Crew",
                 category: "irrigation",
-                title: "Drip Irrigation Specialist",
-                wage: 875,
-                rating: 4.9,
-                jobs: 184,
-                distance: 25,
-                availability: false,
-                image: "AgriLift/WORKERS/w3.jpg"
-            },
-            {
-                id: 7,
-                name: "Amit Sharma",
-                category: "harvest",
-                title: "Fruit Harvesting Expert",
-                wage: 720,
-                rating: 4.1,
-                jobs: 47,
-                distance: 8,
-                availability: true,
-                image: "AgriLift/WORKERS/M4.jpg"
-            },
-            {
-                id: 8,
-                name: "Naveen Gupta",
-                category: "machinery",
-                title: "Combine Harvester Specialist",
-                wage: 900,
+                leader: {
+                    name: "Preeti Desai",
+                    title: "Team Leader",
+                    image: "AgriLift/WORKERS/w3.jpg"
+                },
+                members: [
+                    { name: "Kalpana Reddy", title: "Water Technician" },
+                    { name: "Deepak Yadav", title: "Pipe Installer" },
+                    { name: "Rahul Sharma", title: "Drip System Specialist" }
+                ],
+                wage: 2500,
                 rating: 4.7,
-                jobs: 133,
-                distance: 22,
-                availability: true,
-                image: "AgriLift/WORKERS/M5.jpg"
-            },
-            {
-                id: 9,
-                name: "Kalpana Reddy",
-                category: "irrigation",
-                title: "Water Management Expert",
-                wage: 850,
-                rating: 4.4,
+                ratingCount: 95,
                 jobs: 95,
                 distance: 16,
                 availability: true,
-                image: "AgriLift/WORKERS/W6.jpg"
+                featured: false,
+                experience: "7+ years",
+                skills: ["Drip Irrigation", "Sprinkler Systems", "Water Management"],
+                bio: "Specialized team in setting up and maintaining modern irrigation systems. We focus on water-efficient solutions for all crop types."
             },
             {
-                id: 10,
-                name: "Sanjay Malik",
-                category: "harvest",
-                title: "Rice Harvesting Lead",
-                wage: 680,
-                rating: 4.2,
-                jobs: 76,
-                distance: 14,
-                availability: false,
-                image: "AgriLift/WORKERS/M6.jpg"
-            },
-            {
-                id: 11,
-                name: "Rekha Tiwari",
-                category: "planting",
-                title: "Seedling & Planting Specialist",
-                wage: 780,
-                rating: 4.6,
-                jobs: 124,
-                distance: 17,
-                availability: true,
-                image: "AgriLift/WORKERS/w4.jpg"
-            },
-            {
-                id: 12,
-                name: "Ravi Kumar",
-                category: "machinery",
-                title: "Precision Farming Equipment Operator",
-                wage: 950,
-                rating: 4.8,
-                jobs: 167,
-                distance: 21,
-                availability: true,
-                image: "AgriLift/WORKERS/M8.jpg"
-            },
-            {
-                id: 13,
-                name: "Meena Jain",
+                id: 5,
+                type: "individual",
+                name: "Priya Sharma",
                 category: "planting",
                 title: "Organic Farming Specialist",
-                wage: 710,
-                rating: 4.4,
-                jobs: 83,
-                distance: 9,
+                wage: 750,
+                rating: 4.9,
+                ratingCount: 73,
+                jobs: 73,
+                distance: 12,
                 availability: true,
-                image: "AgriLift/WORKERS/W7.jpg"
+                featured: true,
+                experience: "8+ years",
+                skills: ["Organic Methods", "Seed Selection", "Sustainable Practices"],
+                bio: "Expert in organic farming techniques with focus on sustainable practices. Specialized in natural pest control and soil health management.",
+                image: "https://via.placeholder.com/70"
             },
             {
-                id: 14,
-                name: "Deepak Yadav",
-                category: "machinery",
-                title: "Modern Tractor Operator",
-                wage: 880,
-                rating: 4.5,
-                jobs: 102,
-                distance: 19,
-                availability: false,
-                image: "AgriLift/WORKERS/M7.jpg"
-            },
-            {
-                id: 15,
-                name: "Neha Shah",
+                id: 6,
+                type: "team",
+                name: "Green Thumb Planters",
                 category: "planting",
-                title: "Nursery Management Expert",
-                wage: 820,
-                rating: 4.3,
-                jobs: 68,
-                distance: 23,
-                availability: true,
-                image: "AgriLift/WORKERS/W5.jpg"
+                leader: {
+                    name: "Sanjay Gupta",
+                    title: "Team Leader",
+                    image: "https://via.placeholder.com/70"
+                },
+                members: [
+                    { name: "Meena Kumari", title: "Seed Specialist" },
+                    { name: "Ajay Patil", title: "Soil Expert" },
+                    { name: "Neha Singh", title: "Planting Coordinator" }
+                ],
+                wage: 1800,
+                rating: 4.6,
+                ratingCount: 58,
+                jobs: 58,
+                distance: 20,
+                availability: false,
+                featured: false,
+                experience: "5+ years",
+                skills: ["Precision Planting", "Crop Rotation", "Seedling Care"],
+                bio: "Professional planting team with expertise in various crops. We ensure optimal spacing and care during the crucial planting phase."
             }
         ];
 
@@ -1147,43 +2079,88 @@
         const cancelBtn = document.getElementById('cancelBtn');
         const jobForm = document.getElementById('jobForm');
 
+        // Initialize toast if not already defined
+        if (!toast || !toastMessage) {
+            document.addEventListener('DOMContentLoaded', function () {
+                // These will be available after the DOM is fully loaded
+                window.toast = document.getElementById('toast');
+                window.toastMessage = document.getElementById('toastMessage');
+            });
+        }
+
         // Create worker card
         function createWorkerCard(worker, index) {
             const card = document.createElement('div');
             card.className = 'worker-card';
             card.dataset.category = worker.category;
             card.style.setProperty('--delay', index);
-            
-            card.innerHTML = `
-                <div class="worker-header">
-                    <img src="${worker.image}" class="worker-avatar" alt="${worker.name}">
-                    <div>
-                        <h3 class="worker-name">${worker.name}</h3>
-                        <p class="worker-title">${worker.title}</p>
-                    </div>
-                </div>
-                <div class="worker-details">
-                    <div class="worker-info-row">
-                        <span class="worker-wage">₹${worker.wage}/day</span>
-                        <div class="worker-rating">
-                            <i class="fas fa-star"></i>
-                            <span class="worker-rating-value">${worker.rating}</span>
-                            <span style="color: #999; margin-left: 5px;">(${worker.jobs} jobs)</span>
+
+            if (worker.type === "individual") {
+                card.innerHTML = `
+                    <div class="worker-header">
+                        <img src="${worker.image}" class="worker-avatar" alt="${worker.name}">
+                        <div>
+                            <h3 class="worker-name">${worker.name}</h3>
+                            <p class="worker-title">${worker.title}</p>
                         </div>
                     </div>
-                    <div class="worker-stats">
-                        <div class="worker-distance">
-                            <i class="fas fa-map-marker-alt"></i> ${worker.distance}km away
+                    <div class="worker-details">
+                        <div class="worker-info-row">
+                            <span class="worker-wage">₹${worker.wage}/day</span>
+                            <div class="worker-rating">
+                                <i class="fas fa-star"></i>
+                                <span class="worker-rating-value">${worker.rating}</span>
+                                <span style="color: #999; margin-left: 5px;">(${worker.jobs} jobs)</span>
+                            </div>
                         </div>
-                        <div class="worker-availability ${worker.availability ? 'available' : 'unavailable'}">
-                            <i class="fas fa-circle"></i> ${worker.availability ? 'Available' : 'Not Available'}
+                        <div class="worker-stats">
+                            <div class="worker-distance">
+                                <i class="fas fa-map-marker-alt"></i> ${worker.distance}km away
+                            </div>
+                            <div class="worker-availability ${worker.availability ? 'available' : 'unavailable'}">
+                                <i class="fas fa-circle"></i> ${worker.availability ? 'Available' : 'Not Available'}
+                            </div>
                         </div>
+                        <button class="hire-btn" data-id="${worker.id}">
+                            Hire Now <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
-                    <button class="hire-btn" data-id="${worker.id}">
-                        Hire Now <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            `;
+                `;
+            } else if (worker.type === "team") {
+                card.innerHTML = `
+                    <div class="worker-header">
+                        <h3 class="worker-name">${worker.name} (Team)</h3>
+                        <p class="worker-title">Led by ${worker.leader.name}</p>
+                    </div>
+                    <div class="worker-details">
+                        <div class="worker-info-row">
+                            <span class="worker-wage">₹${worker.wage}/day (Team)</span>
+                            <div class="worker-rating">
+                                <i class="fas fa-star"></i>
+                                <span class="worker-rating-value">${worker.rating}</span>
+                                <span style="color: #999; margin-left: 5px;">(${worker.jobs} jobs)</span>
+                            </div>
+                        </div>
+                        <div class="worker-stats">
+                            <div class="worker-distance">
+                                <i class="fas fa-map-marker-alt"></i> ${worker.distance}km away
+                            </div>
+                            <div class="worker-availability ${worker.availability ? 'available' : 'unavailable'}">
+                                <i class="fas fa-circle"></i> ${worker.availability ? 'Available' : 'Not Available'}
+                            </div>
+                        </div>
+                        <div class="team-members">
+                            <p><strong>Team Members:</strong></p>
+                            <ul>
+                                ${worker.members.map(member => `<li>${member.name} - ${member.title}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <button class="hire-btn" data-id="${worker.id}">
+                            Hire Team <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+            }
             return card;
         }
 
@@ -1191,19 +2168,37 @@
         function displayWorkers(category) {
             workerGrid.innerHTML = '';
             let filteredWorkers = workerData;
-            
+
             if (category !== 'all') {
                 filteredWorkers = workerData.filter(worker => worker.category === category);
             }
-            
+
             filteredWorkers.forEach((worker, index) => {
                 const card = createWorkerCard(worker, index);
                 workerGrid.appendChild(card);
             });
-            
+
             // Add event listeners to Hire buttons
             document.querySelectorAll('.hire-btn[data-id]').forEach(button => {
                 button.addEventListener('click', hireWorker);
+            });
+
+            // Add event listeners to Apply buttons
+            document.querySelectorAll('.apply-btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Get job information from the parent card
+                    const jobCard = e.target.closest('.featured-job-card');
+                    if (jobCard) {
+                        const jobTitle = jobCard.querySelector('.job-title').textContent;
+                        const jobId = Date.now(); // Generate a unique ID for the job
+
+                        // Set job ID in the form
+                        document.getElementById('jobId').value = jobId;
+
+                        // Show the modal
+                        document.getElementById('applyModal').classList.add('active');
+                    }
+                });
             });
         }
 
@@ -1211,41 +2206,58 @@
         function hireWorker(e) {
             const workerId = parseInt(e.currentTarget.dataset.id);
             const worker = workerData.find(w => w.id === workerId);
-            
+
             if (!worker.availability) {
                 showToast(`${worker.name} is not available for hire at the moment.`);
                 return;
             }
-            
-            showToast(`You've requested to hire ${worker.name}. They will be notified.`);
+
+            // Set worker information in the form
+            document.getElementById('workerId').value = workerId;
+            document.getElementById('workerName').value = worker.name;
+
+            // Pre-fill wage field with worker's wage
+            document.getElementById('jobWage').value = worker.wage;
+
+            // Show the modal
+            document.getElementById('hireModal').classList.add('active');
         }
 
         // Show toast notification
         function showToast(message) {
-            toastMessage.textContent = message;
+            // Check if message contains HTML
+            if (message.includes('<br>') || message.includes('<strong>')) {
+                toastMessage.innerHTML = message;
+            } else {
+                toastMessage.textContent = message;
+            }
+
+            // Adjust timeout based on message length
+            const timeout = Math.max(3000, message.length * 30);
+
             toast.classList.add('active');
             setTimeout(() => {
                 toast.classList.remove('active');
-            }, 3000);
+            }, timeout);
         }
 
         // Search functionality
         heroSearchInput.addEventListener('input', () => {
             const searchTerm = heroSearchInput.value.toLowerCase();
-            
+
             if (searchTerm === '') {
                 displayWorkers('all');
                 return;
             }
-            
+
             workerGrid.innerHTML = '';
-            
-            const filteredWorkers = workerData.filter(worker => 
+
+            const filteredWorkers = workerData.filter(worker =>
                 worker.name.toLowerCase().includes(searchTerm) ||
-                worker.title.toLowerCase().includes(searchTerm) ||
+                (worker.type === "individual" && worker.title.toLowerCase().includes(searchTerm)) ||
                 worker.category.toLowerCase().includes(searchTerm)
             );
-            
+
             if (filteredWorkers.length === 0) {
                 workerGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
@@ -1258,7 +2270,7 @@
                     const card = createWorkerCard(worker, index);
                     workerGrid.appendChild(card);
                 });
-                
+
                 // Re-add event listeners
                 document.querySelectorAll('.hire-btn[data-id]').forEach(button => {
                     button.addEventListener('click', hireWorker);
@@ -1270,11 +2282,11 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.dataset.category;
-                
+
                 // Update active state
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 displayWorkers(category);
             });
         });
@@ -1301,45 +2313,118 @@
         // Job form submission
         jobForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const jobType = document.getElementById('jobType').value;
             const jobDetails = document.getElementById('jobDetails').value;
             const wageAmount = document.getElementById('wageAmount').value;
             const jobLocation = document.getElementById('jobLocation').value;
-            
+
             if (!jobDetails || !wageAmount || !jobLocation) {
                 showToast('Please fill all required fields');
                 return;
             }
-            
+
             showToast('Job posted successfully! Workers will be notified.');
             closeJobModal();
-            
+
             // Reset form
             jobForm.reset();
         });
 
-        // Weather update
-        function updateWeather() {
-            const temperatures = [22, 23, 24, 25, 26, 27, 28, 29, 30];
-            const conditions = ['☀️ Sunny', '🌧️ Rainy', '⛅ Cloudy', '🌤️ Partly Cloudy'];
-            const humidities = [35, 40, 45, 50, 55, 60, 65];
-            
-            const temp = temperatures[Math.floor(Math.random() * temperatures.length)];
-            const condition = conditions[Math.floor(Math.random() * conditions.length)];
-            const humidity = humidities[Math.floor(Math.random() * humidities.length)];
-            
-            document.querySelector('.weather-temp').textContent = `${temp}°C`;
-            document.querySelector('.weather-condition').textContent = condition;
-            document.querySelector('.weather-humidity').textContent = `💧 ${humidity}%`;
+        // Weather functions
+        const getWeatherIcon = (code) => {
+            const iconMap = {
+                "01d": { icon: "☀️", description: "Sunny" },
+                "01n": { icon: "🌙", description: "Clear" },
+                "02d": { icon: "⛅", description: "Partly Cloudy" },
+                "02n": { icon: "☁️", description: "Partly Cloudy" },
+                "03d": { icon: "☁️", description: "Cloudy" },
+                "03n": { icon: "☁️", description: "Cloudy" },
+                "04d": { icon: "☁️", description: "Overcast" },
+                "04n": { icon: "☁️", description: "Overcast" },
+                "09d": { icon: "🌧️", description: "Rainy" },
+                "09n": { icon: "🌧️", description: "Rainy" },
+                "10d": { icon: "🌦️", description: "Rain Showers" },
+                "10n": { icon: "🌧️", description: "Rain Showers" },
+                "11d": { icon: "⛈️", description: "Thunderstorm" },
+                "11n": { icon: "⛈️", description: "Thunderstorm" },
+                "13d": { icon: "❄️", description: "Snow" },
+                "13n": { icon: "❄️", description: "Snow" },
+                "50d": { icon: "🌫️", description: "Foggy" },
+                "50n": { icon: "🌫️", description: "Foggy" },
+            };
+            return iconMap[code] || { icon: "☀️", description: "Clear" };
+        };
+
+        async function fetchWeather() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                            const response = await fetch(
+                                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+                            );
+                            if (!response.ok) throw new Error("Weather data not available");
+                            const data = await response.json();
+                            const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                            weatherContainer.innerHTML = `
+                                <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                                <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                                <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                                <span class="weather-city">${data.name}</span>
+                            `;
+                        },
+                        (error) => {
+                            fetchWeatherForDefaultLocation();
+                            console.error("Geolocation error:", error);
+                        }
+                    );
+                } else {
+                    fetchWeatherForDefaultLocation();
+                }
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
         }
 
-        // Update weather periodically
-        setInterval(updateWeather, 10000);
-        updateWeather(); // Initial update
+        async function fetchWeatherForDefaultLocation() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=New Delhi&units=metric&appid=${API_KEY}`
+                );
+                if (!response.ok) throw new Error("Weather data not available");
+                const data = await response.json();
+                const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                weatherContainer.innerHTML = `
+                    <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                    <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                    <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                    <span class="weather-city">${data.name}</span>
+                `;
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
+        }
+
+        // Initialize weather and set periodic updates
+        fetchWeather();
+        setInterval(fetchWeather, 30 * 60 * 1000);
 
         // Header scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1348,8 +2433,911 @@
             }
         });
 
+        // Display workers based on category filter
+        function displayWorkers(category) {
+            workerGrid.innerHTML = '';
+            let delay = 0;
+
+            workerData.forEach(worker => {
+                if (category === 'all' || worker.category === category) {
+                    const workerCard = document.createElement('div');
+                    workerCard.className = 'worker-card';
+                    workerCard.style.setProperty('--delay', delay);
+
+                    // Add featured class if worker is featured
+                    if (worker.featured) {
+                        workerCard.classList.add('featured');
+                    }
+
+                    delay++;
+
+                    if (worker.type === 'individual') {
+                        workerCard.innerHTML = `
+                            <div class="worker-header">
+                                <img src="${worker.image}" alt="${worker.name}" class="worker-avatar">
+                                <div>
+                                    <h3 class="worker-name">${worker.name}</h3>
+                                    <p class="worker-title"><i class="fas fa-briefcase"></i> ${worker.title}</p>
+                                </div>
+                            </div>
+                            <div class="worker-details">
+                                <div class="worker-info-row">
+                                    <div class="worker-wage"><i class="fas fa-rupee-sign"></i> ${worker.wage}/day</div>
+                                    <div class="worker-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span class="worker-rating-value">${worker.rating}</span>
+                                        <span class="worker-rating-count">(${worker.ratingCount})</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="worker-bio">${worker.bio}</p>
+                                
+                                <div class="worker-skills">
+                                    ${worker.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                </div>
+                                
+                                <div class="worker-stats">
+                                    <div class="worker-distance">
+                                        <i class="fas fa-map-marker-alt"></i> ${worker.distance} km
+                                    </div>
+                                    <div class="worker-experience">
+                                        <i class="fas fa-history"></i> ${worker.experience}
+                                    </div>
+                                    <div class="worker-availability">
+                                        <i class="fas fa-clock"></i>
+                                        <span class="${worker.availability ? 'available' : 'unavailable'}">
+                                            ${worker.availability ? 'Available Now' : 'Unavailable'}
+                                        </span>
+                                    </div>
+                                </div>
+                                <button class="hire-btn">
+                                    <i class="fas fa-handshake"></i> Hire Now
+                                </button>
+                            </div>
+                        `;
+                    } else if (worker.type === 'team') {
+                        workerCard.innerHTML = `
+                            <div class="worker-header">
+                                <img src="${worker.leader.image}" alt="${worker.leader.name}" class="worker-avatar">
+                                <div>
+                                    <h3 class="worker-name">${worker.name}</h3>
+                                    <p class="worker-title"><i class="fas fa-users"></i> Team led by ${worker.leader.name}</p>
+                                </div>
+                            </div>
+                            <div class="worker-details">
+                                <div class="worker-info-row">
+                                    <div class="worker-wage"><i class="fas fa-rupee-sign"></i> ${worker.wage}/day</div>
+                                    <div class="worker-rating">
+                                        <i class="fas fa-star"></i>
+                                        <span class="worker-rating-value">${worker.rating}</span>
+                                        <span class="worker-rating-count">(${worker.ratingCount})</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="worker-bio">${worker.bio}</p>
+                                
+                                <div class="worker-skills">
+                                    ${worker.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                </div>
+                                
+                                <div class="team-members">
+                                    <h4 style="margin-top: 15px; margin-bottom: 8px; font-size: 0.95rem;">Team Members:</h4>
+                                    <ul>
+                                        ${worker.members.map(member => `<li>${member.name} - ${member.title}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div class="worker-stats">
+                                    <div class="worker-distance">
+                                        <i class="fas fa-map-marker-alt"></i> ${worker.distance} km
+                                    </div>
+                                    <div class="worker-experience">
+                                        <i class="fas fa-history"></i> ${worker.experience}
+                                    </div>
+                                    <div class="worker-availability">
+                                        <i class="fas fa-clock"></i>
+                                        <span class="${worker.availability ? 'available' : 'unavailable'}">
+                                            ${worker.availability ? 'Available Now' : 'Unavailable'}
+                                        </span>
+                                    </div>
+                                </div>
+                                <button class="hire-btn">
+                                    <i class="fas fa-handshake"></i> Hire Team
+                                </button>
+                            </div>
+                        `;
+                    }
+
+                    workerGrid.appendChild(workerCard);
+                }
+            });
+        }
+
         // Initialize workers display
         displayWorkers('all');
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileNav = document.getElementById('mobileNav');
+
+        // Create overlay element
+        const navOverlay = document.createElement('div');
+        navOverlay.className = 'nav-overlay';
+        document.body.appendChild(navOverlay);
+
+        // Toggle mobile menu
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        mobileMenuClose.addEventListener('click', closeMenu);
+        navOverlay.addEventListener('click', closeMenu);
+
+        function closeMenu() {
+            mobileNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Initialize charts for statistics section
+        function initCharts() {
+            // Category demand chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Machinery', 'Harvesting', 'Irrigation', 'Planting', 'Other'],
+                    datasets: [{
+                        data: [35, 25, 15, 20, 5],
+                        backgroundColor: [
+                            'rgba(46, 204, 113, 0.8)',
+                            'rgba(52, 152, 219, 0.8)',
+                            'rgba(155, 89, 182, 0.8)',
+                            'rgba(241, 196, 15, 0.8)',
+                            'rgba(230, 126, 34, 0.8)'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 12
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Wage chart
+            const wageCtx = document.getElementById('wageChart').getContext('2d');
+            const wageChart = new Chart(wageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Machinery', 'Harvesting', 'Irrigation', 'Planting', 'Other'],
+                    datasets: [{
+                        label: 'Average Daily Wage (₹)',
+                        data: [850, 750, 950, 650, 800],
+                        backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Seasonal demand chart
+            const seasonalCtx = document.getElementById('seasonalChart').getContext('2d');
+            const seasonalChart = new Chart(seasonalCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Machinery',
+                        data: [65, 70, 80, 85, 75, 60, 65, 70, 85, 90, 80, 70],
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Harvesting',
+                        data: [40, 45, 60, 80, 90, 85, 70, 60, 75, 85, 70, 50],
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    family: 'Poppins'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize charts when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(initCharts, 1000); // Delay to ensure elements are rendered
+        });
+    </script>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <div class="toast-message" id="toastMessage"></div>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Job Posting Modal -->
+    <div class="modal" id="jobModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Post a Job Requirement</h3>
+                <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="jobForm">
+                <div class="form-group">
+                    <label for="jobType">Job Type</label>
+                    <select id="jobType" class="form-control" required>
+                        <option value="">Select Job Type</option>
+                        <option value="harvest">Harvesting</option>
+                        <option value="planting">Planting</option>
+                        <option value="irrigation">Irrigation</option>
+                        <option value="machinery">Machinery Operation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" id="jobTitle" class="form-control"
+                        placeholder="E.g., Wheat Harvesting Team Required" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDetails">Job Details</label>
+                    <textarea id="jobDetails" class="form-control" rows="4"
+                        placeholder="Describe the job requirements, skills needed, etc." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="wageAmount">Wage (₹ per day)</label>
+                    <input type="number" id="wageAmount" class="form-control" placeholder="E.g., 800" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDuration">Duration (days)</label>
+                    <input type="number" id="jobDuration" class="form-control" placeholder="E.g., 7" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Location</label>
+                    <input type="text" id="jobLocation" class="form-control" placeholder="E.g., Nashik, Maharashtra"
+                        required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Post Job</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Job Application Modal -->
+    <div class="modal" id="applyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Apply for Job</h3>
+                <button class="modal-close" id="closeApplyModal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="applyForm">
+                <div class="form-group">
+                    <label for="applicantName">Your Name</label>
+                    <input type="text" id="applicantName" class="form-control" placeholder="Enter your full name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantPhone">Phone Number</label>
+                    <input type="tel" id="applicantPhone" class="form-control" placeholder="Enter your phone number"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantExperience">Experience (years)</label>
+                    <input type="number" id="applicantExperience" class="form-control" placeholder="E.g., 3" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantSkills">Skills</label>
+                    <textarea id="applicantSkills" class="form-control" rows="3" placeholder="List your relevant skills"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="applicantMessage">Message (Optional)</label>
+                    <textarea id="applicantMessage" class="form-control" rows="3"
+                        placeholder="Any additional information you want to share"></textarea>
+                </div>
+                <input type="hidden" id="jobId" value="">
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelApplyBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hire Worker Modal -->
+    <div class="modal" id="hireModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="hireModalTitle">Hire Worker</h3>
+                <button class="modal-close" id="closeHireModal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="hireForm">
+                <div class="form-group">
+                    <label for="employerName">Your Name</label>
+                    <input type="text" id="employerName" class="form-control" placeholder="Enter your full name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="employerPhone">Phone Number</label>
+                    <input type="tel" id="employerPhone" class="form-control" placeholder="Enter your phone number"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDescription">Job Description</label>
+                    <textarea id="jobDescription" class="form-control" rows="3"
+                        placeholder="Describe the job you want to hire for" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Job Location</label>
+                    <input type="text" id="jobLocation" class="form-control" placeholder="Enter the job location"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="jobStartDate">Start Date</label>
+                    <input type="date" id="jobStartDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDays">Number of Days</label>
+                    <input type="number" id="jobDays" class="form-control" placeholder="E.g., 7" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobWage">Wage Offered (₹ per day)</label>
+                    <input type="number" id="jobWage" class="form-control" placeholder="E.g., 800" required>
+                </div>
+                <!-- Team-specific fields, shown only when hiring a team -->
+                <div id="teamFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="teamMembersNeeded">Number of Team Members Needed</label>
+                        <input type="number" id="teamMembersNeeded" class="form-control" placeholder="E.g., 3" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="specificSkills">Specific Skills Required</label>
+                        <textarea id="specificSkills" class="form-control" rows="2"
+                            placeholder="List any specific skills you need from team members"></textarea>
+                    </div>
+                </div>
+                <!-- Individual worker specific fields -->
+                <div id="individualFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="workingHours">Working Hours</label>
+                        <input type="text" id="workingHours" class="form-control" placeholder="E.g., 8 AM - 5 PM">
+                    </div>
+                </div>
+                <input type="hidden" id="workerId" value="">
+                <input type="hidden" id="workerName" value="">
+                <input type="hidden" id="workerType" value="">
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelHireBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Send Hire Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add CSS for modals and toast
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                /* Modal Styles */
+                .modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    z-index: 2000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    overflow-y: auto;
+                }
+                
+                .modal.active {
+                    display: block;
+                    opacity: 1;
+                }
+                
+                .modal-content {
+                    background-color: white;
+                    width: 90%;
+                    max-width: 600px;
+                    margin: 50px auto;
+                    border-radius: var(--border-radius-lg);
+                    box-shadow: var(--card-shadow);
+                    overflow: hidden;
+                    transform: translateY(-20px);
+                    transition: transform 0.3s ease;
+                    animation: modalSlideIn 0.3s forwards;
+                }
+                
+                @keyframes modalSlideIn {
+                    from {
+                        transform: translateY(-20px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                .modal-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 20px;
+                    background: linear-gradient(45deg, var(--primary-green-light), var(--secondary-green));
+                    color: white;
+                }
+                
+                .modal-header h3 {
+                    margin: 0;
+                    font-size: 1.3rem;
+                }
+                
+                .modal-close {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    transition: transform 0.3s ease;
+                }
+                
+                .modal-close:hover {
+                    transform: scale(1.1);
+                }
+                
+                .form-group {
+                    margin-bottom: 15px;
+                    padding: 0 20px;
+                }
+                
+                .form-group:first-of-type {
+                    margin-top: 20px;
+                }
+                
+                .form-control {
+                    width: 100%;
+                    padding: 10px 15px;
+                    border: 1px solid var(--input-border);
+                    border-radius: var(--border-radius-md);
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.95rem;
+                    transition: border-color 0.3s ease;
+                }
+                
+                .form-control:focus {
+                    outline: none;
+                    border-color: var(--input-focus);
+                    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+                }
+                
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: 500;
+                    font-size: 0.95rem;
+                    color: var(--text-medium);
+                }
+                
+                .form-actions {
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 10px;
+                    padding: 15px 20px 20px;
+                    border-top: 1px solid #eee;
+                    margin-top: 15px;
+                }
+                
+                .btn-primary {
+                    background-color: var(--primary-green);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: var(--border-radius-md);
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    font-family: 'Poppins', sans-serif;
+                }
+                
+                .btn-primary:hover {
+                    background-color: var(--primary-green-dark);
+                    transform: translateY(-2px);
+                }
+                
+                .btn-secondary {
+                    background-color: #f1f1f1;
+                    color: var(--text-medium);
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: var(--border-radius-md);
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    font-family: 'Poppins', sans-serif;
+                }
+                
+                .btn-secondary:hover {
+                    background-color: #e5e5e5;
+                }
+                
+                /* Toast Notification */
+                .toast {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    background-color: white;
+                    border-radius: var(--border-radius-md);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    padding: 15px 20px;
+                    display: flex;
+                    align-items: flex-start;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    z-index: 2100;
+                    max-width: 400px;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                }
+                
+                .toast.active {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                
+                .toast-content {
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .toast-icon {
+                    color: var(--success-color);
+                    font-size: 1.5rem;
+                    margin-right: 15px;
+                }
+                
+                .toast-message {
+                    color: var(--text-medium);
+                    font-size: 0.95rem;
+                    flex: 1;
+                    line-height: 1.5;
+                }
+                
+                .toast-message strong {
+                    color: var(--text-dark);
+                    font-weight: 600;
+                }
+                
+                .toast-progress {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 3px;
+                    width: 100%;
+                    background-color: var(--success-color);
+                    animation: toast-progress 3s linear forwards;
+                }
+                
+                @keyframes toast-progress {
+                    from {
+                        width: 100%;
+                    }
+                    to {
+                        width: 0%;
+                    }
+                }
+            </style>
+        `);
+
+        // Initialize event listeners for Apply Now buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get modal elements
+            const applyModal = document.getElementById('applyModal');
+            const closeApplyModal = document.getElementById('closeApplyModal');
+            const cancelApplyBtn = document.getElementById('cancelApplyBtn');
+            const applyForm = document.getElementById('applyForm');
+            const hireModal = document.getElementById('hireModal');
+            const closeHireModal = document.getElementById('closeHireModal');
+            const cancelHireBtn = document.getElementById('cancelHireBtn');
+            const hireForm = document.getElementById('hireForm');
+
+            // Set today as the minimum date for job start date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('jobStartDate').min = today;
+
+            // Add event listeners to Apply Now buttons
+            function addApplyButtonListeners() {
+                const applyButtons = document.querySelectorAll('.apply-btn');
+                applyButtons.forEach(button => {
+                    button.addEventListener('click', function (e) {
+                        // Get job information from the parent card
+                        const jobCard = e.target.closest('.featured-job-card');
+                        const jobTitle = jobCard.querySelector('.job-title').textContent;
+                        const jobId = Date.now(); // Generate a unique ID for the job
+
+                        // Set job ID in the form
+                        document.getElementById('jobId').value = jobId;
+
+                        // Show the modal
+                        applyModal.classList.add('active');
+                    });
+                });
+            }
+
+            // Enhanced Hire Worker function
+            function hireWorker(e) {
+                const workerId = parseInt(e.currentTarget.dataset.id);
+                const worker = workerData.find(w => w.id === workerId);
+
+                if (!worker.availability) {
+                    showToast(`${worker.name} is not available for hire at the moment.`);
+                    return;
+                }
+
+                // Set worker information in the form
+                document.getElementById('workerId').value = workerId;
+                document.getElementById('workerName').value = worker.name;
+                document.getElementById('workerType').value = worker.type;
+
+                // Pre-fill wage field with worker's wage
+                document.getElementById('jobWage').value = worker.wage;
+
+                // Update modal title based on worker type
+                const modalTitle = document.getElementById('hireModalTitle');
+                const teamFields = document.getElementById('teamFields');
+                const individualFields = document.getElementById('individualFields');
+
+                if (worker.type === 'team') {
+                    modalTitle.textContent = `Hire Team: ${worker.name}`;
+                    teamFields.style.display = 'block';
+                    individualFields.style.display = 'none';
+
+                    // Pre-fill team members needed with the number of members in the team
+                    if (worker.members && worker.members.length) {
+                        document.getElementById('teamMembersNeeded').value = worker.members.length;
+                    }
+                } else {
+                    modalTitle.textContent = `Hire Worker: ${worker.name}`;
+                    teamFields.style.display = 'none';
+                    individualFields.style.display = 'block';
+                }
+
+                // Show the modal
+                hireModal.classList.add('active');
+            }
+
+            // Close Apply Modal
+            function closeApplyModalFunc() {
+                applyModal.classList.remove('active');
+                applyForm.reset();
+            }
+
+            // Close Hire Modal
+            function closeHireModalFunc() {
+                hireModal.classList.remove('active');
+                hireForm.reset();
+            }
+
+            // Apply Form Submission
+            applyForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('applicantName').value;
+                const phone = document.getElementById('applicantPhone').value;
+                const experience = document.getElementById('applicantExperience').value;
+                const skills = document.getElementById('applicantSkills').value;
+                const message = document.getElementById('applicantMessage').value;
+                const jobId = document.getElementById('jobId').value;
+
+                if (!name || !phone || !experience || !skills) {
+                    showToast('Please fill all required fields');
+                    return;
+                }
+
+                // Get job title from the featured job card
+                let jobTitle = "the selected position";
+                const jobCards = document.querySelectorAll('.featured-job-card');
+                jobCards.forEach(card => {
+                    const titleElement = card.querySelector('.job-title');
+                    if (titleElement) {
+                        jobTitle = titleElement.textContent;
+                    }
+                });
+
+                // Create a detailed success message
+                const successMessage = `<strong>Application Submitted!</strong><br><br>` +
+                    `Thank you ${name} for applying to "${jobTitle}".<br><br>` +
+                    `Your application has been received and is being reviewed. ` +
+                    `Employers will contact you at ${phone} if they're interested in your profile.<br><br>` +
+                    `<strong>Application Details:</strong><br>` +
+                    `Experience: ${experience} years<br>` +
+                    `Skills: ${skills}`;
+
+                showToast(successMessage);
+                closeApplyModalFunc();
+
+                // You could also implement an API call here to send the application to a backend server
+                // For now, we're just showing a success message
+            });
+
+            // Hire Form Submission
+            hireForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('employerName').value;
+                const phone = document.getElementById('employerPhone').value;
+                const description = document.getElementById('jobDescription').value;
+                const location = document.getElementById('jobLocation').value;
+                const startDate = document.getElementById('jobStartDate').value;
+                const days = document.getElementById('jobDays').value;
+                const wage = document.getElementById('jobWage').value;
+                const workerName = document.getElementById('workerName').value;
+                const workerType = document.getElementById('workerType').value;
+
+                if (!name || !phone || !description || !location || !startDate || !days || !wage) {
+                    showToast('Please fill all required fields');
+                    return;
+                }
+
+                // Additional validation for team-specific fields
+                if (workerType === 'team') {
+                    const teamMembersNeeded = document.getElementById('teamMembersNeeded').value;
+                    if (!teamMembersNeeded) {
+                        showToast('Please specify how many team members you need');
+                        return;
+                    }
+                }
+
+                // Format the date for display
+                const formattedDate = new Date(startDate).toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Create a custom message based on worker type
+                let message = '';
+                if (workerType === 'team') {
+                    const teamMembersNeeded = document.getElementById('teamMembersNeeded').value;
+                    message = `Your hire request for team "${workerName}" (${teamMembersNeeded} members) has been sent. The team leader will contact you soon.`;
+                } else {
+                    message = `Your hire request has been sent to ${workerName}. They will contact you soon.`;
+                }
+
+                // Add job details to the message
+                message += `<br><br><strong>Job Details:</strong><br>` +
+                    `Location: ${location}<br>` +
+                    `Start Date: ${formattedDate}<br>` +
+                    `Duration: ${days} days<br>` +
+                    `Wage: ₹${wage}/day`;
+
+                // Show success message
+                showToast(message);
+                closeHireModalFunc();
+
+                // You could also implement an API call here to send the hire request to a backend server
+                // For now, we're just showing a success message
+            });
+
+            // Event listeners for modals
+            closeApplyModal.addEventListener('click', closeApplyModalFunc);
+            cancelApplyBtn.addEventListener('click', closeApplyModalFunc);
+            closeHireModal.addEventListener('click', closeHireModalFunc);
+            cancelHireBtn.addEventListener('click', closeHireModalFunc);
+
+            // Close modals when clicking outside
+            applyModal.addEventListener('click', function (e) {
+                if (e.target === applyModal) {
+                    closeApplyModalFunc();
+                }
+            });
+
+            hireModal.addEventListener('click', function (e) {
+                if (e.target === hireModal) {
+                    closeHireModalFunc();
+                }
+            });
+
+            // Add event listeners to Apply buttons
+            addApplyButtonListeners();
+
+            // Override the existing hireWorker function
+            document.querySelectorAll('.hire-btn[data-id]').forEach(button => {
+                button.removeEventListener('click', window.hireWorker);
+                button.addEventListener('click', hireWorker);
+            });
+
+            // Make sure the original hireWorker function is replaced
+            window.hireWorker = hireWorker;
+        });
     </script>
 </body>
 

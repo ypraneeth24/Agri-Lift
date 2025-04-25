@@ -9,58 +9,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
-        
+
         /* Enhanced Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes scaleIn {
             from {
                 transform: scale(0.9);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1);
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideInRight {
             from {
                 transform: translateX(50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
             }
         }
-        
+
         /* Enhanced Service Cards */
         .service-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -71,16 +76,24 @@
             opacity: 0;
             animation: fadeIn 0.5s ease forwards;
         }
-        
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .service-card::before {
             content: '';
             position: absolute;
@@ -92,11 +105,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .service-card:hover::before {
             opacity: 1;
         }
-        
+
         .service-icon {
             transition: all 0.4s ease;
             background: rgba(16, 185, 129, 0.1);
@@ -107,25 +120,25 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .service-card:hover .service-icon {
             transform: rotateY(180deg);
             background: rgba(16, 185, 129, 0.2);
         }
-        
+
         /* Enhanced Tab Design */
         .tab-container {
             position: relative;
             z-index: 1;
         }
-        
+
         .tab-btn {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             border: 2px solid transparent;
         }
-        
+
         .tab-btn::after {
             content: '';
             position: absolute;
@@ -133,78 +146,78 @@
             left: 50%;
             width: 150%;
             height: 150%;
-            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
             opacity: 0;
             transition: opacity 0.5s;
             transform: translate(-50%, -50%) scale(0);
             pointer-events: none;
         }
-        
+
         .tab-btn:active::after {
             opacity: 0.3;
             transform: translate(-50%, -50%) scale(1);
             transition: transform 0s, opacity 0.5s;
         }
-        
+
         .tab-btn.active {
             border-color: #059669;
         }
-        
+
         .tab-content {
             display: none;
             animation: scaleIn 0.4s ease-out;
         }
-        
+
         .tab-active {
             display: block;
         }
-        
+
         /* Enhanced FAQ Accordion */
         .faq-item {
             transition: all 0.3s ease;
             overflow: hidden;
             border-left: 3px solid transparent;
         }
-        
+
         .faq-item:hover {
             border-left-color: #10b981;
             background-color: rgba(16, 185, 129, 0.05);
         }
-        
+
         .faq-question {
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .faq-question:hover {
             color: #10b981;
         }
-        
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
-        
+
         .faq-answer.show {
             max-height: 300px;
         }
-        
+
         .chevron-icon {
             transition: transform 0.3s ease;
         }
-        
+
         .chevron-rotate {
             transform: rotate(180deg);
         }
-        
+
         /* Hero Section Enhancement */
         .hero-section {
             position: relative;
             overflow: hidden;
             background: linear-gradient(135deg, #e6f7ee 0%, #d1f2e4 100%);
         }
-        
+
         .hero-section::after {
             content: '';
             position: absolute;
@@ -216,20 +229,20 @@
             opacity: 0.3;
             z-index: 0;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 1;
         }
-        
+
         .hero-title {
             animation: slideInRight 0.6s ease;
         }
-        
+
         .hero-text {
             animation: fadeIn 0.8s ease;
         }
-        
+
         /* CTA Button Animation */
         .cta-button {
             position: relative;
@@ -238,12 +251,12 @@
             box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
             animation: pulse 2s infinite;
         }
-        
+
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
-        
+
         .cta-button::after {
             content: '';
             position: absolute;
@@ -251,21 +264,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
             transform: translateX(-100%);
             transition: transform 0.6s;
         }
-        
+
         .cta-button:hover::after {
             transform: translateX(100%);
         }
-        
+
         /* Nav Enhancement */
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -278,35 +291,35 @@
             transform-origin: right;
             transition: transform 0.3s ease;
         }
-        
+
         .nav-link:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
-        
+
         /* Scroll behavior */
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* Scrollbar customization */
         ::-webkit-scrollbar {
             width: 10px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: #f1f5f1;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: #10b981;
             border-radius: 5px;
         }
-        
+
         ::-webkit-scrollbar-thumb:hover {
             background: #059669;
         }
-        
+
         /* Custom badge */
         .badge {
             display: inline-block;
@@ -348,8 +361,10 @@
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
                 <a href="welcome.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Home</a>
                 <a href="seed.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Market</a>
-                <a href="mounitoring.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Farm mounitoring</a>
-                <a href="worker.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Labour Management</a>
+                <a href="mounitoring.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Farm
+                    mounitoring</a>
+                <a href="worker.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Labour
+                    Management</a>
                 <a href="loan.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Loans</a>
                 <a href="services.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">services</a>
                 <a href="contact.html" class="block text-white py-2 hover:bg-emerald-600 px-3 rounded">Contact Us</a>
@@ -367,10 +382,12 @@
                 End-to-end solutions for modern farming needs, from seed to harvest and beyond
             </p>
             <div class="flex justify-center space-x-4">
-                <button onclick="document.getElementById('services').scrollIntoView()" class="px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg hover:bg-emerald-700 transition flex items-center">
+                <button onclick="document.getElementById('services').scrollIntoView()"
+                    class="px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg hover:bg-emerald-700 transition flex items-center">
                     <i class="fas fa-arrow-down mr-2"></i> Explore Services
                 </button>
-                <button onclick="window.location.href='register.html'" class="px-6 py-3 bg-white text-emerald-700 rounded-lg shadow-lg hover:bg-gray-100 transition border border-emerald-100 flex items-center">
+                <button onclick="window.location.href='register.html'"
+                    class="px-6 py-3 bg-white text-emerald-700 rounded-lg shadow-lg hover:bg-gray-100 transition border border-emerald-100 flex items-center">
                     <i class="fas fa-user-plus mr-2"></i> Sign Up
                 </button>
             </div>
@@ -405,18 +422,22 @@
     <div id="services" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl font-bold text-center mb-2 text-emerald-800">Our Services</h2>
         <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            Discover our comprehensive range of agricultural services designed to optimize your farming operations and maximize productivity.
+            Discover our comprehensive range of agricultural services designed to optimize your farming operations and
+            maximize productivity.
         </p>
-        
+
         <div class="tab-container">
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="tab-btn active px-6 py-3 rounded-full bg-emerald-600 text-white shadow-md" data-tab="farming">
+                <button class="tab-btn active px-6 py-3 rounded-full bg-emerald-600 text-white shadow-md"
+                    data-tab="farming">
                     <i class="fas fa-tractor mr-2"></i>Farming Essentials
                 </button>
-                <button class="tab-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-emerald-100 shadow-sm" data-tab="advanced">
+                <button class="tab-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-emerald-100 shadow-sm"
+                    data-tab="advanced">
                     <i class="fas fa-microchip mr-2"></i>Advanced Solutions
                 </button>
-                <button class="tab-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-emerald-100 shadow-sm" data-tab="specialized">
+                <button class="tab-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-emerald-100 shadow-sm"
+                    data-tab="specialized">
                     <i class="fas fa-crop mr-2"></i>Specialized Services
                 </button>
             </div>
@@ -448,7 +469,8 @@
                                 <span>Custom fertilizer recommendations for optimal yield</span>
                             </li>
                         </ul>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
                             onclick="window.location.href='dashboard.html'">
                             Get Started <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -481,7 +503,8 @@
                                 <div class="text-xs text-gray-600">Options</div>
                             </div>
                         </div>
-                        <a href="seed.html" class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center">
+                        <a href="seeds.html"
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center">
                             Browse Seeds <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -512,8 +535,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
-                            onclick="window.location.href='advisory.html'">
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                            onclick="window.location.href='3d2.html'">
                             Speak to an Advisor <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -550,7 +574,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition flex items-center justify-center shadow-md"
+                        <button
+                            class="w-full py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-cyan-600 transition flex items-center justify-center shadow-md"
                             onclick="window.location.href='mounitoring.html'">
                             Explore Technology <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -568,16 +593,19 @@
                         </p>
                         <div class="flex flex-col space-y-4 mb-6">
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
                                     <i class="fas fa-map"></i>
                                 </div>
                                 <div>
                                     <h5 class="font-semibold">Field Mapping</h5>
-                                    <p class="text-xs text-gray-600">Comprehensive aerial maps of your entire property</p>
+                                    <p class="text-xs text-gray-600">Comprehensive aerial maps of your entire property
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
                                     <i class="fas fa-bug"></i>
                                 </div>
                                 <div>
@@ -586,7 +614,8 @@
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center text-emerald-600 mr-4">
                                     <i class="fas fa-chart-line"></i>
                                 </div>
                                 <div>
@@ -595,7 +624,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
                             onclick="window.location.href='drone.html'">
                             Book a Drone Survey <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -611,7 +641,8 @@
                             Smart water management solutions that reduce consumption while optimizing crop health
                         </p>
                         <div class="relative h-40 mb-6 overflow-hidden rounded-lg">
-                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-10"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-10">
+                            </div>
                             <div class="p-4 relative z-10">
                                 <div class="flex justify-between mb-2">
                                     <span class="text-sm font-semibold">Water Savings:</span>
@@ -620,7 +651,7 @@
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
                                     <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 40%"></div>
                                 </div>
-                                
+
                                 <div class="mt-6">
                                     <h4 class="font-medium text-gray-800 mb-2">System Features:</h4>
                                     <div class="grid grid-cols-2 gap-2 text-xs">
@@ -640,7 +671,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
                             onclick="window.location.href='irrigation.html'">
                             Get a System Quote <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -689,7 +721,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
                             onclick="window.location.href='export.html'">
                             Explore Export Options <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -700,7 +733,8 @@
                         <div class="service-icon text-emerald-600 text-3xl mb-6">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <div class="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-3">
+                        <div
+                            class="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-3">
                             Eco-Friendly
                         </div>
                         <h3 class="text-xl font-bold mb-3">Organic Certification</h3>
@@ -732,7 +766,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-green-600 transition flex items-center justify-center shadow-md"
+                        <button
+                            class="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-green-600 transition flex items-center justify-center shadow-md"
                             onclick="window.location.href='organic.html'">
                             Start Certification <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -748,7 +783,8 @@
                             Connect directly with restaurants, hotels, and retail chains to sell your produce
                         </p>
                         <div class="relative mb-6">
-                            <div class="h-32 bg-gradient-to-r from-amber-50 to-emerald-50 rounded-lg flex items-center justify-center p-4">
+                            <div
+                                class="h-32 bg-gradient-to-r from-amber-50 to-emerald-50 rounded-lg flex items-center justify-center p-4">
                                 <div class="text-center">
                                     <div class="text-2xl font-bold text-emerald-700 mb-1">250+</div>
                                     <div class="text-sm text-gray-600">Partner Businesses</div>
@@ -759,11 +795,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-4 py-1 rounded-full shadow-md border border-emerald-100">
+                            <div
+                                class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-4 py-1 rounded-full shadow-md border border-emerald-100">
                                 <span class="text-xs font-semibold text-emerald-600">Premium Rates</span>
                             </div>
                         </div>
-                        <button class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
+                        <button
+                            class="w-full py-3 bg-emerald-50 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-100 transition flex items-center justify-center"
                             onclick="window.location.href='network.html'">
                             Join Our Network <i class="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -778,10 +816,12 @@
         <div class="container mx-auto px-4">
             <div class="md:flex items-center justify-between">
                 <div class="md:w-1/2 mb-8 md:mb-0">
-                    <span class="inline-block px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm mb-4">Featured Service</span>
+                    <span class="inline-block px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm mb-4">Featured
+                        Service</span>
                     <h2 class="text-3xl font-bold mb-4">Smart Farming Technology Integration</h2>
                     <p class="mb-6 text-emerald-100">
-                        Our IoT-powered farming solutions help you monitor and manage your farm remotely, reducing water usage by up to 40% and increasing yields by 25% on average.
+                        Our IoT-powered farming solutions help you monitor and manage your farm remotely, reducing water
+                        usage by up to 40% and increasing yields by 25% on average.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-6">
                         <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm">
@@ -797,13 +837,15 @@
                             Mobile App Control
                         </div>
                     </div>
-                    <button class="px-6 py-3 bg-white text-emerald-700 rounded-lg font-semibold hover:bg-emerald-50 transition cta-button"
+                    <button
+                        class="px-6 py-3 bg-white text-emerald-700 rounded-lg font-semibold hover:bg-emerald-50 transition cta-button"
                         onclick="window.location.href='mounitoring.html'">
                         Learn More About Smart Farming
                     </button>
                 </div>
                 <div class="md:w-2/5 relative">
-                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm border border-white border-opacity-20">
+                    <div
+                        class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm border border-white border-opacity-20">
                         <div class="flex justify-between items-center mb-6">
                             <div class="text-lg font-bold">Farm Dashboard</div>
                             <div class="text-sm bg-emerald-500 px-2 py-1 rounded">Online</div>
@@ -860,7 +902,8 @@
                         <i class="chevron-icon fas fa-chevron-down text-emerald-600 transition-transform"></i>
                     </button>
                     <div class="faq-answer mt-3 text-gray-600">
-                        <p class="pb-2">Our soil testing service can be requested through our mobile app or website. Simply:</p>
+                        <p class="pb-2">Our soil testing service can be requested through our mobile app or website.
+                            Simply:</p>
                         <ol class="list-decimal list-inside space-y-1 text-sm ml-4 mb-2">
                             <li>Create an account or login</li>
                             <li>Navigate to "Services" and select "Soil Testing"</li>
@@ -878,7 +921,10 @@
                         <i class="chevron-icon fas fa-chevron-down text-emerald-600 transition-transform"></i>
                     </button>
                     <div class="faq-answer mt-3 text-gray-600">
-                        <p>We offer a wide variety of seeds including cereals, pulses, vegetables, fruits, and ornamental plants. All our seeds are certified, tested for quality, and have guaranteed germination rates. We specialize in climate-adapted varieties that are suitable for different regions and growing conditions.</p>
+                        <p>We offer a wide variety of seeds including cereals, pulses, vegetables, fruits, and
+                            ornamental plants. All our seeds are certified, tested for quality, and have guaranteed
+                            germination rates. We specialize in climate-adapted varieties that are suitable for
+                            different regions and growing conditions.</p>
                     </div>
                 </div>
 
@@ -889,8 +935,14 @@
                         <i class="chevron-icon fas fa-chevron-down text-emerald-600 transition-transform"></i>
                     </button>
                     <div class="faq-answer mt-3 text-gray-600">
-                        <p>Our smart farming system uses IoT sensors placed throughout your farm to monitor key parameters like soil moisture, temperature, humidity, and more. These sensors send real-time data to our cloud platform, which you can access through our mobile app or web dashboard.</p>
-                        <p class="mt-2">The system uses AI to analyze this data and provide actionable insights, such as when to irrigate, fertilize, or take pest control measures. For irrigation, the system can be configured to automatically activate your irrigation equipment when moisture levels fall below optimal thresholds.</p>
+                        <p>Our smart farming system uses IoT sensors placed throughout your farm to monitor key
+                            parameters like soil moisture, temperature, humidity, and more. These sensors send real-time
+                            data to our cloud platform, which you can access through our mobile app or web dashboard.
+                        </p>
+                        <p class="mt-2">The system uses AI to analyze this data and provide actionable insights, such as
+                            when to irrigate, fertilize, or take pest control measures. For irrigation, the system can
+                            be configured to automatically activate your irrigation equipment when moisture levels fall
+                            below optimal thresholds.</p>
                     </div>
                 </div>
 
@@ -901,7 +953,10 @@
                         <i class="chevron-icon fas fa-chevron-down text-emerald-600 transition-transform"></i>
                     </button>
                     <div class="faq-answer mt-3 text-gray-600">
-                        <p>Yes, we offer flexible financing options for farmers looking to purchase agricultural equipment. Our loan programs feature competitive interest rates, customizable repayment terms, and minimal documentation requirements. We also provide special financing packages for first-time farmers and those transitioning to organic or smart farming practices.</p>
+                        <p>Yes, we offer flexible financing options for farmers looking to purchase agricultural
+                            equipment. Our loan programs feature competitive interest rates, customizable repayment
+                            terms, and minimal documentation requirements. We also provide special financing packages
+                            for first-time farmers and those transitioning to organic or smart farming practices.</p>
                     </div>
                 </div>
 
@@ -912,7 +967,11 @@
                         <i class="chevron-icon fas fa-chevron-down text-emerald-600 transition-transform"></i>
                     </button>
                     <div class="faq-answer mt-3 text-gray-600">
-                        <p>The organic certification process typically takes 3-6 months from application to certification, depending on your farm's current practices and the certification type you're seeking. Our team will guide you through each step, helping you prepare documentation, implement required changes, and schedule inspections to ensure a smooth certification process.</p>
+                        <p>The organic certification process typically takes 3-6 months from application to
+                            certification, depending on your farm's current practices and the certification type you're
+                            seeking. Our team will guide you through each step, helping you prepare documentation,
+                            implement required changes, and schedule inspections to ensure a smooth certification
+                            process.</p>
                     </div>
                 </div>
             </div>
@@ -923,13 +982,16 @@
     <div class="bg-emerald-700 text-white py-16">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Farming?</h2>
-            <p class="text-lg mb-8 text-emerald-100 max-w-2xl mx-auto">Join thousands of successful farmers using AgriLift services to increase yields, reduce costs, and build sustainable agricultural practices.</p>
+            <p class="text-lg mb-8 text-emerald-100 max-w-2xl mx-auto">Join thousands of successful farmers using
+                AgriLift services to increase yields, reduce costs, and build sustainable agricultural practices.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="cta-button bg-white text-emerald-700 px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition shadow-lg flex items-center justify-center"
+                <button
+                    class="cta-button bg-white text-emerald-700 px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition shadow-lg flex items-center justify-center"
                     onclick="window.location.href='register.html'">
                     <i class="fas fa-user-plus mr-2"></i> Get Started Today
                 </button>
-                <button class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition flex items-center justify-center"
+                <button
+                    class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition flex items-center justify-center"
                     onclick="window.location.href='contact.html'">
                     <i class="fas fa-headset mr-2"></i> Speak to an Expert
                 </button>
@@ -943,12 +1005,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-white">AgriLift</h3>
-                    <p class="text-sm mb-4">Empowering farmers with technology and sustainable agricultural solutions since 2015.</p>
+                    <p class="text-sm mb-4">Empowering farmers with technology and sustainable agricultural solutions
+                        since 2015.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-emerald-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-emerald-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-emerald-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-emerald-200 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
@@ -982,8 +1049,10 @@
                     <h4 class="font-semibold mb-4 text-white">Newsletter</h4>
                     <p class="text-sm mb-4">Subscribe for the latest updates and farming tips.</p>
                     <form class="flex flex-col space-y-2">
-                        <input type="email" placeholder="Your email address" class="px-4 py-2 rounded bg-emerald-800 border border-emerald-700 text-white placeholder-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-500 transition">
+                        <input type="email" placeholder="Your email address"
+                            class="px-4 py-2 rounded bg-emerald-800 border border-emerald-700 text-white placeholder-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        <button type="submit"
+                            class="px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-500 transition">
                             Subscribe
                         </button>
                     </form>
@@ -1011,7 +1080,7 @@
                 // Add active class to clicked button and corresponding content
                 button.classList.remove('bg-gray-200', 'hover:bg-emerald-100');
                 button.classList.add('bg-emerald-600', 'text-white', 'active');
-                
+
                 // Add animation to tab content
                 const tabContent = document.getElementById(button.dataset.tab);
                 setTimeout(() => {
@@ -1038,20 +1107,20 @@
         });
 
         // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
         // Animate service cards on scroll
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const serviceCards = document.querySelectorAll('.service-card');
-            
+
             // Add animation-delay to each card for staggered effect
             serviceCards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
-            
+
             // Animate the hero elements
             document.querySelector('.hero-title').style.opacity = '1';
             document.querySelector('.hero-text').style.opacity = '1';

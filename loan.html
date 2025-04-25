@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AgriLift - Agricultural Financing</title>
-        <meta name="description" content="AgriLift - Premium agricultural financing platform for farmers worldwide" />
-        <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriLift - Agricultural Financing</title>
+    <meta name="description" content="AgriLift - Premium agricultural financing platform for farmers worldwide" />
+    <meta name="author" content="Lovable" />
     
-        <meta property="og:title" content="AgriLift - Agricultural Financing" />
-        <meta property="og:description" content="Premium agricultural financing platform for farmers worldwide" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:title" content="AgriLift - Agricultural Financing" />
+    <meta property="og:description" content="Premium agricultural financing platform for farmers worldwide" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@lovable_dev" />
-        <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -81,7 +81,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -93,7 +92,6 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -104,28 +102,18 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
-
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
-
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
         /* Header & Navigation Styling */
@@ -750,118 +738,36 @@
 
         /* Responsive Styles */
         @media screen and (max-width: 1024px) {
-            header {
-                height: auto;
-                padding: 15px 0;
-            }
-
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 5px;
-            }
-
-            .nav-button {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
+            header { height: auto; padding: 15px 0; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 5px; }
+            .nav-button { padding: 6px 12px; font-size: 0.8rem; }
         }
 
         @media screen and (max-width: 768px) {
-            header {
-                height: auto;
-                padding: 15px 0;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-
-            .nav-button {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-
-            .logo img {
-                width: 140px;
-            }
-
-            .weather-card {
-                left: 50%;
-                right: auto;
-                transform: translateX(-50%);
-                top: 170px;
-            }
-
-            main {
-                padding-top: 220px;
-            }
-
-            .inputs-row {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .modal-container {
-                width: 95%;
-                padding: 25px;
-            }
+            header { height: auto; padding: 15px 0; }
+            .header-content { flex-direction: column; gap: 15px; }
+            nav { width: 100%; justify-content: center; flex-wrap: wrap; gap: 5px; }
+            .nav-button { padding: 6px 10px; font-size: 0.8rem; }
+            .logo img { width: 140px; }
+            .weather-card { left: 50%; right: auto; transform: translateX(-50%); top: 170px; }
+            main { padding-top: 220px; }
+            .inputs-row { grid-template-columns: 1fr; gap: 15px; }
+            .modal-container { width: 95%; padding: 25px; }
         }
 
         @media screen and (max-width: 480px) {
-            .nav-button {
-                padding: 5px 8px;
-                font-size: 0.75rem;
-            }
-
-            .logo img {
-                width: 120px;
-                margin-right: 10px;
-            }
-
-            .bank-card {
-                flex: 0 0 250px;
-                padding: 15px;
-            }
-
-            .bank-logo {
-                width: 40px;
-                height: 40px;
-            }
-
-            .bank-name {
-                font-size: 1rem;
-            }
-
-            .dashboard-section {
-                padding: 20px;
-            }
-
-            .section-card {
-                padding: 15px;
-            }
-
-            .section-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .weather-info {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
+            .nav-button { padding: 5px 8px; font-size: 0.75rem; }
+            .logo img { width: 120px; margin-right: 10px; }
+            .bank-card { flex: 0 0 250px; padding: 15px; }
+            .bank-logo { width: 40px; height: 40px; }
+            .bank-name { font-size: 1rem; }
+            .dashboard-section { padding: 20px; }
+            .section-card { padding: 15px; }
+            .section-card h3 { font-size: 1.3rem; }
+            .weather-info { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
     </style>
 </head>
-
 <body>
     <!-- Header -->
     <header id="header">
@@ -946,7 +852,6 @@
                             <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                         </div>
                     </div>
-
                     <div class="inputs-row">
                         <div class="input-group">
                             <label for="loanTerm">Loan Term (Years)</label>
@@ -954,15 +859,12 @@
                         </div>
                         <div class="input-group">
                             <label for="interestRate">Interest Rate (%)</label>
-                            <input type="number" step="0.01" id="interestRate" class="calculator-input"
-                                placeholder="Enter interest rate">
+                            <input type="number" step="0.01" id="interestRate" class="calculator-input" placeholder="Enter interest rate">
                         </div>
                     </div>
-
                     <button id="calculateBtn" class="calculate-btn">
                         <i class="fas fa-calculator"></i> Calculate Payments
                     </button>
-
                     <div id="results" class="results-container">
                         <div id="monthlyPayment" class="monthly-payment"></div>
                         <div class="result-row">
@@ -994,8 +896,7 @@
     <div id="thankYouModal" class="modal-overlay">
         <div class="modal-container">
             <h3 class="modal-title">Thank You!</h3>
-            <p style="margin-bottom: 20px; color: #666;">Our staff will contact you shortly to assist with your loan
-                application.</p>
+            <p style="margin-bottom: 20px; color: #666;">Our staff will contact you shortly to assist with your loan application.</p>
             <button onclick="closeThankYouModal()" class="success-btn">
                 <i class="fas fa-check"></i> OK
             </button>
@@ -1004,50 +905,50 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Enhanced Country Data with Flags
+        // Updated Country Data with URLs
         const countryData = {
             india: {
                 banks: [
-                    { name: "State Bank of India", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/sbi.png" },
-                    { name: "HDFC Bank", interest: 6.5, type: "private", logo: "/AgriLift/Loans/hdfc.png" },
-                    { name: "NABARD", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/nabard.png" },
-                    { name: "ICICI Bank", interest: 6.7, type: "private", logo: "/AgriLift/Loans/icici.png" }
+                    { name: "State Bank of India", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/sbi.png", url: "https://sbi.co.in/web/agri-rural/agriculture-banking/crop-loan" },
+                    { name: "HDFC Bank", interest: 6.5, type: "private", logo: "/AgriLift/Loans/hdfc.png", url: "https://www.hdfcbank.com/personal/borrow/popular-loans/ruralloans/retail-agri-loan-kisan-card-and-kisan-gold-card" },
+                    { name: "NABARD", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/nabard.png", url: "https://www.nabard.org/" },
+                    { name: "ICICI Bank", interest: 6.7, type: "private", logo: "/AgriLift/Loans/icici.png", url: "https://www.icicibank.com/rural/loans/farmer-finance" }
                 ],
                 coordinates: [20.5937, 78.9629]
             },
             usa: {
                 banks: [
-                    { name: "USDA Farm Service", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/usda.png" },
-                    { name: "AgriBank USA", interest: 5.9, type: "private", logo: "/AgriLift/Loans/agribank.png" },
-                    { name: "Farm Credit System", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/farmcredit.png" },
-                    { name: "Wells Fargo Agri", interest: 6.1, type: "private", logo: "/AgriLift/Loans/wellsfargo.png" }
+                    { name: "USDA Farm Service", interest: 3.8, type: "gov", logo: "/AgriLift/Loans/usda.png", url: "https://www.fsa.usda.gov/" },
+                    { name: "AgriBank USA", interest: 5.9, type: "private", logo: "/AgriLift/Loans/agribank.png", url: "https://www.agribank.com/" },
+                    { name: "Farm Credit System", interest: 4.2, type: "gov", logo: "/AgriLift/Loans/farmcredit.png", url: "https://www.farmcredit.com/" },
+                    { name: "Wells Fargo Agri", interest: 6.1, type: "private", logo: "/AgriLift/Loans/wellsfargo.png", url: "https://www.wellsfargo.com/agriculture/" }
                 ],
                 coordinates: [37.0902, -95.7129]
             },
             brazil: {
                 banks: [
-                    { name: "Banco do Brasil", interest: 5.0, type: "gov", logo: "/AgriLift/Loans/bancobrasil.png" },
-                    { name: "Santander Brasil", interest: 7.2, type: "private", logo: "/AgriLift/Loans/santander.png" },
-                    { name: "Caixa Econômica", interest: 4.8, type: "gov", logo: "/AgriLift/Loans/caixa.png" },
-                    { name: "Itaú Agribusiness", interest: 7.0, type: "private", logo: "/AgriLift/Loans/itau.png" }
+                    { name: "Banco do Brasil", interest: 5.0, type: "gov", logo: "/AgriLift/Loans/bancobrasil.png", url: "https://www.bb.com.br/agro" },
+                    { name: "Santander Brasil", interest: 7.2, type: "private", logo: "/AgriLift/Loans/santander.png", url: "https://www.santander.com.br/agro" },
+                    { name: "Caixa Econômica", interest: 4.8, type: "gov", logo: "/AgriLift/Loans/caixa.png", url: "https://www.caixa.gov.br/agronegocios" },
+                    { name: "Itaú Agribusiness", interest: 7.0, type: "private", logo: "/AgriLift/Loans/itau.png", url: "https://www.itau.com.br/agronegocio" }
                 ],
                 coordinates: [-14.2350, -51.9253]
             },
             nigeria: {
                 banks: [
-                    { name: "Bank of Agriculture", interest: 6.0, type: "gov", logo: "/AgriLift/Loans/boa.png" },
-                    { name: "Zenith AgriFin", interest: 8.0, type: "private", logo: "/AgriLift/Loans/zenith.png" },
-                    { name: "FirstBank Nigeria", interest: 6.5, type: "gov", logo: "/AgriLift/Loans/firstbank.png" },
-                    { name: "GTBank Agribiz", interest: 8.2, type: "private", logo: "/AgriLift/Loans/gtbank.png" }
+                    { name: "Bank of Agriculture", interest: 6.0, type: "gov", logo: "/AgriLift/Loans/boa.png", url: "https://www.boanig.com/" },
+                    { name: "Zenith AgriFin", interest: 8.0, type: "private", logo: "/AgriLift/Loans/zenith.png", url: "https://www.zenithbank.com/" },
+                    { name: "FirstBank Nigeria", interest: 6.5, type: "gov", logo: "/AgriLift/Loans/firstbank.png", url: "https://www.firstbanknigeria.com/agribusiness/" },
+                    { name: "GTBank Agribiz", interest: 8.2, type: "private", logo: "/AgriLift/Loans/gtbank.png", url: "https://www.gtbank.com/" }
                 ],
                 coordinates: [9.0820, 8.6753]
             },
             australia: {
                 banks: [
-                    { name: "NAB Agri Banking", interest: 3.5, type: "gov", logo: "/AgriLift/Loans/nab.png" },
-                    { name: "Commonwealth Agri", interest: 5.5, type: "private", logo: "/AgriLift/Loans/commbank.png" },
-                    { name: "ANZ Agribusiness", interest: 3.7, type: "gov", logo: "/AgriLift/Loans/anz.png" },
-                    { name: "Westpac Rural", interest: 5.8, type: "private", logo: "/AgriLift/Loans/westpac.png" }
+                    { name: "NAB Agri Banking", interest: 3.5, type: "gov", logo: "/AgriLift/Loans/nab.png", url: "https://www.nab.com.au/business/agribusiness" },
+                    { name: "Commonwealth Agri", interest: 5.5, type: "private", logo: "/AgriLift/Loans/commbank.png", url: "https://www.commbank.com.au/business/agribusiness.html" },
+                    { name: "ANZ Agribusiness", interest: 3.7, type: "gov", logo: "/AgriLift/Loans/anz.png", url: "https://www.anz.com.au/business/industries/agribusiness/" },
+                    { name: "Westpac Rural", interest: 5.8, type: "private", logo: "/AgriLift/Loans/westpac.png", url: "https://www.westpac.com.au/business-banking/industries/agribusiness/" }
                 ],
                 coordinates: [-25.2744, 133.7751]
             }
@@ -1082,7 +983,6 @@
                 "50d": { icon: "🌫️", description: "Foggy" },
                 "50n": { icon: "🌫️", description: "Foggy" },
             };
-
             return iconMap[code] || { icon: "☀️", description: "Clear" };
         };
 
@@ -1090,28 +990,17 @@
         async function fetchWeather() {
             try {
                 const weatherContainer = document.getElementById('weatherInfo');
-                
-                // Get user location first (using geolocation API)
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(
                         async (position) => {
                             const { latitude, longitude } = position.coords;
-                            
-                            // Use OpenWeatherMap API with user's coordinates
-                            // Note: In a production app, you would store this API key in environment variables
                             const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
                             const response = await fetch(
                                 `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
                             );
-                            
-                            if (!response.ok) {
-                                throw new Error("Weather data not available");
-                            }
-                            
+                            if (!response.ok) throw new Error("Weather data not available");
                             const data = await response.json();
-                            
                             const weatherInfo = getWeatherIcon(data.weather[0].icon);
-                            
                             weatherContainer.innerHTML = `
                                 <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
                                 <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
@@ -1120,13 +1009,11 @@
                             `;
                         },
                         (error) => {
-                            // Fallback to default location (New Delhi) if geolocation fails
                             fetchWeatherForDefaultLocation();
                             console.error("Geolocation error:", error);
                         }
                     );
                 } else {
-                    // Fallback if geolocation is not supported
                     fetchWeatherForDefaultLocation();
                 }
             } catch (error) {
@@ -1137,26 +1024,18 @@
                 `;
             }
         }
-        
+
         // Fetch weather for default location
         async function fetchWeatherForDefaultLocation() {
             try {
                 const weatherContainer = document.getElementById('weatherInfo');
-                
-                // Default to New Delhi
                 const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
                 const response = await fetch(
                     `https://api.openweathermap.org/data/2.5/weather?q=New Delhi&units=metric&appid=${API_KEY}`
                 );
-                
-                if (!response.ok) {
-                    throw new Error("Weather data not available");
-                }
-                
+                if (!response.ok) throw new Error("Weather data not available");
                 const data = await response.json();
-                
                 const weatherInfo = getWeatherIcon(data.weather[0].icon);
-                
                 weatherContainer.innerHTML = `
                     <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
                     <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
@@ -1172,7 +1051,7 @@
             }
         }
 
-        // Create Bank Card
+        // Create Bank Card with updated "Apply Now" button
         function createBankCard(bank, index) {
             const card = document.createElement('div');
             card.className = 'bank-card';
@@ -1207,16 +1086,12 @@
                         </span>
                     </div>
                 </div>
-                <button class="apply-btn" onclick="openStaffModal()">
+                <button class="apply-btn" onclick="window.open('${bank.url}', '_blank')">
                     <i class="fas fa-handshake"></i> Apply Now
                 </button>
             `;
 
-            // Animate card
-            setTimeout(() => {
-                card.style.opacity = '1';
-            }, index * 100);
-
+            setTimeout(() => { card.style.opacity = '1'; }, index * 100);
             return card;
         }
 
@@ -1224,15 +1099,11 @@
         function updateBankCards(country) {
             const container = document.getElementById('bankCards');
             container.innerHTML = '';
-
             if (!countryData[country]) return;
-
             countryData[country].banks.forEach((bank, index) => {
                 const card = createBankCard(bank, index);
                 container.appendChild(card);
             });
-
-            // Update loan calculator with default rate from first bank
             if (countryData[country].banks.length > 0) {
                 document.getElementById('interestRate').value = countryData[country].banks[0].interest;
             }
@@ -1242,21 +1113,18 @@
         let map;
         function initMap() {
             if (map) map.remove();
-            
             map = L.map('map').setView([20, 0], 2);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            // Add Country Markers
             Object.entries(countryData).forEach(([country, data]) => {
-                const marker = L.marker(data.coordinates)
+                L.marker(data.coordinates)
                     .addTo(map)
                     .bindPopup(`<b>${country.charAt(0).toUpperCase() + country.slice(1)}</b><br>Click to view banks`)
                     .on('click', () => {
                         document.getElementById('countrySelect').value = country;
                         updateBankCards(country);
-                        // Pan map to selected country
                         map.setView(data.coordinates, 5);
                     });
             });
@@ -1289,20 +1157,17 @@
             document.getElementById('monthlyPayment').textContent = `Monthly Payment: ₹${monthly.toFixed(2)}`;
             document.getElementById('totalInterest').textContent = `₹${totalInterest.toFixed(2)}`;
             document.getElementById('totalPayment').textContent = `₹${totalPayment.toFixed(2)}`;
-
             resultsContainer.classList.add('visible');
 
-            // Update progress bar based on loan amount
-            const maxLoan = 1000000; // 10 lakhs for demo
+            const maxLoan = 1000000;
             const percentage = Math.min(100, (amount / maxLoan) * 100);
             document.getElementById('progressFill').style.width = `${percentage}%`;
         }
 
-        // Open Staff Modal
+        // Modal Functions (unchanged, kept for consistency)
         function openStaffModal() {
             const staffList = document.getElementById('staffList');
             staffList.innerHTML = '';
-
             loanStaff.forEach(staff => {
                 const li = document.createElement('div');
                 li.className = 'staff-item';
@@ -1317,21 +1182,17 @@
                 };
                 staffList.appendChild(li);
             });
-
             document.getElementById('staffModal').classList.add('visible');
         }
 
-        // Close Staff Modal
         function closeModal() {
             document.getElementById('staffModal').classList.remove('visible');
         }
 
-        // Open Thank You Modal
         function openThankYouModal() {
             document.getElementById('thankYouModal').classList.add('visible');
         }
 
-        // Close Thank You Modal
         function closeThankYouModal() {
             document.getElementById('thankYouModal').classList.remove('visible');
         }
@@ -1351,23 +1212,18 @@
             const selectedCountry = e.target.value;
             if (selectedCountry) {
                 updateBankCards(selectedCountry);
-
-                // Pan map to selected country
                 const coordinates = countryData[selectedCountry].coordinates;
                 map.setView(coordinates, 5);
             }
         });
 
-        // Add calculate button event listener
         document.getElementById('calculateBtn').addEventListener('click', calculateLoan);
 
-        // Add animation to nav buttons
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('mouseenter', function () {
                 const icon = this.querySelector('i');
                 if (icon) icon.classList.add('fa-bounce');
             });
-
             button.addEventListener('mouseleave', function () {
                 const icon = this.querySelector('i');
                 if (icon) icon.classList.remove('fa-bounce');
@@ -1376,22 +1232,11 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize map
             initMap();
-            
-            // Fetch weather data
             fetchWeather();
-            
-            // Update bank cards with default country
             updateBankCards('india');
-            
-            // Set interval to refresh weather data every 30 minutes
             setInterval(fetchWeather, 30 * 60 * 1000);
         });
     </script>
-    
-    <!-- Add GPT Engineer script tag for the Select feature -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 </body>
-
 </html>

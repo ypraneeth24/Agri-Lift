@@ -1,0 +1,19 @@
+/* Fixed feature-card icon style with standard background-clip property */
+.feature-card i {
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    -webkit-background-clip: text;
+    background-clip: text; /* Standard property added for better compatibility */
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    transition: transform 0.6s ease;
+}/* Fixed feature-card icon style with standard background-clip property */
+.feature-card i {
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    -webkit-background-clip: text;
+    background-clip: text; /* Standard property added for better compatibility */
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    transition: transform 0.6s ease;
+}
