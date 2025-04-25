@@ -63,7 +63,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-green);
         }
-        
+
         /* Side Navigation Menu */
         .side-menu {
             position: fixed;
@@ -835,7 +835,7 @@
             </button>
         </div>
     </nav>
-    
+
     <!-- Side Navigation Menu -->
     <div id="menuOverlay" class="menu-overlay"></div>
     <div id="sideMenu" class="side-menu">
@@ -847,31 +847,20 @@
         </div>
         <div class="side-menu-content">
             <button class="nav-item" onclick="window.location.href='home.html';">
-                <i class="fas fa-home"></i> Home
+                <i class="fas fa-seedling"></i> Diverse Farming
             </button>
-            <button class="nav-item" onclick="window.location.href='dashboard.html';">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
+
+            <button class="nav-item" onclick="window.location.href='profile.html';">
+                <i class="fas fa-user"></i> My Profile
             </button>
-            <button class="nav-item" onclick="window.location.href='contact.html';">
-                <i class="fas fa-envelope"></i> Contact
+            <button class="nav-item" onclick="window.location.href='register.html';">
+                <i class="fas fa-sign-in-alt"></i> Register/Login
             </button>
-            <button class="nav-item" onclick="window.location.href='loan.html';">
-                <i class="fas fa-money-bill-wave"></i> Loans
+            <button class="nav-item" onclick="window.location.href='settings.html';">
+                <i class="fas fa-cog"></i> Settings
             </button>
-            <button class="nav-item" onclick="window.location.href='seed.html';">
-                <i class="fas fa-seedling"></i> Market
-            </button>
-            <button class="nav-item" onclick="window.location.href='worker.html';">
-                <i class="fas fa-users"></i> Labour
-            </button>
-            <button class="nav-item" onclick="window.location.href='machinary.html';">
-                <i class="fas fa-tractor"></i> Machinery
-            </button>
-            <button class="nav-item" onclick="window.location.href='export.html';">
-                <i class="fas fa-shipping-fast"></i> Export
-            </button>
-            <button class="nav-item" onclick="window.location.href='mounitoring.html';">
-                <i class="fas fa-chart-line"></i> Monitoring
+            <button class="nav-item" onclick="window.location.href='Services.html';">
+                <i class="fas fa-cog"></i> Services
             </button>
         </div>
         <div class="side-menu-footer">
@@ -1732,42 +1721,42 @@
 
         // Initial check
         checkScroll();
-        
+
         // Side menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
         const sideMenu = document.getElementById('sideMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-        
+
         function openMenu() {
             sideMenu.classList.add('active');
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
         }
-        
+
         function closeMenuFunc() {
             sideMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.style.overflow = ''; // Re-enable scrolling
         }
-        
+
         menuToggle.addEventListener('click', openMenu);
         closeMenu.addEventListener('click', closeMenuFunc);
         menuOverlay.addEventListener('click', closeMenuFunc);
-        
+
         // Close side menu when clicking on a nav item
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 // Add a small delay before redirecting to show the click effect
                 setTimeout(() => {
                     closeMenuFunc();
                 }, 300);
             });
         });
-        
+
         // Close menu with Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
                 closeMenuFunc();
             }

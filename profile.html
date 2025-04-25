@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriLift - User Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --primary-green-dark: #219a56;
+            --secondary-green: #27ae60;
+            --accent-blue: #3498db;
+            --accent-blue-dark: #2980b9;
+            --accent-yellow: #f1c40f;
+            --background-light: #f9fcfa;
+            --text-dark: #2c3e50;
+            --card-background: #ffffff;
+            --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            --input-border: #dcdfe6;
+            --input-focus: #3498db;
+            --transition-speed: 0.3s;
+            --error-color: #e74c3c;
+            --success-color: #27ae60;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('data:image/svg+xml;charset=utf8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z" fill="%232ecc71" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-green);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-green);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            height: 70px;
+            background: rgba(46, 204, 113, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            width: 160px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.08);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .nav-button:focus {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
+        }
+
+        .weather-card {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--card-background);
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            z-index: 999;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.5s ease-out;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(46, 204, 113, 0.1);
+        }
+
+        .weather-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .weather-icon {
+            font-size: 1.4rem;
+        }
+
+        .weather-temp {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        main {
+            flex-grow: 1;
+            padding-top: 140px;
+            padding-bottom: 60px;
+        }
+
+        .dashboard-section {
+            margin: 0 auto 40px;
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dashboard-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        .profile-details,
+        .order-history {
+            margin-bottom: 30px;
+        }
+
+        .profile-details h3,
+        .order-history h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn.logout-btn {
+            background: linear-gradient(135deg, var(--error-color), #c0392b);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn:focus {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .order-table th {
+            background: rgba(46, 204, 113, 0.1);
+            font-weight: 600;
+        }
+
+        .order-table td {
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--card-background);
+            margin: 10% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.6rem;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--error-color);
+        }
+
+        .modal h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1300;
+            transition: bottom 0.4s ease-in-out;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.active {
+            bottom: 40px;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 6px;
+            }
+
+            .weather-card {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                top: 140px;
+            }
+
+            main {
+                padding-top: 200px;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .order-table th,
+            .order-table td {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .logo img {
+                width: 140px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
+            </div>
+            <nav>
+                <button class="nav-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i>
+                    Home</button>
+                <button class="nav-button" onclick="window.location.href='loan.html'"><i
+                        class="fas fa-money-bill-wave"></i> Loans</button>
+                <button class="nav-button" onclick="window.location.href='seed.html'"><i class="fas fa-seedling"></i>
+                    Market</button>
+                <button class="nav-button" onclick="window.location.href='worker.html'"><i class="fas fa-users"></i>
+                    Labour</button>
+                <button class="nav-button" onclick="window.location.href='machinery.html'"><i
+                        class="fas fa-tractor"></i> Machinery</button>
+                <button class="nav-button" onclick="window.location.href='export.html'"><i
+                        class="fas fa-shipping-fast"></i> Export</button>
+                <button class="nav-button" onclick="window.location.href='monitoring.html'"><i
+                        class="fas fa-chart-line"></i> Monitoring</button>
+                <button class="nav-button" onclick="window.location.href='contact.html'"><i class="fas fa-envelope"></i>
+                    Contact</button>
+                <button class="nav-button" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i>
+                    Profile</button>
+                <button class="nav-button" onclick="window.location.href='settings.html'"><i class="fas fa-cog"></i>
+                    Settings</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Weather Card -->
+    <div class="weather-card" id="weatherCard" role="region" aria-label="Current weather">
+        <span class="weather-icon" id="weatherIcon" aria-hidden="true">☀️</span>
+        <span class="weather-temp" id="weatherTemp">25°C</span>
+        <span class="weather-condition" id="weatherCondition">Sunny</span>
+        <span class="weather-humidity" id="weatherHumidity">💧 45%</span>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Profile Details -->
+            <div class="dashboard-section profile-details">
+                <h2>User Profile</h2>
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">Full Name</span>
+                        <span class="info-value" id="profileName">John Doe</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <span class="info-value" id="profileEmail">john.doe@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone</span>
+                        <span class="info-value" id="profilePhone">+91 9876543210</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Address</span>
+                        <span class="info-value" id="profileAddress">123 Farm Lane, AgriCity, India</span>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="action-btn" onclick="openModal('editProfile')" aria-label="Edit profile"><i
+                            class="fas fa-edit"></i> Edit Profile</button>
+                    <button class="action-btn logout-btn" onclick="logout()" aria-label="Log out"><i
+                            class="fas fa-sign-out-alt"></i> Log Out</button>
+                </div>
+            </div>
+
+            <!-- Order History -->
+            <div class="dashboard-section order-history">
+                <h2>Order History</h2>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Item</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()" aria-label="Close modal">×</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+        <i class="fas fa-check-circle"></i> Action completed!
+    </div>
+
+    <script>
+        // Sample order history data
+        const orderHistory = [
+            { id: 'ORD001', item: 'Utility Tractor', type: 'Purchase', date: '2025-03-15', amount: 495000 },
+            { id: 'ORD002', item: 'Harvester + Crew', type: 'Combo', date: '2025-04-01', amount: 15000 },
+            { id: 'ORD003', item: 'Rotary Tiller', type: 'Rental', date: '2025-04-10', amount: 2400 }
+        ];
+
+        // DOM elements
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
+        const toast = document.getElementById('toast');
+
+        // Initialize
+        displayOrderHistory();
+
+        // Display order history
+        function displayOrderHistory() {
+            const orderTableBody = document.getElementById('orderTableBody');
+            orderTableBody.innerHTML = '';
+            orderHistory.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.item}</td>
+                    <td>${order.type}</td>
+                    <td>${order.date}</td>
+                    <td>₹${order.amount.toLocaleString()}</td>
+                `;
+                orderTableBody.appendChild(row);
+            });
+        }
+
+        // Open modal for editing profile
+        function openModal(type) {
+            modal.style.display = 'block';
+            if (type === 'editProfile') {
+                const name = document.getElementById('profileName').textContent;
+                const email = document.getElementById('profileEmail').textContent;
+                const phone = document.getElementById('profilePhone').textContent;
+                const address = document.getElementById('profileAddress').textContent;
+                modalContent.innerHTML = `
+                    <h2>Edit Profile</h2>
+                    <form id="editProfileForm">
+                        <div class="form-group">
+                            <label class="form-label" for="editName">Full Name</label>
+                            <input type="text" id="editName" class="form-input" value="${name}" required aria-label="Full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editEmail">Email</label>
+                            <input type="email" id="editEmail" class="form-input" value="${email}" required aria-label="Email">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editPhone">Phone</label>
+                            <input type="tel" id="editPhone" class="form-input" value="${phone}" required aria-label="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editAddress">Address</label>
+                            <input type="text" id="editAddress" class="form-input" value="${address}" required aria-label="Address">
+                        </div>
+                        <button type="submit" class="modal-btn">Save Changes</button>
+                    </form>
+                `;
+                document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    document.getElementById('profileName').textContent = document.getElementById('editName').value;
+                    document.getElementById('profileEmail').textContent = document.getElementById('editEmail').value;
+                    document.getElementById('profilePhone').textContent = document.getElementById('editPhone').value;
+                    document.getElementById('profileAddress').textContent = document.getElementById('editAddress').value;
+                    showToast('Profile updated successfully!');
+                    closeModal();
+                });
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.style.display = 'none';
+            modalContent.innerHTML = '';
+        }
+
+        // Logout function
+        function logout() {
+            showToast('Logged out successfully!');
+            // Redirect to login page (placeholder)
+            setTimeout(() => window.location.href = 'login.html', 2000);
+        }
+
+        // Show toast
+        function showToast(message) {
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 4000);
+        }
+
+        // Weather update
+        function updateWeather() {
+            const temperatures = [20, 22, 24, 25, 26, 28, 30];
+            const conditions = [
+                { text: "Sunny", icon: "☀️" },
+                { text: "Rainy", icon: "🌧️" },
+                { text: "Cloudy", icon: "⛅" },
+                { text: "Partly Cloudy", icon: "🌤️" }
+            ];
+            const humidities = [35, 40, 45, 50, 55, 60];
+
+            const temp = temperatures[Math.floor(Math.random() * temperatures.length)];
+            const condition = conditions[Math.floor(Math.random() * conditions.length)];
+            const humidity = humidities[Math.floor(Math.random() * humidities.length)];
+
+            document.getElementById('weatherIcon').textContent = condition.icon;
+            document.getElementById('weatherTemp').textContent = `${temp}°C`;
+            document.getElementById('weatherCondition').textContent = condition.text;
+            document.getElementById('weatherHumidity').textContent = `💧 ${humidity}%`;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(updateWeather, 10000);
+            updateWeather();
+
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    this.querySelector('i')?.classList.add('fa-bounce');
+                });
+                button.addEventListener('mouseleave', function () {
+                    this.querySelector('i')?.classList.remove('fa-bounce');
+                });
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+    </script>
+</body>
+
+</html>
