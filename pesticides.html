@@ -194,22 +194,6 @@
             width: 100%;
         }
 
-        .search-input {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .search-input:focus {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
-        }
-
-        #suggestions {
-            animation: scaleIn 0.2s ease-out forwards;
-            transform-origin: top center;
-            z-index: 100;
-        }
-
         .cart-item {
             transition: all 0.3s ease;
             padding: 10px;
@@ -381,6 +365,144 @@
         .badge-anim {
             animation: pulse 2s infinite;
         }
+        /* Header Styles from loan.html */
+        header {
+            background: linear-gradient(45deg, #77daa0, var(--secondary-green, #27ae60));
+            padding: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            height: 100px;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 8px 0;
+            background: rgba(46, 204, 113, 0.95);
+            backdrop-filter: blur(10px);
+            height: 80px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 165px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button i {
+            font-size: 0.9rem;
+        }
+
+        /* Define CSS variables if not already defined */
+        :root {
+            --secondary-green: #27ae60;
+        }
+        
+        /* Main content padding to account for fixed header */
+        main {
+            flex-grow: 1;
+            padding-top: 100px; /* Match header height */
+            animation: fadeIn 0.8s ease-out;
+            padding-bottom: 40px;
+        }
+        
+        /* Responsive Styles for Header */
+        @media screen and (max-width: 1024px) {
+            header {
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            main {
+                padding-top: 120px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            main {
+                padding-top: 150px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-button {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 
@@ -408,63 +530,50 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="bg-emerald-800 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold flex items-center">
-                <i class="fas fa-leaf mr-2"></i>AgriLift
-            </a>
-
-            <button id="menuToggle" class="menu-toggle md:hidden text-white hover:text-emerald-200">
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
+            </div>
+            <button id="menuToggle" class="menu-toggle text-white hover:text-emerald-200 absolute right-4 top-4">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-
-            <div class="hidden md:flex space-x-6">
-                <a href="welcome.html" class="nav-link hover:text-emerald-200 transition">Home</a>
-                <a href="seed.html" class="nav-link hover:text-emerald-200 transition">Seeds&Plants</a>
-                <a href="mounitoring.html" class="nav-link hover:text-emerald-200 transition">Farm Monitoring</a>
-                <a href="worker.html" class="nav-link hover:text-emerald-200 transition">Labour Management</a>
-                <a href="loan.html" class="nav-link hover:text-emerald-200 transition">Loans</a>
-                <a href="services.html" class="nav-link hover:text-emerald-200 transition">Services</a>
-                <a href="contact.html" class="nav-link hover:text-emerald-200 transition">Contact Us</a>
-                <button id="cartBtn" class="relative hover:text-emerald-200 transition">
-                    <i class="fas fa-shopping-cart text-xl"></i>
-                    <span id="cartCount"
-                        class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 py-0.5 rounded-full">0</span>
+            <nav>
+                <button class="nav-button" onclick="window.location.href='home.html';">
+                    <i class="fas fa-seedling"></i> Home
                 </button>
-            </div>
-        </div>
-    </nav>
-
-    <div class="bg-emerald-700 text-white py-3 shadow-lg">
-        <div class="container mx-auto px-4">
-            <div class="flex-1 relative">
-                <input id="searchInput" type="text" placeholder="Search products..."
-                    class="w-full px-4 py-2.5 pl-10 rounded-full bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-300 search-input">
-                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-                <div id="suggestions" class="absolute w-full bg-white mt-1 rounded-lg shadow-lg hidden">
-                    <ul class="py-1">
-                        <!-- Suggestions will be dynamically added here -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Banner -->
-    <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 text-white py-12 mb-8">
-        <div class="container mx-auto px-4">
-            <div class="max-w-2xl">
-                <h1 class="text-4xl font-bold mb-4">Pesticides for a Sustainable Future</h1>
-                <p class="text-lg mb-6">explores innovative, eco-friendly pest control solutions that balance
-                    agricultural productivity with environmental safety.</p>
-                <button
-                    class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition shadow-lg">
-                    Explore Collection
+                <button class="nav-button" onclick="window.location.href='loan.html';">
+                    <i class="fas fa-money-bill-wave"></i> Loan
                 </button>
-            </div>
+                <button class="nav-button" onclick="window.location.href='seed.html';">
+                    <i class="fas fa-seedling"></i> Market
+                </button>
+                <button class="nav-button" onclick="window.location.href='worker.html';">
+                    <i class="fas fa-users"></i> Labour
+                </button>
+                <button class="nav-button" onclick="window.location.href='machinary.html';">
+                    <i class="fas fa-tractor"></i> Machinery
+                </button>
+                <button class="nav-button" onclick="window.location.href='export.html';">
+                    <i class="fas fa-shipping-fast"></i> Export
+                </button>
+                <button class="nav-button" onclick="window.location.href='mounitoring.html';">
+                    <i class="fas fa-chart-line"></i> Monitaring
+                </button>
+                <button class="nav-button" onclick="window.location.href='contact.html';">
+                    <i class="fas fa-envelope"></i> Contact
+                </button>
+                <!-- Add cart button from original -->
+                <button id="cartBtn" class="nav-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="bg-red-500 text-xs px-2 py-0.5 rounded-full ml-1">0</span>
+                </button>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <main>
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
@@ -1087,16 +1196,10 @@
             });
         });
 
-        // Improved search functionality
-        const searchInput = document.getElementById('searchInput');
-        const suggestionsContainer = document.getElementById('suggestions');
-        const suggestionList = suggestionsContainer.querySelector('ul');
-
+        // Function to update cart display
         function updateSearchHistoryDisplay() {
-            // This function is referenced but not implemented in the original code
-            // Adding a basic implementation
-            const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-            // We could display search history somewhere if needed
+            // This function is kept as a placeholder since it's referenced in the initialization
+            // but we've removed the search functionality
         }
 
         function addToSearchHistory(term) {
@@ -1228,12 +1331,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateCart();
             filterProducts('all');
-            updateSearchHistoryDisplay();
-
+            
             // Add animation delay to each product card
             document.querySelectorAll('.product-card').forEach((card, index) => {
                 card.style.animationDelay = (index * 0.1) + 's';
             });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
