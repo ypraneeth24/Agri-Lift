@@ -589,8 +589,9 @@
                 document.body.style.backgroundColor = '#2c3e50';
                 document.body.style.color = '#ecf0f1';
             } else {
-                document.body.style.backgroundColor = var(--background - light);
-                document.body.style.color = var(--text - dark);
+                const rootStyles = getComputedStyle(document.documentElement);
+                document.body.style.backgroundColor = rootStyles.getPropertyValue('--background-light').trim();
+                document.body.style.color = rootStyles.getPropertyValue('--text-dark').trim();
             }
 
             if (fontSize === 'small') {
