@@ -1,19 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgriLift - Smart Field Monitoring</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        :root {
+            --primary-green: #2ecc71;
+            --primary-green-dark: #219a56;
+            --primary-green-light: #4ad485;
+            --secondary-green: #27ae60;
+            --accent-blue: #3498db;
+            --accent-blue-dark: #2980b9;
+            --accent-blue-light: #5dade2;
+            --accent-yellow: #f1c40f;
+            --background-light: #f9fcfa;
+            --text-dark: #2c3e50;
+            --card-background: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --input-border: #dcdfe6;
+            --input-focus: #3498db;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z" fill="%232ecc71" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-green);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-green);
+        }
+        
+        /* Side Navigation Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green-dark));
+            z-index: 1002;
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(3px);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-toggle {
+            display: flex; /* Show on all screen sizes */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .side-menu-header {
+            padding: 25px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .side-menu-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-menu:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .side-menu-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-item i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover i {
+            transform: translateX(3px);
+        }
+
+        .side-menu-footer {
+            margin-top: auto;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .logo {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(45deg, #77daa0, var(--secondary-green));
+            padding: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            height: 100px;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 8px 0;
+            background: rgba(46, 204, 113, 0.95);
+            backdrop-filter: blur(10px);
+            height: 80px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 147px;
+            height: 103px;
+            margin-right: 20px;
+            border-radius: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button i {
+            font-size: 0.9rem;
+        }
+
+        /* Weather Card */
+        .weather-card {
+            position: fixed;
+            top: 130px;
+            right: 20px;
+            background: var(--card-background);
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            z-index: 999;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.5s ease-out, float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .weather-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .weather-temp {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        /* Loading Animation for Weather */
+        .loading-spinner {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-green);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            padding-top: 140px;
+            animation: fadeIn 0.8s ease-out;
+            padding-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        /* Sensor Card Styling */
         .sensor-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+        }
+        
+        /* Additional styling for Tailwind compatibility */
+        .text-emerald-600 {
+            color: var(--primary-green);
+        }
+        
+        .bg-white {
+            background-color: var(--card-background);
+        }
+        
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+        
+        .shadow-md {
+            box-shadow: var(--card-shadow);
         }
 
         .sensor-card::after {
@@ -40,277 +462,332 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .container {
-            display: inline-block;
-            width: -webkit-fill-available !important;
-        }
-
         .alert-pulse {
             animation: pulse 1.5s infinite;
         }
 
-        @keyframes pulse {
-            0% {
-                opacity: 1;
+        @media (max-width: 768px) {
+            .weather-card {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                top: 180px;
             }
-
-            50% {
-                opacity: 0.5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Dropdown Styling */
-        .relative>div {
-            min-width: 200px;
-        }
-
-        .relative>div a {
-            display: block;
-            padding: 0.75rem 1rem;
-        }
-
-        /* Mobile Menu Styling */
-        @media (max-width: 767px) {
-            #mobileMenu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-            }
-        }
-
-        /* Sidebar Styling */
-        .sidebar ul ul {
-            transition: all 0.3s ease;
-            margin-top: 25px;
-        }
-
-        .sidebar {
-            margin-top: 25px;
         }
     </style>
 </head>
 
 <body class="bg-gray-50">
-
-    <!-- Navigation -->
-    <nav class="bg-emerald-700 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold flex items-center">
-                <i class="fas fa-seedling mr-2"></i>AgriLift
-            </a>
-            <button id="mobileMenuBtn" class="md:hidden text-white">
-                <i class="fas fa-bars text-2xl"></i>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <button id="menuToggle" class="menu-toggle" onclick="toggleSideMenu()">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="dashboard.html" class="hover:text-emerald-200 flex items-center">
-                    <i class="fas fa-home mr-2"></i> Dashboard
-                </a>
-                <div class="relative">
-                    <button class="hover:text-emerald-200 flex items-center">
-                        <i class="fas fa-leaf mr-2"></i> Fields
-                        <i class="fas fa-chevron-down ml-1"></i>
-                    </button>
-                    <div class="absolute hidden bg-white text-gray-700 mt-2 rounded-lg shadow-lg z-10">
-                        <a href="#fieldOverview" class="block px-4 py-2 hover:bg-gray-100">Field Overview</a>
-                        <a href="#fieldDetails" class="block px-4 py-2 hover:bg-gray-100">Field Details</a>
-                        <a href="#addField" class="block px-4 py-2 hover:bg-gray-100">Add Field</a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <button class="hover:text-emerald-200 flex items-center">
-                        <i class="fas fa-chart-line mr-2"></i> Analytics
-                        <i class="fas fa-chevron-down ml-1"></i>
-                    </button>
-                    <div class="absolute hidden bg-white text-gray-700 mt-2 rounded-lg shadow-lg z-10">
-                        <a href="#moistureTrends" class="block px-4 py-2 hover:bg-gray-100">Moisture Trends</a>
-                        <a href="#healthIndex" class="block px-4 py-2 hover:bg-gray-100">Health Index</a>
-                        <a href="#predictions" class="block px-4 py-2 hover:bg-gray-100">Predictive Analytics</a>
-                    </div>
-                </div>
-                <a href="#alerts" class="hover:text-emerald-200 flex items-center">
-                    <i class="fas fa-bell mr-2"></i> Alerts
-                </a>
-                <div class="relative">
-                    <button class="hover:text-emerald-200 flex items-center">
-                        <i class="fas fa-user-circle mr-2"></i> Profile
-                        <i class="fas fa-chevron-down ml-1"></i>
-                    </button>
-                    <div class="absolute hidden bg-white text-gray-700 mt-2 rounded-lg shadow-lg z-10">
-                        <a href="#userProfile" class="block px-4 py-2 hover:bg-gray-100">View Profile</a>
-                        <a href="#editProfile" class="block px-4 py-2 hover:bg-gray-100">Edit Profile</a>
-                        <a href="#logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
-                    </div>
-                </div>
+            <div class="logo">
+                <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
+            <nav>
+                <button class="nav-button" onclick="window.location.href='dashboard.html';">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </button>
+                <button class="nav-button" onclick="window.location.href='contact.html';">
+                    <i class="fas fa-envelope"></i> Contact
+                </button>
+                <button class="nav-button" onclick="window.location.href='loan.html';">
+                    <i class="fas fa-money-bill-wave"></i> Loan
+                </button>
+                <button class="nav-button" onclick="window.location.href='seed.html';">
+                    <i class="fas fa-seedling"></i> Market
+                </button>
+                <button class="nav-button" onclick="window.location.href='worker.html';">
+                    <i class="fas fa-users"></i> Labour
+                </button>
+                <button class="nav-button" onclick="window.location.href='machinary.html';">
+                    <i class="fas fa-tractor"></i> Machinery
+                </button>
+                <button class="nav-button" onclick="window.location.href='export.html';">
+                    <i class="fas fa-shipping-fast"></i> Export
+                </button>
+                <button class="nav-button" onclick="window.location.href='mounitoring.html';">
+                    <i class="fas fa-chart-line"></i> Monitoring
+                </button>
+            </nav>
         </div>
-        <div id="mobileMenu" class="hidden md:hidden bg-emerald-700 text-white">
-            <!-- Duplicate the navigation items here for mobile view -->
+    </header>
+    
+    <!-- Side Navigation Menu -->
+    <div id="menuOverlay" class="menu-overlay" onclick="closeSideMenu()"></div>
+    <div id="sideMenu" class="side-menu">
+        <div class="side-menu-header">
+            <h2 class="side-menu-title">AgriLift Menu</h2>
+            <button id="closeMenu" class="close-menu" onclick="closeSideMenu()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </nav>
+        <div class="side-menu-content">
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='home.html';">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='dashboard.html';">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='contact.html';">
+                <i class="fas fa-envelope"></i> Contact
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='loan.html';">
+                <i class="fas fa-money-bill-wave"></i> Loan
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='seed.html';">
+                <i class="fas fa-seedling"></i> Market
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='worker.html';">
+                <i class="fas fa-users"></i> Labour
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='machinary.html';">
+                <i class="fas fa-tractor"></i> Machinery
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='export.html';">
+                <i class="fas fa-shipping-fast"></i> Export
+            </button>
+            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='mounitoring.html';">
+                <i class="fas fa-chart-line"></i> Monitoring
+            </button>
+        </div>
+        <div class="side-menu-footer">
+            © 2023 AgriLift - Empowering Farmers
+        </div>
+    </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar hidden lg:block fixed left-0 top-0 h-full w-64 bg-gray-800 text-white">
-        <div class="p-4">
-            <!-- <h2 class="text-2xl font-bold">AgriLift</h2> -->
-            <ul class="space-y-2 sidebar">
-                <li>
-                    <a href="dashboard.html" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                        <i class="fas fa-home mr-3"></i>Dashboard
-                    </a>
-                </li>
-                <li>
-                    <span class="flex items-center p-2 cursor-pointer hover:bg-gray-700 rounded">
-                        <i class="fas fa-leaf mr-3"></i>Fields
-                        <i class="fas fa-chevron-down ml-auto"></i>
-                    </span>
-                    <ul class="ml-6 hidden">
-                        <li><a href="field.html" class="block p-2 hover:bg-gray-700">Overview</a></li>
-                        <li><a href="field.html" class="block p-2 hover:bg-gray-700">Details</a></li>
-                        <li><a href="field.html" class="block p-2 hover:bg-gray-700">Add New Field</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span class="flex items-center p-2 cursor-pointer hover:bg-gray-700 rounded">
-                        <i class="fas fa-chart-line mr-3"></i>Analytics
-                        <i class="fas fa-chevron-down ml-auto"></i>
-                    </span>
-                    <ul class="ml-6 hidden">
-                        <li><a href="moisture.html" class="block p-2 hover:bg-gray-700">Moisture Trends</a></li>
-                        <li><a href="moisture.html" class="block p-2 hover:bg-gray-700">Health Index</a></li>
-                        <li><a href="moisture.html" class="block p-2 hover:bg-gray-700">Predictive Analytics</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#alerts" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                        <i class="fas fa-bell mr-3"></i>Alerts
-                    </a>
-                </li>
-                <li>
-                    <a href="#userProfile" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                        <i class="fas fa-user-circle mr-3"></i>Profile
-                    </a>
-                </li>
-            </ul>
+    <!-- Weather Card -->
+    <div class="weather-card">
+        <div id="weatherInfo" class="weather-info">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 ml-64 lg:ml-64">
-        <!-- Your main content sections here -->
-        <!-- Field Overview -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <!-- Field Map -->
-            <div class="lg:col-span-2 map-container">
-                <div id="fieldMap" class="h-full"></div>
-            </div>
+    <main>
+        <div class="container mx-auto px-4">
+            <!-- Field Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Field Map -->
+                <div class="lg:col-span-2 map-container">
+                    <div id="fieldMap" class="h-full"></div>
+                </div>
 
-            <!-- Key Metrics -->
-            <div class="space-y-4">
-                <div class="sensor-card bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold">Field Health Status</h3>
-                        <i class="fas fa-heartbeat text-2xl text-emerald-600"></i>
+                <!-- Key Metrics -->
+                <div class="space-y-4">
+                    <div class="sensor-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold">Field Health Status</h3>
+                            <i class="fas fa-heartbeat text-2xl text-emerald-600"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-emerald-600 mb-2">84%</div>
+                            <div class="text-sm text-gray-600">Optimal Growing Conditions</div>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">84%</div>
-                        <div class="text-sm text-gray-600">Optimal Growing Conditions</div>
-                    </div>
-                </div>
 
-                <div class="sensor-card bg-white p-6 rounded-xl shadow-md">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold">Connected Sensors</h3>
-                        <i class="fas fa-microchip text-2xl text-emerald-600"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">15</div>
-                        <div class="text-sm text-gray-600">Active in Field</div>
+                    <div class="sensor-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold">Connected Sensors</h3>
+                            <i class="fas fa-microchip text-2xl text-emerald-600"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-emerald-600 mb-2">15</div>
+                            <div class="text-sm text-gray-600">Active in Field</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Real-time Data Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <!-- Soil Moisture Card -->
-            <div class="sensor-card bg-white p-4 rounded-xl shadow-md">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-gray-600">Soil Moisture</span>
-                    <i class="fas fa-tint text-emerald-600"></i>
-                </div>
-                <div class="text-3xl font-bold text-emerald-600" id="moistureValue">62%</div>
-                <div class="text-sm text-gray-600">Ideal Range: 55-70%</div>
-            </div>
-
-            <!-- Temperature Card -->
-            <div class="sensor-card bg-white p-4 rounded-xl shadow-md">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-gray-600">Temperature</span>
-                    <i class="fas fa-thermometer-half text-emerald-600"></i>
-                </div>
-                <div class="text-3xl font-bold text-emerald-600" id="tempValue">24°C</div>
-                <div class="text-sm text-gray-600">Field Average</div>
-            </div>
-
-            <!-- Add more sensor cards -->
-        </div>
-
-        <!-- Charts Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-xl font-bold mb-4">Soil Moisture Trends</h3>
-                <canvas id="moistureChart"></canvas>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-xl font-bold mb-4">Crop Health Index</h3>
-                <canvas id="healthChart"></canvas>
-            </div>
-        </div>
-
-        <!-- Alerts & Notifications -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-            <h3 class="text-xl font-bold mb-4">Recent Alerts</h3>
-            <div class="space-y-3">
-                <div class="alert-pulse flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                    <div class="flex items-center">
-                        <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
-                        <span class="text-red-600">Low moisture detected in Sector B</span>
+            <!-- Real-time Data Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <!-- Soil Moisture Card -->
+                <div class="sensor-card bg-white p-4 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gray-600">Soil Moisture</span>
+                        <i class="fas fa-tint text-emerald-600"></i>
                     </div>
-                    <span class="text-sm text-gray-600">2h ago</span>
+                    <div class="text-3xl font-bold text-emerald-600" id="moistureValue">62%</div>
+                    <div class="text-sm text-gray-600">Ideal Range: 55-70%</div>
                 </div>
-                <!-- Add more alerts -->
-            </div>
-        </div>
 
-        <!-- User Profile Section -->
-        <div id="userProfile" class="hidden bg-white p-6 rounded-xl shadow-md mb-8">
-            <h3 class="text-xl font-bold mb-4">User Profile</h3>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Username</label>
-                    <div id="username" class="mt-1 text-emerald-600 text-lg"></div>
+                <!-- Temperature Card -->
+                <div class="sensor-card bg-white p-4 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gray-600">Temperature</span>
+                        <i class="fas fa-thermometer-half text-emerald-600"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-emerald-600" id="tempValue">24°C</div>
+                    <div class="text-sm text-gray-600">Field Average</div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Email</label>
-                    <div id="email" class="mt-1 text-gray-500"></div>
+
+                <!-- Add more sensor cards -->
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Soil Moisture Trends</h3>
+                    <canvas id="moistureChart"></canvas>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Fields Managed</label>
-                    <ul id="fields" class="mt-1 list-disc pl-5 text-gray-500"></ul>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Crop Health Index</h3>
+                    <canvas id="healthChart"></canvas>
                 </div>
-                <button id="editProfile"
-                    class="bg-emerald-600 text-white px-4 py-2 rounded mt-4 hover:bg-emerald-700">Edit Profile</button>
+            </div>
+
+            <!-- Alerts & Notifications -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <h3 class="text-xl font-bold mb-4">Recent Alerts</h3>
+                <div class="space-y-3">
+                    <div class="alert-pulse flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
+                            <span class="text-red-600">Low moisture detected in Sector B</span>
+                        </div>
+                        <span class="text-sm text-gray-600">2h ago</span>
+                    </div>
+                    <!-- Add more alerts -->
+                </div>
+            </div>
+
+            <!-- User Profile Section -->
+            <div id="userProfile" class="hidden bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-xl font-bold mb-4">User Profile</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Username</label>
+                        <div id="username" class="mt-1 text-emerald-600 text-lg"></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <div id="email" class="mt-1 text-gray-500"></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Fields Managed</label>
+                        <ul id="fields" class="mt-1 list-disc pl-5 text-gray-500"></ul>
+                    </div>
+                    <button id="editProfile"
+                        class="bg-emerald-600 text-white px-4 py-2 rounded mt-4 hover:bg-emerald-700">Edit Profile</button>
+                </div>
             </div>
         </div>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+        // Side Menu Functions
+        function toggleSideMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSideMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Function to map weather condition codes to icons and descriptions
+        const getWeatherIcon = (code) => {
+            const iconMap = {
+                "01d": { icon: "☀️", description: "Sunny" },
+                "01n": { icon: "🌙", description: "Clear" },
+                "02d": { icon: "⛅", description: "Partly Cloudy" },
+                "02n": { icon: "☁️", description: "Partly Cloudy" },
+                "03d": { icon: "☁️", description: "Cloudy" },
+                "03n": { icon: "☁️", description: "Cloudy" },
+                "04d": { icon: "☁️", description: "Overcast" },
+                "04n": { icon: "☁️", description: "Overcast" },
+                "09d": { icon: "🌧️", description: "Rainy" },
+                "09n": { icon: "🌧️", description: "Rainy" },
+                "10d": { icon: "🌦️", description: "Rain Showers" },
+                "10n": { icon: "🌧️", description: "Rain Showers" },
+                "11d": { icon: "⛈️", description: "Thunderstorm" },
+                "11n": { icon: "⛈️", description: "Thunderstorm" },
+                "13d": { icon: "❄️", description: "Snow" },
+                "13n": { icon: "❄️", description: "Snow" },
+                "50d": { icon: "🌫️", description: "Foggy" },
+                "50n": { icon: "🌫️", description: "Foggy" },
+            };
+            return iconMap[code] || { icon: "☀️", description: "Clear" };
+        };
+
+        // Fetch Weather Data
+        async function fetchWeather() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                            const response = await fetch(
+                                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+                            );
+                            if (!response.ok) throw new Error("Weather data not available");
+                            const data = await response.json();
+                            const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                            weatherContainer.innerHTML = `
+                                <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                                <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                                <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                                <span class="weather-city">${data.name}</span>
+                            `;
+                        },
+                        (error) => {
+                            fetchWeatherForDefaultLocation();
+                            console.error("Geolocation error:", error);
+                        }
+                    );
+                } else {
+                    fetchWeatherForDefaultLocation();
+                }
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
+        }
+
+        // Fetch weather for default location (New Delhi)
+        async function fetchWeatherForDefaultLocation() {
+            try {
+                const weatherContainer = document.getElementById('weatherInfo');
+                const API_KEY = "1635890035cbba097fd5c26c8ea672a1";
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=New Delhi&units=metric&appid=${API_KEY}`
+                );
+                if (!response.ok) throw new Error("Weather data not available");
+                const data = await response.json();
+                const weatherInfo = getWeatherIcon(data.weather[0].icon);
+                weatherContainer.innerHTML = `
+                    <span class="weather-temp">${Math.round(data.main.temp)}°C</span>
+                    <span class="weather-condition">${weatherInfo.icon} ${weatherInfo.description}</span>
+                    <span class="weather-humidity">💧 ${data.main.humidity}%</span>
+                    <span class="weather-city">${data.name}</span>
+                `;
+            } catch (error) {
+                console.error("Failed to fetch weather data:", error);
+                document.getElementById('weatherInfo').innerHTML = `
+                    <span class="weather-temp">--°C</span>
+                    <span class="weather-condition">Weather unavailable</span>
+                `;
+            }
+        }
+        
         // Initialize Map
         const map = L.map('fieldMap').setView([51.505, -0.09], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
@@ -409,23 +886,91 @@
         window.addEventListener('hashchange', highlightActiveLink);
         highlightActiveLink();
 
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Side menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            function openMenu() {
+                sideMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            }
+            
+            function closeMenuFunc() {
+                sideMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+            
+            menuToggle.addEventListener('click', openMenu);
+            closeMenu.addEventListener('click', closeMenuFunc);
+            menuOverlay.addEventListener('click', closeMenuFunc);
+            
+            // Close side menu when clicking on a nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Add a small delay before redirecting to show the click effect
+                    setTimeout(() => {
+                        closeMenuFunc();
+                    }, 300);
+                });
+            });
+            
+            // Close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+                    closeMenuFunc();
+                }
+            });
+
+            // Initialize weather and set periodic updates
+            fetchWeather();
+            setInterval(fetchWeather, 30 * 60 * 1000);
+        });
+
         // User Profile Interaction
         function toggleProfileVisibility() {
             document.getElementById('userProfile').classList.toggle('hidden');
-            fetch('/api/user') // Assuming server endpoint for user data
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('username').textContent = data.username;
-                    document.getElementById('email').textContent = data.email;
-                    document.getElementById('fields').innerHTML = data.fields.map(field => `<li>${field}</li>`).join('');
-                });
+            // Mock data since we don't have a real API endpoint
+            const mockUserData = {
+                username: "FarmerJohn",
+                email: "john@agrilift.com",
+                fields: ["North Field", "South Field", "West Orchard"]
+            };
+            
+            document.getElementById('username').textContent = mockUserData.username;
+            document.getElementById('email').textContent = mockUserData.email;
+            document.getElementById('fields').innerHTML = mockUserData.fields.map(field => `<li>${field}</li>`).join('');
         }
 
-        document.querySelector('a[href="#userProfile"]').addEventListener('click', toggleProfileVisibility);
+        // Add event listener for profile link if it exists
+        const profileLink = document.querySelector('a[href="#userProfile"]');
+        if (profileLink) {
+            profileLink.addEventListener('click', toggleProfileVisibility);
+        }
 
-        document.getElementById('editProfile').addEventListener('click', function (event) {
-            alert('Edit profile functionality to be implemented here.');
-        });
+        // Add event listener for edit profile button if it exists
+        const editProfileBtn = document.getElementById('editProfile');
+        if (editProfileBtn) {
+            editProfileBtn.addEventListener('click', function (event) {
+                alert('Edit profile functionality to be implemented here.');
+            });
+        }
     </script>
 </body>
 
