@@ -13,20 +13,20 @@
         :root {
             --primary-green: #2ecc71;
             --primary-green-dark: #219a56;
-            --primary-green-light: #4ad485;
             --secondary-green: #27ae60;
             --accent-blue: #3498db;
             --accent-blue-dark: #2980b9;
-            --accent-blue-light: #5dade2;
             --accent-yellow: #f1c40f;
             --background-light: #f9fcfa;
             --text-dark: #2c3e50;
             --card-background: #ffffff;
-            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
             --input-border: #dcdfe6;
             --input-focus: #3498db;
             --transition-speed: 0.3s;
             --error-color: #e74c3c;
+            --success-color: #27ae60;
+            --border-radius: 12px;
         }
 
         * {
@@ -43,14 +43,12 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z" fill="%232ecc71" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('data:image/svg+xml;charset=utf8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z" fill="%232ecc71" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
             overflow-x: hidden;
         }
 
-        /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
@@ -59,14 +57,13 @@
 
         ::-webkit-scrollbar-thumb {
             background: var(--secondary-green);
-            border-radius: 10px;
+            border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-green);
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -76,18 +73,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -105,43 +90,27 @@
             }
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        /* Header & Navigation Styling */
         header {
-            background: linear-gradient(45deg, #77daa0, var(--secondary-green));
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             padding: 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             z-index: 1000;
-            height: 100px;
-            transition: all 0.4s ease;
+            height: 90px;
+            transition: all 0.3s ease;
         }
 
         header.scrolled {
-            padding: 8px 0;
+            height: 70px;
             background: rgba(46, 204, 113, 0.95);
             backdrop-filter: blur(10px);
-            height: 80px;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .header-content {
@@ -151,102 +120,129 @@
             height: 100%;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
         .logo img {
-            width: 165px;
+            width: 160px;
             height: auto;
-            margin-right: 20px;
-            border-radius: 1px;
             transition: transform 0.3s ease;
         }
 
         .logo:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         nav {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .nav-button {
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             color: white;
-            padding: 8px 15px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .nav-button:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-button i {
-            font-size: 0.9rem;
+        .nav-button:focus {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
-        /* Weather Card */
         .weather-card {
             position: fixed;
-            top: 130px;
+            top: 100px;
             right: 20px;
             background: var(--card-background);
-            padding: 10px 15px;
-            border-radius: 10px;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
             z-index: 999;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             animation: fadeIn 0.5s ease-out;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(46, 204, 113, 0.1);
         }
 
         .weather-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         }
 
-        .weather-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 0.95rem;
+        .weather-icon {
+            font-size: 1.4rem;
         }
 
         .weather-temp {
-            font-weight: 700;
+            font-weight: 600;
             color: var(--primary-green);
-            font-size: 1.2rem;
         }
 
-        /* Main Content */
         main {
             flex-grow: 1;
             padding-top: 140px;
-            animation: fadeIn 0.8s ease-out;
-            padding-bottom: 40px;
+            padding-bottom: 60px;
         }
 
-        /* Category Filters */
+        .search-container {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .search-container:hover {
+            transform: translateY(-3px);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid var(--input-border);
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 1.2rem;
+        }
+
         .category-filter {
             display: flex;
             overflow-x: auto;
-            gap: 10px;
+            gap: 12px;
             padding: 15px 0;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             scroll-behavior: smooth;
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -257,7 +253,7 @@
         }
 
         .filter-btn {
-            background-color: var(--card-background);
+            background: var(--card-background);
             color: var(--text-dark);
             border: none;
             padding: 10px 20px;
@@ -266,95 +262,106 @@
             font-weight: 500;
             white-space: nowrap;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .filter-btn.active {
             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
-            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.2);
         }
 
         .filter-btn:hover:not(.active) {
-            background-color: rgba(46, 204, 113, 0.1);
+            background: rgba(46, 204, 113, 0.1);
             transform: translateY(-2px);
         }
 
-        /* Machine Grid */
-        .machine-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+        .filter-btn:focus {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
-        /* Machine Card */
-        .machine-card {
+        .machine-grid,
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .machine-card,
+        .combo-card {
             background: var(--card-background);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
-            opacity: 0;
             animation: fadeIn 0.5s ease forwards;
             animation-delay: calc(var(--delay) * 0.1s);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .machine-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        .machine-card:hover,
+        .combo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         }
 
-        .machine-image {
-            height: 200px;
+        .machine-image,
+        .combo-image {
+            height: 220px;
             width: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
-        .machine-card:hover .machine-image {
-            transform: scale(1.05);
+        .machine-card:hover .machine-image,
+        .combo-card:hover .combo-image {
+            transform: scale(1.06);
         }
 
-        .machine-details {
+        .machine-details,
+        .combo-details {
             padding: 20px;
         }
 
-        .machine-name {
-            font-size: 1.2rem;
+        .machine-name,
+        .combo-name {
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-dark);
+            margin-bottom: 10px;
         }
 
-        .machine-description {
-            color: #666;
-            font-size: 0.9rem;
+        .machine-description,
+        .combo-description {
+            color: #555;
+            font-size: 0.95rem;
             margin-bottom: 15px;
             line-height: 1.5;
         }
 
-        .machine-price-row {
+        .machine-price-row,
+        .combo-price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .machine-price {
-            font-size: 1.3rem;
-            font-weight: 700;
+        .machine-price,
+        .combo-price {
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--primary-green);
         }
 
-        .add-to-cart-btn {
+        .action-btn {
             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 25px;
+            padding: 10px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
             font-size: 0.9rem;
@@ -362,61 +369,30 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
-            font-family: 'Poppins', sans-serif;
         }
 
-        .add-to-cart-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(46, 204, 113, 0.3);
-            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+        .action-btn.rent-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
         }
 
-        /* Search Bar */
-        .search-container {
-            background: var(--card-background);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 25px;
-            position: relative;
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            padding-left: 45px;
-            border: 2px solid var(--input-border);
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
+        .action-btn:focus {
+            outline: 2px solid var(--accent-yellow);
+            outline-offset: 2px;
         }
 
-        .search-input:focus {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-            font-size: 1.1rem;
-        }
-
-        /* Cart Sidebar */
         .cart-sidebar {
             position: fixed;
             top: 0;
             right: 0;
             height: 100vh;
-            width: 350px;
+            width: 380px;
             background: var(--card-background);
-            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
             z-index: 1100;
             padding: 25px;
             transform: translateX(100%);
@@ -438,16 +414,15 @@
         }
 
         .cart-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            color: var(--text-dark);
         }
 
         .close-cart {
             background: none;
             border: none;
-            color: #999;
-            font-size: 1.3rem;
+            color: #777;
+            font-size: 1.4rem;
             cursor: pointer;
             transition: color 0.3s ease;
         }
@@ -457,21 +432,21 @@
         }
 
         .cart-items {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .cart-item {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             animation: fadeIn 0.3s ease;
         }
 
         .cart-item-image {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
             border-radius: 8px;
             margin-right: 15px;
@@ -483,37 +458,42 @@
 
         .cart-item-name {
             font-weight: 500;
-            margin-bottom: 3px;
-            color: var(--text-dark);
+            margin-bottom: 5px;
         }
 
         .cart-item-price {
             color: var(--primary-green);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-type {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 3px;
         }
 
         .cart-quantity {
             display: flex;
             align-items: center;
-            gap: 5px;
-            margin-left: 10px;
+            gap: 8px;
+            margin-left: 15px;
         }
 
         .qty-btn {
             background: #f5f5f5;
             border: none;
-            width: 25px;
-            height: 25px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
             cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-            color: #666;
         }
 
         .qty-btn:hover {
@@ -522,7 +502,7 @@
         }
 
         .qty-value {
-            width: 30px;
+            width: 35px;
             text-align: center;
             font-weight: 500;
         }
@@ -532,10 +512,9 @@
             border: none;
             color: var(--error-color);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.7;
             transition: opacity 0.3s ease;
-            margin-left: 5px;
         }
 
         .remove-item:hover {
@@ -543,22 +522,22 @@
         }
 
         .cart-total {
-            margin-top: 10px;
-            padding-top: 15px;
+            margin-top: 15px;
+            padding-top: 20px;
             border-top: 2px solid rgba(0, 0, 0, 0.1);
         }
 
         .total-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 1rem;
         }
 
         .final-total {
             font-weight: 700;
-            font-size: 1.3rem;
-            margin-top: 5px;
+            font-size: 1.4rem;
+            margin-top: 8px;
             color: var(--primary-green);
         }
 
@@ -566,81 +545,161 @@
             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
             border: none;
-            padding: 15px 0;
+            padding: 14px 0;
             border-radius: 30px;
-            margin-top: 20px;
+            margin-top: 25px;
             width: 100%;
             font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.3);
-            font-family: 'Poppins', sans-serif;
         }
 
         .checkout-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
-            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
         }
 
         .empty-cart {
             text-align: center;
-            padding: 30px 0;
-            color: #999;
+            padding: 40px 0;
+            color: #888;
         }
 
         .empty-cart i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #ddd;
             margin-bottom: 15px;
         }
 
-        /* Toast Notification */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--card-background);
+            margin: 10% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.6rem;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--error-color);
+        }
+
+        .modal h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+
         .toast {
             position: fixed;
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--primary-green);
+            background: var(--success-color);
             color: white;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1200;
-            transition: bottom 0.3s ease-in-out;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1300;
+            transition: bottom 0.4s ease-in-out;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .toast.active {
-            bottom: 30px;
+            bottom: 40px;
         }
 
-        /* Dashboard Section */
         .dashboard-section {
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             background: var(--card-background);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
-            padding: 25px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 1400px;
+            padding: 30px;
+            transition: all 0.3s ease;
         }
 
         .dashboard-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
 
         .dashboard-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.9rem;
+            margin-bottom: 25px;
             position: relative;
             display: inline-block;
-            color: var(--text-dark);
         }
 
         .dashboard-section h2::after {
@@ -648,32 +707,20 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 60px;
-            height: 3px;
+            width: 70px;
+            height: 4px;
             background: var(--primary-green);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
-        /* Responsive Styles */
         @media screen and (max-width: 1024px) {
-            header {
-                height: auto;
-                padding: 15px 0;
-            }
-
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 5px;
-            }
-
-            .nav-button {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-
             .cart-sidebar {
-                width: 320px;
+                width: 340px;
+            }
+
+            .machine-grid,
+            .combo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
 
@@ -689,68 +736,55 @@
             }
 
             nav {
-                width: 100%;
                 justify-content: center;
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-
-            .nav-button {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-
-            .logo img {
-                width: 140px;
+                gap: 6px;
             }
 
             .weather-card {
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
-                top: 170px;
+                top: 140px;
             }
 
             main {
-                padding-top: 220px;
-            }
-
-            .cart-sidebar {
-                width: 280px;
-            }
-
-            .machine-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .nav-button {
-                padding: 5px 8px;
-                font-size: 0.75rem;
-            }
-
-            .logo img {
-                width: 120px;
-                margin-right: 10px;
+                padding-top: 200px;
             }
 
             .cart-sidebar {
                 width: 100%;
             }
 
-            .machine-grid {
+            .machine-grid,
+            .combo-grid {
                 grid-template-columns: 1fr;
             }
 
-            .dashboard-section {
-                padding: 20px;
-            }
-
-            .weather-info {
+            .machine-price-row,
+            .combo-price-row {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 12px;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .logo img {
+                width: 140px;
+            }
+
+            .modal-content {
+                padding: 20px;
             }
         }
     </style>
@@ -764,42 +798,32 @@
                 <img src="/AgriLift/image__1_-removebg-preview.png" alt="AgriLift Logo">
             </div>
             <nav>
-                <button class="nav-button" onclick="window.location.href='home .html';">
-                    <i class="fas fa-home"></i> Home
-                </button>
-                <button class="nav-button" onclick="window.location.href='loan.html';">
-                    <i class="fas fa-money-bill-wave"></i> Loans
-                </button>
-              
-                <button class="nav-button" onclick="window.location.href='seed.html';">
-                    <i class="fas fa-seedling"></i> Market
-                </button>
-                <button class="nav-button" onclick="window.location.href='worker.html';">
-                    <i class="fas fa-users"></i> Labour
-                </button>
-                <button class="nav-button" onclick="window.location.href='machinary.html';">
-                    <i class="fas fa-tractor"></i> Machinery
-                </button>
-                <button class="nav-button" onclick="window.location.href='export.html';">
-                    <i class="fas fa-shipping-fast"></i> Export
-                </button>
-                <button class="nav-button" onclick="window.location.href='mounitoring.html';">
-                    <i class="fas fa-chart-line"></i> Monitoring
-                </button>
-                <button class="nav-button" onclick="window.location.href='contact.html';">
-                    <i class="fas fa-envelope"></i> Contact
-                </button>
+                <button class="nav-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i>
+                    Home</button>
+                <button class="nav-button" onclick="window.location.href='loan.html'"><i
+                        class="fas fa-money-bill-wave"></i> Loans</button>
+                <button class="nav-button" onclick="window.location.href='seed.html'"><i class="fas fa-seedling"></i>
+                    Market</button>
+                <button class="nav-button" onclick="window.location.href='worker.html'"><i class="fas fa-users"></i>
+                    Labour</button>
+                <button class="nav-button" onclick="window.location.href='machinery.html'"><i
+                        class="fas fa-tractor"></i> Machinery</button>
+                <button class="nav-button" onclick="window.location.href='export.html'"><i
+                        class="fas fa-shipping-fast"></i> Export</button>
+                <button class="nav-button" onclick="window.location.href='monitoring.html'"><i
+                        class="fas fa-chart-line"></i> Monitoring</button>
+                <button class="nav-button" onclick="window.location.href='contact.html'"><i class="fas fa-envelope"></i>
+                    Contact</button>
             </nav>
         </div>
     </header>
 
     <!-- Weather Card -->
-    <div class="weather-card">
-        <div class="weather-info">
-            <span class="weather-temp">25°C</span>
-            <span class="weather-condition">☀️ Sunny</span>
-            <span class="weather-humidity">💧 45%</span>
-        </div>
+    <div class="weather-card" id="weatherCard" role="region" aria-label="Current weather">
+        <span class="weather-icon" id="weatherIcon" aria-hidden="true">☀️</span>
+        <span class="weather-temp" id="weatherTemp">25°C</span>
+        <span class="weather-condition" id="weatherCondition">Sunny</span>
+        <span class="weather-humidity" id="weatherHumidity">💧 45%</span>
     </div>
 
     <!-- Main Content -->
@@ -807,47 +831,49 @@
         <div class="container">
             <!-- Search Bar -->
             <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" class="search-input"
-                    placeholder="Search for agricultural machinery...">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search for machinery or combos..."
+                    aria-label="Search machinery and combos">
             </div>
 
             <!-- Category Filters -->
             <div class="dashboard-section">
                 <h2>Browse by Category</h2>
-                <div class="category-filter">
-                    <button class="filter-btn active" data-category="all">All Machinery</button>
-                    <button class="filter-btn" data-category="tractor">Tractors</button>
-                    <button class="filter-btn" data-category="harvester">Harvesters</button>
-                    <button class="filter-btn" data-category="plough">Ploughs</button>
-                    <button class="filter-btn" data-category="seeder">Seeders</button>
-                    <button class="filter-btn" data-category="irrigation">Irrigation</button>
+                <div class="category-filter" role="tablist">
+                    <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">All
+                        Machinery</button>
+                    <button class="filter-btn" data-category="tractor" role="tab"
+                        aria-selected="false">Tractors</button>
+                    <button class="filter-btn" data-category="harvester" role="tab"
+                        aria-selected="false">Harvesters</button>
+                    <button class="filter-btn" data-category="plough" role="tab" aria-selected="false">Ploughs</button>
+                    <button class="filter-btn" data-category="seeder" role="tab" aria-selected="false">Seeders</button>
+                    <button class="filter-btn" data-category="irrigation" role="tab"
+                        aria-selected="false">Irrigation</button>
                 </div>
             </div>
 
             <!-- Machine Grid -->
             <div class="dashboard-section">
                 <h2>Featured Machinery</h2>
-                <div class="machine-grid" id="machineGrid">
-                    <!-- Machine cards will be dynamically inserted here -->
-                </div>
+                <div class="machine-grid" id="machineGrid"></div>
+            </div>
+
+            <!-- Combo Offers -->
+            <div class="dashboard-section">
+                <h2>Combo Offers (Machine + Labour)</h2>
+                <div class="combo-grid" id="comboGrid"></div>
             </div>
         </div>
     </main>
 
     <!-- Cart Sidebar -->
-    <div class="cart-sidebar">
+    <div class="cart-sidebar" role="dialog" aria-label="Shopping cart">
         <div class="cart-header">
             <h3 class="cart-title">Your Cart</h3>
-            <button class="close-cart" id="closeCart">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="close-cart" id="closeCart" aria-label="Close cart"><i class="fas fa-times"></i></button>
         </div>
-
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be dynamically inserted here -->
-        </div>
-
+        <div class="cart-items" id="cartItems"></div>
         <div class="cart-total">
             <div class="total-row">
                 <span>Subtotal:</span>
@@ -862,14 +888,20 @@
                 <span id="totalAmount">₹0.00</span>
             </div>
         </div>
+        <button class="checkout-btn" onclick="openModal('checkout')" aria-label="Proceed to checkout"><i
+                class="fas fa-shopping-cart"></i> Proceed to Checkout</button>
+    </div>
 
-        <button class="checkout-btn">
-            <i class="fas fa-shopping-cart"></i> Proceed to Checkout
-        </button>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()" aria-label="Close modal">&times;</span>
+            <div id="modalContent"></div>
+        </div>
     </div>
 
     <!-- Toast Notification -->
-    <div class="toast" id="toast">
+    <div class="toast" id="toast" role="alert" aria-live="polite">
         <i class="fas fa-check-circle"></i> Item added to cart!
     </div>
 
@@ -877,100 +909,83 @@
         // Machine Data
         const machineData = [
             {
-                id: 1,
-                name: "Utility Tractor",
-                category: "tractor",
-                price: 495000,
-                description: "Multi-purpose utility tractor ideal for small to medium farms with versatile attachments.",
-                image: "AgriLift/machinary/Utility tractors.jpeg"
+                id: 1, name: "Utility Tractor", category: "tractor", price: 495000, rentalPrice: 5000, rentalPeriod: "day",
+                description: "Multi-purpose utility tractor for small to medium farms with versatile attachments.",
+                image: "https://via.placeholder.com/320x220?text=Utility+Tractor"
             },
             {
-                id: 2,
-                name: "Self Propelled Combine Harvester",
-                category: "harvester",
-                price: 1250000,
+                id: 2, name: "Self Propelled Combine Harvester", category: "harvester", price: 1250000, rentalPrice: 12000, rentalPeriod: "day",
                 description: "High-efficiency combine harvester for grain crops with advanced threshing technology.",
-                image: "AgriLift/machinary/Self propelled combine harvesters.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Combine+Harvester"
             },
             {
-                id: 3,
-                name: "Single Action Disc Harrow",
-                category: "plough",
-                price: 125000,
+                id: 3, name: "Single Action Disc Harrow", category: "plough", price: 125000, rentalPrice: 1500, rentalPeriod: "day",
                 description: "Effective disc harrow for breaking and loosening soil in preparation for planting.",
-                image: "AgriLift/machinary/Single action disc harrow.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Disc+Harrow"
             },
             {
-                id: 4,
-                name: "Forage Harvester",
-                category: "harvester",
-                price: 850000,
+                id: 4, name: "Forage Harvester", category: "harvester", price: 850000, rentalPrice: 8000, rentalPeriod: "day",
                 description: "Specialized harvester that chops crops into small pieces for animal feed.",
-                image: "AgriLift/machinary/Forage harvesters.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Forage+Harvester"
             },
             {
-                id: 5,
-                name: "Row Crop Tractor",
-                category: "tractor",
-                price: 650000,
-                description: "Designed specifically for working with row crops, offering precise control and maneuverability.",
-                image: "AgriLift/machinary/Row crop tractors.jpeg"
+                id: 5, name: "Row Crop Tractor", category: "tractor", price: 650000, rentalPrice: 6000, rentalPeriod: "day",
+                description: "Designed for row crops, offering precise control and maneuverability.",
+                image: "https://via.placeholder.com/320x220?text=Row+Crop+Tractor"
             },
             {
-                id: 6,
-                name: "Track Combine Harvester",
-                category: "harvester",
-                price: 1800000,
-                description: "Advanced harvester with track system for improved stability and reduced soil compaction.",
-                image: "AgriLift/machinary/Track Combine Harvesters.jpeg"
+                id: 6, name: "Track Combine Harvester", category: "harvester", price: 1800000, rentalPrice: 15000, rentalPeriod: "day",
+                description: "Advanced harvester with track system for stability and reduced soil compaction.",
+                image: "https://via.placeholder.com/320x220?text=Track+Harvester"
             },
             {
-                id: 7,
-                name: "Compact Disc Harrow",
-                category: "plough",
-                price: 85000,
+                id: 7, name: "Compact Disc Harrow", category: "plough", price: 85000, rentalPrice: 1000, rentalPeriod: "day",
                 description: "Compact design ideal for smaller fields and precision soil preparation.",
-                image: "AgriLift/machinary/Compact Model Disc Harrow.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Compact+Harrow"
             },
             {
-                id: 8,
-                name: "Advanced Tillage System",
-                category: "plough",
-                price: 225000,
+                id: 8, name: "Advanced Tillage System", category: "plough", price: 225000, rentalPrice: 2000, rentalPeriod: "day",
                 description: "Integrated tillage system for comprehensive soil preparation and weed control.",
-                image: "AgriLift/seeds/tillage.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Tillage+System"
             },
             {
-                id: 9,
-                name: "Rotary Tiller",
-                category: "seeder",
-                price: 95000,
+                id: 9, name: "Rotary Tiller", category: "seeder", price: 95000, rentalPrice: 1200, rentalPeriod: "day",
                 description: "Versatile tiller for seed bed preparation with adjustable tilling depth.",
-                image: "AgriLift/machinary/Rotary Tillers.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Rotary+Tiller"
             },
             {
-                id: 10,
-                name: "Corn Harvester",
-                category: "harvester",
-                price: 950000,
-                description: "Specialized harvester designed specifically for efficient corn harvesting.",
-                image: "AgriLift/machinary/Corn harvester.jpeg"
+                id: 10, name: "Corn Harvester", category: "harvester", price: 950000, rentalPrice: 9000, rentalPeriod: "day",
+                description: "Specialized harvester designed for efficient corn harvesting.",
+                image: "https://via.placeholder.com/320x220?text=Corn+Harvester"
             },
             {
-                id: 11,
-                name: "Precision Seeder",
-                category: "seeder",
-                price: 175000,
-                description: "Advanced seeding machine with precision placement technology for optimal germination.",
-                image: "AgriLift/machinary/Rotary Tillers.jpeg"
+                id: 11, name: "Precision Seeder", category: "seeder", price: 175000, rentalPrice: 1800, rentalPeriod: "day",
+                description: "Advanced seeding machine with precision placement for optimal germination.",
+                image: "https://via.placeholder.com/320x220?text=Precision+Seeder"
             },
             {
-                id: 12,
-                name: "Drip Irrigation System",
-                category: "irrigation",
-                price: 120000,
+                id: 12, name: "Drip Irrigation System", category: "irrigation", price: 120000, rentalPrice: 1500, rentalPeriod: "day",
                 description: "Water-efficient irrigation system for targeted delivery to plant roots.",
-                image: "AgriLift/machinary/Corn harvester.jpeg"
+                image: "https://via.placeholder.com/320x220?text=Irrigation+System"
+            }
+        ];
+
+        // Combo Offer Data
+        const comboData = [
+            {
+                id: 101, name: "Tractor + Operator", machineId: 1, labour: "Skilled Operator", price: 6000, period: "day",
+                description: "Utility Tractor with a skilled operator for efficient farm tasks.",
+                image: "https://via.placeholder.com/320x220?text=Tractor+Operator"
+            },
+            {
+                id: 102, name: "Harvester + Crew", machineId: 2, labour: "Harvesting Crew", price: 15000, period: "day",
+                description: "Self Propelled Combine Harvester with a trained harvesting crew.",
+                image: "https://via.placeholder.com/320x220?text=Harvester+Crew"
+            },
+            {
+                id: 103, name: "Tiller + Labour", machineId: 9, labour: "Field Labour", price: 2000, period: "day",
+                description: "Rotary Tiller with field labour for seed bed preparation.",
+                image: "https://via.placeholder.com/320x220?text=Tiller+Labour"
             }
         ];
 
@@ -979,6 +994,7 @@
 
         // DOM elements
         const machineGrid = document.getElementById('machineGrid');
+        const comboGrid = document.getElementById('comboGrid');
         const cartItems = document.getElementById('cartItems');
         const subtotalElement = document.getElementById('subtotal');
         const taxElement = document.getElementById('tax');
@@ -986,9 +1002,13 @@
         const searchInput = document.getElementById('searchInput');
         const toast = document.getElementById('toast');
         const filterButtons = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
 
-        // Initialize display
+        // Initialize
         displayMachines('all');
+        displayCombos();
+        updateCart();
 
         // Create machine card
         function createMachineCard(machine, index) {
@@ -996,24 +1016,43 @@
             card.className = 'machine-card';
             card.dataset.category = machine.category;
             card.style.setProperty('--delay', index);
-
             card.innerHTML = `
                 <img src="${machine.image}" class="machine-image" alt="${machine.name}">
                 <div class="machine-details">
                     <h3 class="machine-name">${machine.name}</h3>
                     <p class="machine-description">${machine.description}</p>
                     <div class="machine-price-row">
-                        <span class="machine-price">₹${machine.price.toLocaleString()}</span>
-                        <button class="add-to-cart-btn" data-id="${machine.id}">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
+                        <span class="machine-price">₹${machine.price.toLocaleString()} / ₹${machine.rentalPrice.toLocaleString()}/${machine.rentalPeriod}</span>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="action-btn buy-btn" data-id="${machine.id}" data-type="buy" aria-label="Buy ${machine.name}"><i class="fas fa-shopping-cart"></i> Buy</button>
+                            <button class="action-btn rent-btn" data-id="${machine.id}" data-type="rent" aria-label="Rent ${machine.name}"><i class="fas fa-clock"></i> Rent</button>
+                        </div>
                     </div>
                 </div>
             `;
             return card;
         }
 
-        // Display machines based on category
+        // Create combo card
+        function createComboCard(combo, index) {
+            const card = document.createElement('div');
+            card.className = 'combo-card';
+            card.style.setProperty('--delay', index);
+            card.innerHTML = `
+                <img src="${combo.image}" class="combo-image" alt="${combo.name}">
+                <div class="combo-details">
+                    <h3 class="combo-name">${combo.name}</h3>
+                    <p class="combo-description">${combo.description}</p>
+                    <div class="combo-price-row">
+                        <span class="combo-price">₹${combo.price.toLocaleString()}/${combo.period}</span>
+                        <button class="action-btn rent-btn" data-id="${combo.id}" data-type="combo" aria-label="Rent ${combo.name}"><i class="fas fa-clock"></i> Rent Combo</button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Display machines
         function displayMachines(category) {
             machineGrid.innerHTML = '';
             let filteredMachines = machineData;
@@ -1027,36 +1066,80 @@
                 machineGrid.appendChild(card);
             });
 
-            // Add event listeners to Add to Cart buttons
-            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                button.addEventListener('click', addToCart);
+            addButtonListeners();
+        }
+
+        // Display combos
+        function displayCombos() {
+            comboGrid.innerHTML = '';
+            comboData.forEach((combo, index) => {
+                const card = createComboCard(combo, index);
+                comboGrid.appendChild(card);
+            });
+
+            addButtonListeners();
+        }
+
+        // Add event listeners to action buttons
+        function addButtonListeners() {
+            document.querySelectorAll('.action-btn').forEach(button => {
+                button.addEventListener('click', handleAction);
             });
         }
 
-        // Add to cart function
-        function addToCart(e) {
-            const machineId = parseInt(e.currentTarget.dataset.id);
-            const machine = machineData.find(m => m.id === machineId);
+        // Handle buy/rent/combo actions
+        function handleAction(e) {
+            const id = parseInt(e.currentTarget.dataset.id);
+            const type = e.currentTarget.dataset.type;
 
-            const existingItem = cart.find(item => item.id === machineId);
+            if (type === 'rent') {
+                openModal('rent', id);
+            } else if (type === 'combo') {
+                openModal('combo', id);
+            } else {
+                addToCart(id, type, 1);
+                document.body.classList.add('cart-active');
+            }
+        }
+
+        // Add to cart
+        function addToCart(id, type, duration = 1) {
+            let item;
+            let price;
+            let period;
+
+            if (type === 'combo') {
+                item = comboData.find(c => c.id === id);
+                price = item.price * duration;
+                period = item.period;
+            } else {
+                item = machineData.find(m => m.id === id);
+                price = type === 'buy' ? item.price : item.rentalPrice * duration;
+                period = type === 'rent' ? item.rentalPeriod : null;
+            }
+
+            const existingItem = cart.find(cartItem => cartItem.id === id && cartItem.type === type && cartItem.duration === duration);
 
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
                 cart.push({
-                    id: machine.id,
-                    name: machine.name,
-                    price: machine.price,
-                    image: machine.image,
-                    quantity: 1
+                    id: item.id,
+                    name: item.name,
+                    price: price,
+                    image: item.image,
+                    type: type,
+                    period: period,
+                    quantity: 1,
+                    duration: duration
                 });
             }
 
             updateCart();
-            showToast();
+            showToast(type === 'rent' || type === 'combo' ? `Added to rental cart for ${duration} ${period}(s)!` : 'Item added to cart!');
         }
 
-        // Update cart display
+        // Update cart
         function updateCart() {
             if (cart.length === 0) {
                 cartItems.innerHTML = `
@@ -1074,31 +1157,28 @@
                         <img src="${item.image}" class="cart-item-image" alt="${item.name}">
                         <div class="cart-item-details">
                             <h4 class="cart-item-name">${item.name}</h4>
-                            <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                            <div class="cart-item-price">₹${item.price.toLocaleString()}${item.period ? ` for ${item.duration} ${item.period}${item.duration > 1 ? 's' : ''}` : ''}</div>
+                            <div class="cart-item-type">${item.type === 'buy' ? 'Purchase' : item.type === 'rent' ? 'Rental' : 'Combo'}</div>
                         </div>
                         <div class="cart-quantity">
-                            <button class="qty-btn qty-decrease" data-index="${index}">-</button>
+                            <button class="qty-btn qty-decrease" data-index="${index}" aria-label="Decrease quantity">-</button>
                             <span class="qty-value">${item.quantity}</span>
-                            <button class="qty-btn qty-increase" data-index="${index}">+</button>
+                            <button class="qty-btn qty-increase" data-index="${index}" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="remove-item" data-index="${index}">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
+                        <button class="remove-item" data-index="${index}" aria-label="Remove item"><i class="fas fa-trash-alt"></i></button>
                     `;
                     cartItems.appendChild(cartItem);
                 });
             }
 
-            // Calculate totals
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             const tax = subtotal * 0.18;
             const total = subtotal + tax;
 
-            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            taxElement.textContent = `₹${tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            totalElement.textContent = `₹${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            subtotalElement.textContent = `₹${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+            taxElement.textContent = `₹${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+            totalElement.textContent = `₹${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
 
-            // Add event listeners to cart buttons
             document.querySelectorAll('.qty-decrease').forEach(button => {
                 button.addEventListener('click', decreaseQuantity);
             });
@@ -1135,18 +1215,85 @@
             updateCart();
         }
 
-        // Show toast notification
-        function showToast() {
+        // Modal handling
+        function openModal(type, id) {
+            modal.style.display = 'block';
+            if (type === 'rent') {
+                const machine = machineData.find(m => m.id === id);
+                modalContent.innerHTML = `
+                    <h2>Rent ${machine.name}</h2>
+                    <form id="rentForm">
+                        <div class="form-group">
+                            <label class="form-label" for="rentalDuration">Rental Duration (days)</label>
+                            <input type="number" id="rentalDuration" class="form-input" min="1" value="1" required aria-label="Rental duration in days">
+                        </div>
+                        <p>Price: ₹${machine.rentalPrice.toLocaleString()}/day</p>
+                        <button type="submit" class="modal-btn">Confirm Rental</button>
+                    </form>
+                `;
+                document.getElementById('rentForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const duration = parseInt(document.getElementById('rentalDuration').value);
+                    addToCart(id, 'rent', duration);
+                    closeModal();
+                    document.body.classList.add('cart-active');
+                });
+            } else if (type === 'combo') {
+                const combo = comboData.find(c => c.id === id);
+                modalContent.innerHTML = `
+                    <h2>Rent ${combo.name}</h2>
+                    <form id="comboForm">
+                        <div class="form-group">
+                            <label class="form-label" for="comboDuration">Rental Duration (days)</label>
+                            <input type="number" id="comboDuration" class="form-input" min="1" value="1" required aria-label="Combo rental duration in days">
+                        </div>
+                        <p>Price: ₹${combo.price.toLocaleString()}/day</p>
+                        <button type="submit" class="modal-btn">Confirm Rental</button>
+                    </form>
+                `;
+                document.getElementById('comboForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const duration = parseInt(document.getElementById('comboDuration').value);
+                    addToCart(id, 'combo', duration);
+                    closeModal();
+                    document.body.classList.add('cart-active');
+                });
+            } else if (type === 'checkout') {
+                modalContent.innerHTML = `
+                    <h2>Checkout</h2>
+                    <p>Subtotal: ${subtotalElement.textContent}</p>
+                    <p>Tax (18%): ${taxElement.textContent}</p>
+                    <p><strong>Total: ${totalElement.textContent}</strong></p>
+                    <button class="modal-btn" onclick="confirmCheckout()">Confirm Order</button>
+                `;
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modalContent.innerHTML = '';
+        }
+
+        function confirmCheckout() {
+            showToast('Order confirmed! Thank you for your purchase.');
+            cart = [];
+            updateCart();
+            closeModal();
+            document.body.classList.remove('cart-active');
+        }
+
+        // Show toast
+        function showToast(message) {
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
             toast.classList.add('active');
-            setTimeout(() => {
-                toast.classList.remove('active');
-            }, 3000);
+            setTimeout(() => toast.classList.remove('active'), 4000);
         }
 
         // Search functionality
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.toLowerCase();
             machineGrid.innerHTML = '';
+            comboGrid.innerHTML = '';
 
             const filteredMachines = machineData.filter(machine =>
                 machine.name.toLowerCase().includes(searchTerm) ||
@@ -1154,11 +1301,16 @@
                 machine.category.toLowerCase().includes(searchTerm)
             );
 
-            if (filteredMachines.length === 0) {
+            const filteredCombos = comboData.filter(combo =>
+                combo.name.toLowerCase().includes(searchTerm) ||
+                combo.description.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredMachines.length === 0 && filteredCombos.length === 0) {
                 machineGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
-                        <i class="fas fa-search" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                        <p style="color: #666;">No machines found matching "${searchInput.value}"</p>
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 0;">
+                        <i class="fas fa-search" style="font-size: 3.5rem; color: #ddd; margin-bottom: 20px;"></i>
+                        <p style="color: #666;">No machines or combos found matching "${searchInput.value}"</p>
                     </div>
                 `;
             } else {
@@ -1167,10 +1319,12 @@
                     machineGrid.appendChild(card);
                 });
 
-                // Re-add event listeners
-                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                    button.addEventListener('click', addToCart);
+                filteredCombos.forEach((combo, index) => {
+                    const card = createComboCard(combo, index);
+                    comboGrid.appendChild(card);
                 });
+
+                addButtonListeners();
             }
         });
 
@@ -1178,66 +1332,74 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const category = button.dataset.category;
-
-                // Update active state
-                filterButtons.forEach(btn => btn.classList.remove('active'));
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
                 button.classList.add('active');
-
+                button.setAttribute('aria-selected', 'true');
                 displayMachines(category);
             });
         });
 
         // Cart toggle
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                document.body.classList.add('cart-active');
-            });
-        });
-
         document.getElementById('closeCart').addEventListener('click', () => {
             document.body.classList.remove('cart-active');
         });
 
         // Weather update
         function updateWeather() {
-            const temperatures = [22, 23, 24, 25, 26, 27, 28, 29, 30];
-            const conditions = ['☀️ Sunny', '🌧️ Rainy', '⛅ Cloudy', '🌤️ Partly Cloudy'];
-            const humidities = [35, 40, 45, 50, 55, 60, 65];
+            const temperatures = [20, 22, 24, 25, 26, 28, 30];
+            const conditions = [
+                { text: "Sunny", icon: "☀️" },
+                { text: "Rainy", icon: "🌧️" },
+                { text: "Cloudy", icon: "⛅" },
+                { text: "Partly Cloudy", icon: "🌤️" }
+            ];
+            const humidities = [35, 40, 45, 50, 55, 60];
 
             const temp = temperatures[Math.floor(Math.random() * temperatures.length)];
             const condition = conditions[Math.floor(Math.random() * conditions.length)];
             const humidity = humidities[Math.floor(Math.random() * humidities.length)];
 
-            document.querySelector('.weather-temp').textContent = `${temp}°C`;
-            document.querySelector('.weather-condition').textContent = condition;
-            document.querySelector('.weather-humidity').textContent = `💧 ${humidity}%`;
+            document.getElementById('weatherIcon').textContent = condition.icon;
+            document.getElementById('weatherTemp').textContent = `${temp}°C`;
+            document.getElementById('weatherCondition').textContent = condition.text;
+            document.getElementById('weatherHumidity').textContent = `💧 ${humidity}%`;
         }
 
-        // Update weather periodically
-        setInterval(updateWeather, 10000);
-        updateWeather(); // Initial update
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(updateWeather, 10000);
+            updateWeather();
 
-        // Header scroll effect
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Initialize cart
-        updateCart();
-
-        // Add animation to nav buttons
-        document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('mouseenter', function () {
-                this.querySelector('i')?.classList.add('fa-bounce');
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
 
-            button.addEventListener('mouseleave', function () {
-                this.querySelector('i')?.classList.remove('fa-bounce');
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    this.querySelector('i')?.classList.add('fa-bounce');
+                });
+                button.addEventListener('mouseleave', function () {
+                    this.querySelector('i')?.classList.remove('fa-bounce');
+                });
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.body.classList.remove('cart-active');
+                }
             });
         });
     </script>
