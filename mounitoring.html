@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgriLift - Smart Field Monitoring</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -64,7 +66,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-green);
         }
-        
+
         /* Side Navigation Menu */
         .side-menu {
             position: fixed;
@@ -105,7 +107,8 @@
         }
 
         .menu-toggle {
-            display: flex; /* Show on all screen sizes */
+            display: flex;
+            /* Show on all screen sizes */
             background: none;
             border: none;
             color: white;
@@ -219,7 +222,7 @@
             nav {
                 display: none;
             }
-            
+
             .logo {
                 margin-left: auto;
                 margin-right: auto;
@@ -232,6 +235,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -243,6 +247,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -253,18 +258,28 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Header Styling */
@@ -401,8 +416,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Main Content */
@@ -420,20 +440,20 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         /* Additional styling for Tailwind compatibility */
         .text-emerald-600 {
             color: var(--primary-green);
         }
-        
+
         .bg-white {
             background-color: var(--card-background);
         }
-        
+
         .rounded-xl {
             border-radius: 0.75rem;
         }
-        
+
         .shadow-md {
             box-shadow: var(--card-shadow);
         }
@@ -503,7 +523,7 @@
                 <button class="nav-button" onclick="window.location.href='worker.html';">
                     <i class="fas fa-users"></i> Labour
                 </button>
-                <button class="nav-button" onclick="window.location.href='machinary.html';">
+                <button class="nav-button" onclick="window.location.href='machinery.html';">
                     <i class="fas fa-tractor"></i> Machinery
                 </button>
                 <button class="nav-button" onclick="window.location.href='export.html';">
@@ -515,7 +535,7 @@
             </nav>
         </div>
     </header>
-    
+
     <!-- Side Navigation Menu -->
     <div id="menuOverlay" class="menu-overlay" onclick="closeSideMenu()"></div>
     <div id="sideMenu" class="side-menu">
@@ -526,32 +546,33 @@
             </button>
         </div>
         <div class="side-menu-content">
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='home.html';">
-                <i class="fas fa-home"></i> Home
+            <button class="nav-item" onclick="window.location.href='home.html';">
+                <i class="fas fa-seedling"></i> Diverse Farming
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='dashboard.html';">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
+            <button class="nav-item" onclick="window.location.href='Dashboard.html';">
+                <i class="fas fa-tachometer-alt"></i> DashBoard
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='contact.html';">
-                <i class="fas fa-envelope"></i> Contact
+
+            <button class="nav-item" onclick="window.location.href='field.html';">
+                <i class="fas fa-map-marked-alt"></i> Field Management
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='loan.html';">
-                <i class="fas fa-money-bill-wave"></i> Loan
+            <button class="nav-item" onclick="window.location.href='settings.html';">
+                <i class="fas fa-cog"></i> Settings
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='seed.html';">
-                <i class="fas fa-seedling"></i> Market
+
+
+            <button class="nav-item" onclick="window.location.href='moisture.html';">
+                <i class="fas fa-chart-area"></i> Soil Analytics
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='worker.html';">
-                <i class="fas fa-users"></i> Labour
+
+            <button class="nav-item" onclick="window.location.href='profile.html';">
+                <i class="fas fa-user"></i> My Profile
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='machinary.html';">
-                <i class="fas fa-tractor"></i> Machinery
+            <button class="nav-item" onclick="window.location.href='Services.html';">
+                <i class="fas fa-tools"></i> Services
             </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='export.html';">
-                <i class="fas fa-shipping-fast"></i> Export
-            </button>
-            <button class="nav-item" onclick="setTimeout(function() { closeSideMenu(); }, 300); window.location.href='mounitoring.html';">
-                <i class="fas fa-chart-line"></i> Monitoring
+            <button class="nav-item" onclick="window.location.href='register.html';">
+                <i class="fas fa-sign-in-alt"></i> Register/Login
             </button>
         </div>
         <div class="side-menu-footer">
@@ -673,7 +694,8 @@
                         <ul id="fields" class="mt-1 list-disc pl-5 text-gray-500"></ul>
                     </div>
                     <button id="editProfile"
-                        class="bg-emerald-600 text-white px-4 py-2 rounded mt-4 hover:bg-emerald-700">Edit Profile</button>
+                        class="bg-emerald-600 text-white px-4 py-2 rounded mt-4 hover:bg-emerald-700">Edit
+                        Profile</button>
                 </div>
             </div>
         </div>
@@ -689,7 +711,7 @@
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeSideMenu() {
             const sideMenu = document.getElementById('sideMenu');
             const menuOverlay = document.getElementById('menuOverlay');
@@ -697,7 +719,7 @@
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-        
+
         // Function to map weather condition codes to icons and descriptions
         const getWeatherIcon = (code) => {
             const iconMap = {
@@ -787,7 +809,7 @@
                 `;
             }
         }
-        
+
         // Initialize Map
         const map = L.map('fieldMap').setView([51.505, -0.09], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
@@ -903,36 +925,36 @@
             const closeMenu = document.getElementById('closeMenu');
             const sideMenu = document.getElementById('sideMenu');
             const menuOverlay = document.getElementById('menuOverlay');
-            
+
             function openMenu() {
                 sideMenu.classList.add('active');
                 menuOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
             }
-            
+
             function closeMenuFunc() {
                 sideMenu.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 document.body.style.overflow = ''; // Re-enable scrolling
             }
-            
+
             menuToggle.addEventListener('click', openMenu);
             closeMenu.addEventListener('click', closeMenuFunc);
             menuOverlay.addEventListener('click', closeMenuFunc);
-            
+
             // Close side menu when clicking on a nav item
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     // Add a small delay before redirecting to show the click effect
                     setTimeout(() => {
                         closeMenuFunc();
                     }, 300);
                 });
             });
-            
+
             // Close menu with Escape key
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
                     closeMenuFunc();
                 }
@@ -952,7 +974,7 @@
                 email: "john@agrilift.com",
                 fields: ["North Field", "South Field", "West Orchard"]
             };
-            
+
             document.getElementById('username').textContent = mockUserData.username;
             document.getElementById('email').textContent = mockUserData.email;
             document.getElementById('fields').innerHTML = mockUserData.fields.map(field => `<li>${field}</li>`).join('');
