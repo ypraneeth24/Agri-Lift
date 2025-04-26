@@ -139,6 +139,8 @@
                     await new Promise(resolve => setTimeout(resolve, 1500));
                     console.log("Form submitted:", data);
                     alert("Export request submitted successfully!");
+                    // Redirect back to export.html
+                    window.location.href = 'export.html';
                     onOpenChange(false);
                     form.reset();
                 } catch (error) {

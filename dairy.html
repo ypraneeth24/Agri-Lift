@@ -1800,7 +1800,7 @@
                       </svg>
                     </button>
                   </div>
-                  <p class="cart-item-price">$${item.product.price.toFixed(2)}</p>
+                  <p class="cart-item-price">₹${item.product.price.toFixed(2)}</p>
                   <div class="cart-item-controls">
                     <button class="decrease-quantity w-8 h-8 flex items-center justify-center border rounded-md text-gray-500 hover:bg-gray-100" data-id="${item.product.id}">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1815,7 +1815,7 @@
                       </svg>
                     </button>
                     <div class="ml-auto font-medium">
-                      $${(item.product.price * item.quantity).toFixed(2)}
+                      ₹${(item.product.price * item.quantity).toFixed(2)}
                     </div>
                   </div>
                 </div>
@@ -1834,7 +1834,7 @@
             </button>
             <div class="cart-total">
               <span>Total:</span>
-              <span>$${cart.total.toFixed(2)}</span>
+              <span>₹${cart.total.toFixed(2)}</span>
             </div>
             <button id="checkoutButton" class="w-full py-3 bg-black text-white rounded-lg font-medium">
               Checkout
@@ -1884,7 +1884,7 @@
           <div class="product-details">
             <div class="flex justify-between items-start mb-2">
               <h3 class="product-title">${product.name}</h3>
-              <span class="product-price">$${product.price.toFixed(2)}</span>
+              <span class="product-price">₹${product.price.toFixed(2)}</span>
             </div>
             <p class="product-description">${product.description}</p>
             <button class="product-button add-to-cart" data-id="${product.id}" data-category="${product.category}">

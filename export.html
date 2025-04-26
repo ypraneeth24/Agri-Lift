@@ -1608,7 +1608,115 @@
         }
 
         function connectTo(id, containerId) {
-            showToast(`Connected to ${containerId} ID: ${id}`);
+            try {
+                // Store the product ID and container ID for later use
+                window.currentProductId = id;
+                window.currentContainerId = containerId;
+                
+                // Create export form modal if it doesn't exist
+                if (!document.getElementById('exportFormModal')) {
+                    createExportFormModal();
+                }
+                
+                // Show the export form modal
+                document.getElementById('exportFormModal').style.display = 'block';
+                document.getElementById('exportFormOverlay').style.display = 'block';
+                
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+                
+                // Show toast message
+                showToast(`Connected to ${containerId} ID: ${id}`);
+            } catch (error) {
+                console.error('Error opening export form:', error);
+                alert('Could not open export form. Please try again later.');
+            }
+        }
+        
+        function createExportFormModal() {
+            // Create modal container
+            const modal = document.createElement('div');
+            modal.id = 'exportFormModal';
+            modal.className = 'modal';
+            modal.style.display = 'none';
+            modal.style.position = 'fixed';
+            modal.style.zIndex = '2000';
+            modal.style.left = '50%';
+            modal.style.top = '50%';
+            modal.style.transform = 'translate(-50%, -50%)';
+            modal.style.width = '90%';
+            modal.style.maxWidth = '800px';
+            modal.style.maxHeight = '90vh';
+            modal.style.backgroundColor = 'white';
+            modal.style.borderRadius = '10px';
+            modal.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+            modal.style.overflow = 'auto';
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'exportFormOverlay';
+            overlay.className = 'modal-overlay';
+            overlay.style.display = 'none';
+            overlay.style.position = 'fixed';
+            overlay.style.zIndex = '1999';
+            overlay.style.left = '0';
+            overlay.style.top = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.backdropFilter = 'blur(3px)';
+            
+            // Close modal when clicking on overlay
+            overlay.addEventListener('click', closeExportFormModal);
+            
+            // Create modal header
+            const header = document.createElement('div');
+            header.style.padding = '15px 20px';
+            header.style.borderBottom = '1px solid #eee';
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            
+            const title = document.createElement('h2');
+            title.textContent = 'Export Request Form';
+            title.style.margin = '0';
+            title.style.color = 'var(--primary-green)';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.background = 'none';
+            closeBtn.style.border = 'none';
+            closeBtn.style.fontSize = '24px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.color = '#666';
+            closeBtn.addEventListener('click', closeExportFormModal);
+            
+            header.appendChild(title);
+            header.appendChild(closeBtn);
+            
+            // Create iframe to load the export form
+            const iframe = document.createElement('iframe');
+            iframe.src = 'simple-export-form.html';
+            iframe.style.width = '100%';
+            iframe.style.height = 'calc(90vh - 70px)';
+            iframe.style.border = 'none';
+            iframe.style.borderRadius = '0 0 10px 10px';
+            
+            // Assemble modal
+            modal.appendChild(header);
+            modal.appendChild(iframe);
+            
+            // Add to document
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+        }
+        
+        function closeExportFormModal() {
+            document.getElementById('exportFormModal').style.display = 'none';
+            document.getElementById('exportFormOverlay').style.display = 'none';
+            
+            // Restore body scrolling
+            document.body.style.overflow = '';
         }
 
         // Weather Update
