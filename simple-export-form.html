@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Export Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #4F9C67;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .col {
+            flex: 1;
+        }
+        
+        button {
+            background-color: #4F9C67;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #3d7b51;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AgriLift Export Form</h1>
+        <p>Fill in the details below to submit your export request.</p>
+        
+        <form id="exportForm">
+            <div class="form-group">
+                <label for="exporterName">Exporter Name</label>
+                <input type="text" id="exporterName" name="exporterName" placeholder="Enter exporter's name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="companyName">Company/Farm Name</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Enter company or farm name" required>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" placeholder="Amount" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="unit">Unit</label>
+                        <select id="unit" name="unit" required>
+                            <option value="">Select unit</option>
+                            <option value="kg">kg</option>
+                            <option value="liters">liters</option>
+                            <option value="tons">tons</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="destinationCountry">Destination Country</label>
+                <input type="text" id="destinationCountry" name="destinationCountry" placeholder="Enter destination country" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="shippingMethod">Shipping Method</label>
+                <select id="shippingMethod" name="shippingMethod" required>
+                    <option value="">Select shipping method</option>
+                    <option value="Air">Air</option>
+                    <option value="Sea">Sea</option>
+                    <option value="Land">Land</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="exportDate">Export Date</label>
+                <input type="date" id="exportDate" name="exportDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="instructions">Special Instructions</label>
+                <textarea id="instructions" name="instructions" rows="4" placeholder="Enter any special instructions or notes"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="documents">Required Documents</label>
+                <input type="file" id="documents" name="documents" multiple>
+            </div>
+            
+            <div style="text-align: right; margin-top: 30px;">
+                <button type="button" onclick="window.history.back()">Cancel</button>
+                <button type="submit" style="margin-left: 10px;">Submit Export Request</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('exportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Export request submitted successfully!');
+            
+            // Check if we're in an iframe
+            if (window.parent !== window) {
+                // We're in an iframe, tell the parent to close the modal
+                try {
+                    window.parent.closeExportFormModal();
+                } catch (error) {
+                    console.error('Error closing modal:', error);
+                }
+            } else {
+                // We're not in an iframe, redirect back to export.html
+                window.location.href = 'export.html';
+            }
+        });
+        
+        // Also handle the cancel button
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            if (window.parent !== window) {
+                try {
+                    window.parent.closeExportFormModal();
+                } catch (error) {
+                    console.error('Error closing modal:', error);
+                    window.history.back();
+                }
+            } else {
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+</html>
